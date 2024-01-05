@@ -1,0 +1,63 @@
+const defaultTheme = require("tailwindcss/defaultTheme");
+const colors = require("tailwindcss/colors");
+
+module.exports = {
+    darkMode: "class",
+    theme: {
+        colors: {
+            primary: colors.indigo,
+            secondary: colors.gray,
+            success: colors.green,
+            error: colors.red,
+            positive: colors.emerald,
+            negative: colors.red,
+            warning: colors.amber,
+            info: colors.blue,
+            ...colors,
+        },
+        extend: {
+            fontFamily: {
+                kalameh: ["KalamehWeb", ...defaultTheme.fontFamily.sans],
+                vazir: ["Vazirmatn", ...defaultTheme.fontFamily.sans],
+            },
+            keyframes: {
+                blink: {
+                    "0%, 100%": { opacity: "1" },
+                    "50%": { opacity: "0" },
+                },
+            },
+            animation: {
+                blink: "blink 1s linear infinite",
+            },
+        },
+    },
+    variants: {
+        extend: {
+            backgroundColor: ["active"],
+        },
+    },
+    content: [
+        "./app/**/*.php",
+        "./resources/**/*.html",
+        "./resources/**/*.js",
+        "./resources/**/*.jsx",
+        "./resources/**/*.ts",
+        "./resources/**/*.tsx",
+        "./resources/**/*.php",
+        "./resources/**/*.vue",
+        "./resources/**/*.twig",
+        "./resources/views/**/*.blade.php",
+        "./storage/framework/views/*.php",
+        "./vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php",
+        "./vendor/laravel/jetstream/**/*.blade.php",
+        "./vendor/wireui/wireui/resources/**/*.blade.php",
+        "./vendor/wireui/wireui/ts/**/*.ts",
+        "./vendor/wireui/wireui/src/View/**/*.php",
+        "./vendor/rappasoft/laravel-livewire-tables/resources/views/**/*.blade.php",
+    ],
+
+    plugins: [
+        require("@tailwindcss/forms"),
+        require("@tailwindcss/typography"),
+    ],
+};
