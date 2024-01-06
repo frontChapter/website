@@ -37,7 +37,7 @@
                             <x-heroicon-o-briefcase class="w-6 h-6" />
                             <p class="text-lg">{{ __('Job') }}</p>
                         </div>
-                        <p class="text-lg">شغل من اینه</p>
+                        <p class="text-lg">{{ $user->job_title }}</p>
                     </div>
                     <div class="flex gap-4">
                         <div class="flex gap-2 w-28">
@@ -58,7 +58,7 @@
                             <x-heroicon-o-briefcase class="w-6 h-6" />
                             <p class="text-lg">{{ __('Age') }}</p>
                         </div>
-                        <p class="text-lg">شغل من اینه</p>
+                        <p class="text-lg">{{ verta()->parse($user->birth_date)->diffYears() }} {{ __('years old') }}</p>
                     </div>
                 </div>
             </x-card>
