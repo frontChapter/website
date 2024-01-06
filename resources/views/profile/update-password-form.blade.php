@@ -9,15 +9,15 @@
 
     <x-slot name="form">
         <div class="col-span-6 sm:col-span-4">
-            <x-input :label="__('Current Password')" type="password" wire:model="state.current_password" />
+            <x-input :label="__('Current Password')" type="password" wire:model="state.current_password" name="current_password" />
         </div>
 
         <div class="col-span-6 sm:col-span-4">
-            <x-input :label="__('New Password')" type="password" wire:model="state.password" />
+            <x-input :label="__('New Password')" type="password" wire:model="state.password" name="password" />
         </div>
 
         <div class="col-span-6 sm:col-span-4">
-            <x-input :label="__('Password confirmation')" type="password" wire:model="state.password_confirmation" />
+            <x-input :label="__('Password confirmation')" type="password" wire:model="state.password_confirmation" name="password_confirmation" />
         </div>
 
     </x-slot>
@@ -27,6 +27,6 @@
             {{ __('Saved.') }}
         </x-action-message>
 
-        <x-button primary type="submit" :label="__('Save')" />
+        <x-button primary type="submit" spinner="updatePassword" :label="__('Save')" />
     </x-slot>
 </x-form-section>

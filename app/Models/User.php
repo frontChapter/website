@@ -80,7 +80,6 @@ class User extends Authenticatable implements MustVerifyEmail
     public function getProfilePhotoUrlAttribute(): string
     {
         if ($this->profile_photo_path) {
-
             return  Storage::disk($this->profilePhotoDisk())
                 ->url($this->profile_photo_path);
         } elseif (Gravatar::exists($this->email)) {

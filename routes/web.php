@@ -50,19 +50,9 @@ Route::middleware('auth')->group(function () {
         ->name('password.confirm');
 });
 
-// Route::middleware('auth')->group(function () {
-//     Route::get('email/verify/{id}/{hash}', EmailVerificationController::class)
-//         ->middleware('signed')
-//         ->name('verification.verify');
-
-//     Route::post('logout', LogoutController::class)
-//         ->name('logout');
-// });
-
 Route::middleware([
     'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified',
+    config('jetstream.auth_session')
 ])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');

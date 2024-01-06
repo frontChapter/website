@@ -22,12 +22,12 @@
         <div class="px-4 py-8 bg-white shadow sm:rounded-lg sm:px-10">
             <form wire:submit.prevent="register">
                 <div class="flex flex-col gap-4">
-                    <x-input required :label="__('First name')" wire:model.blur='firstName' />
-                    <x-input required :label="__('Last name')" wire:model.blur='lastName' />
-                    <x-input required :label="__('User name')" wire:model.blur='username' />
-                    <x-input required :label="__('Email')" wire:model.blur='email' type="email" />
-                    <x-input required :label="__('Password')" wire:model.blur='password' type="password" />
-                    <x-input required :label="__('Password confirmation')" wire:model.blur='passwordConfirmation' type="password" />
+                    <x-input required :label="__('First name')" wire:model.blur='firstName' name="firstName" />
+                    <x-input required :label="__('Last name')" wire:model.blur='lastName' name="lastName" />
+                    <x-input required :label="__('User name')" wire:model.blur='username' name="username" />
+                    <x-input required :label="__('Email')" wire:model.blur='email' name="email" type="email" />
+                    <x-input required :label="__('Password')" wire:model.blur='password' name="password" type="password" />
+                    <x-input required :label="__('Password confirmation')" wire:model.blur='passwordConfirmation' name="passwordConfirmation" type="password" />
                 </div>
 
                 <div class="mt-6">

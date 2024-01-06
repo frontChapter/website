@@ -24,11 +24,11 @@
         <div class="px-4 py-8 bg-white shadow sm:rounded-lg sm:px-10">
             <form wire:submit.prevent="authenticate">
                 <div class="flex flex-col gap-4">
-                    <x-input required :label="__('User name Or Email')" wire:model.blur='usernameOrEmail' />
-                    <x-input required :label="__('Password')" wire:model.blur='password' type="password" />
+                    <x-input required :label="__('User name Or Email')" wire:model.blur='usernameOrEmail' name="usernameOrEmail" />
+                    <x-input required :label="__('Password')" wire:model.blur='password' name="password" type="password" />
                 </div>
                 <div class="flex items-center justify-between mt-6">
-                    <x-checkbox :label="__('Remember me')"  wire:model.lazy="remember" id="remember"/>
+                    <x-checkbox :label="__('Remember me')" name="remember" wire:model.lazy="remember" id="remember"/>
 
                     <div class="text-sm leading-5">
                         <a href="{{ route('password.request') }}"

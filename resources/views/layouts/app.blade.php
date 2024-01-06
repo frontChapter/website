@@ -15,6 +15,7 @@
         </div>
     </header>
     @endif
+    <x-check-email-verified />
     @endauth
     <!-- Page Content -->
     <main>
