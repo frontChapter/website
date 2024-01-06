@@ -7,9 +7,10 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
-                <x-welcome />
-            </div>
+            <x-card class="md:py-20">
+                <x-logo class="w-48 h-48 mx-auto mb-6" />
+                <p class="text-center w-100 text-4xl font-black">{{ __('FrontChapter') }}</p>
+            </x-card>
         </div>
     </div>
 </x-app-layout>

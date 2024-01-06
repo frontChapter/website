@@ -68,13 +68,6 @@
                 <x-card :title="__('About me')">
                     <p>{{ $user->bio }}</p>
                 </x-card>
-                <div class="evand-widget evand-widget-event-registration" data-event-slug="yaldasummit2024"
-                    data-setting="">
-                    <script>
-                        (function(){if(!document.getElementById('evand-widget-event-registration')){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.src=("https:"==document.location.protocol?"https://":"http://")+"widgets.evand.com/event-registration.js?load=1";t.setAttribute('id','evand-widget-event-registration');var e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(t,e);}})();
-                    </script>
-                </div>
-
             </div>
         </div>
     </div>
