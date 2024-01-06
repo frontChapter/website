@@ -49,7 +49,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
                 'bio' => strip_tags($input['bio']),
                 'sex' => $input['sex'],
                 'job_title' => $input['job_title'],
-                'birth_date' => $input['birth_date'],
+                'birth_date' => !empty($input['birth_date']) ? $input['birth_date'] : null,
             ])->save();
         }
     }
@@ -69,7 +69,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             'bio' => strip_tags($input['bio']),
             'sex' => $input['sex'],
             'job_title' => $input['job_title'],
-            'birth_date' => $input['birth_date'],
+            'birth_date' => !empty($input['birth_date']) ? $input['birth_date'] : null,
             'email_verified_at' => null,
         ])->save();
 

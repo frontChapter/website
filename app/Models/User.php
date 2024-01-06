@@ -96,4 +96,11 @@ class User extends Authenticatable implements MustVerifyEmail
         }
         return true;
     }
+
+    public function getAgeAttribute(): string | null
+    {
+        return !empty($this->birth_date) ?
+            verta()->parse($user->birth_date)->diffYears() . ' ' . __('years old') :
+            null;
+    }
 }
