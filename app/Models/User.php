@@ -88,4 +88,12 @@ class User extends Authenticatable implements MustVerifyEmail
         }
         return $this->defaultProfilePhotoUrl();
     }
+
+    public function isCompleted(): bool
+    {
+        if(empty($this->birth_date) || empty($this->job_title) || empty($this->sex)) {
+            return false;
+        }
+        return true;
+    }
 }
