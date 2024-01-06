@@ -65,8 +65,31 @@
         </div>
         <div class="col-span-12 p-2 lg:col-span-6 xl:col-span-8">
             <div class="flex flex-col gap-4 mt-8">
+                @if (auth()->id() === $user->id && !$user->isCompleted())
+                    <x-card cardClasses='mb-2' class="border rounded-lg shadow-lg border-error-700 shadow-error-100">
+                        <div class="flex items-center gap-4">
+                            <x-avatar class="shadow-lg" squared size="w-24 h-24" src="{{ asset('images/sad-carrot.jpg') }}"  alt="{{ __('Sad carrot') }}" />
+                            <div class="flex flex-col justify-center gap-2 py-2">
+                                <h4 class="text-xl font-semibold">{{ __('This beautiful carrot of ours is sad, because they could not be friends with you!') }}</h4>
+                                <p>{{ __('Complete your profile so that both Front Chapter Carrot and us and other users can get to know you better. ❤️') }}</p>
+                            </div>
+                            <div class="ms-auto">
+                                <div class="hidden sm:block">
+                                    <x-button wire:navigate rounded primary icon="pencil" :label="__('Edit Profile')" :href="route('profile.show')" />
+                                </div>
+                                <div class="block sm:hidden">
+                                    <x-button.circle wire:navigate primary icon="pencil" :href="route('profile.show')" />
+                                </div>
+                            </div>
+                        </div>
+                    </x-card>
+                @endif
                 <x-card :title="__('About me')">
+                    @if(!empty($user->bio))
                     <p>{{ $user->bio }}</p>
+                    @else
+                    <p>{{ __('Write a little about yourself') }}</p>
+                    @endif
                 </x-card>
             </div>
         </div>
