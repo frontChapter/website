@@ -2,34 +2,39 @@
 
 namespace App\Livewire\Auth;
 
+use App\Models\User;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 class Login extends Component
 {
-    /** @var string */
-    public $email = '';
+    #[Validate('required|string|min:5')]
+    public $usernameOrEmail = '';
 
-    /** @var string */
+    #[Validate('required|min:6|max:15|string')]
     public $password = '';
 
     /** @var bool */
     public $remember = false;
 
-    protected $rules = [
-        'email' => ['required', 'email'],
-        'password' => ['required'],
-    ];
-
     public function authenticate()
     {
         $this->validate();
 
-        if (!Auth::attempt(['email' => $this->email, 'password' => $this->password], $this->remember)) {
-            $this->addError('email', trans('auth.failed'));
+        $user = User::where('email', $this->usernameOrEmail)
+            ->orWhere('username', $this->usernameOrEmail)
+            ->first();
+
+        if(is_null($user) || !Hash::check($this->password, $user->password)){
+            $this->addError('usernameOrEmail', trans('auth.failed'));
 
             return;
         }
+
+        Auth::login($user, $this->remember);
 
         return redirect()->intended(route('home'));
     }

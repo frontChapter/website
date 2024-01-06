@@ -117,6 +117,26 @@ return [
     'url'         => ':attribute معتبر نمی‌باشد.',
     'uuid'        => ':attribute باید یک UUID معتبر باشد.',
 
+    'jdate'                  => ':attribute معتبر نمی باشد.',
+    'jdate_equal'            => ':attribute برابر :date نمی باشد.',
+    'jdate_not_equal'        => ':attribute نامساوی :date نمی باشد.',
+    'jdatetime'              => ':attribute معتبر نمی باشد.',
+    'jdatetime_equal'        => ':attribute مساوی :date نمی باشد.',
+    'jdatetime_not_equal'    => ':attribute نامساوی :date نمی باشد.',
+    'jdate_after'            => ':attribute باید بعد از :date باشد.',
+    'jdate_after_equal'      => ':attribute باید بعد یا برابر از :date باشد.',
+    'jdatetime_after'        => ':attribute باید بعد از :date باشد.',
+    'jdatetime_after_equal'  => ':attribute باید بعد یا برابر از :date باشد.',
+    'jdate_before'           => ':attribute باید قبل از :date باشد.',
+    'jdate_before_equal'     => ':attribute باید قبل یا برابر از :date باشد.',
+    'jdatetime_before'       => ':attribute باید قبل از :date باشد.',
+    'jdatetime_before_equal' => ':attribute باید قبل یا برابر از :date باشد.',
+
+    'attributes' => [
+        'start_date'      => 'تاریخ شروع',
+        'expire_datetime' => 'تاریخ انقضا',
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Language Lines
@@ -145,6 +165,7 @@ return [
         'name'                              => 'نام',
         'username'                          => 'نام کاربری',
         'email'                             => 'ایمیل',
+        'usernameOrEmail'                   => 'نام کاربری یا ایمیل',
         'first_name'                        => 'نام',
         'last_name'                         => 'نام خانوادگی',
         'firstName'                        => 'نام',

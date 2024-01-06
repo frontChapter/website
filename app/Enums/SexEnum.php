@@ -2,32 +2,20 @@
 
 namespace App\Enums;
 
-use Rexlabs\Enum\Enum;
-
-/**
- * The SexEnum enum.
- *
- * @method static self WOMAN()
- * @method static self MAN()
- * @method static self OTHER()
- */
-class SexEnum extends Enum
+enum SexEnum: string
 {
-    const WOMAN = 'woman';
-    const MAN = 'man';
-    const OTHER = 'other';
+    case Unknown = 'unknown';
+    case Woman = 'woman';
+    case Man = 'man';
+    case Other = 'other';
 
-    /**
-     * Retrieve a map of enum keys and values.
-     *
-     * @return array
-     */
-    public static function map() : array
+    public function label(): string
     {
-        return [
-            static::WOMAN => 'Woman',
-            static::MAN => 'Man',
-            static::OTHER => 'Other',
-        ];
+        return match ($this) {
+            static::Unknown => __('Unknown'),
+            static::Woman => __('Woman'),
+            static::Man => __('Man'),
+            static::Other => __('Other'),
+        };
     }
 }

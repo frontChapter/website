@@ -5,7 +5,7 @@ module.exports = {
     darkMode: "class",
     theme: {
         colors: {
-            primary: colors.indigo,
+            primary: colors.orange,
             secondary: colors.gray,
             success: colors.green,
             error: colors.red,
@@ -47,7 +47,6 @@ module.exports = {
         "./resources/**/*.vue",
         "./resources/**/*.twig",
         "./resources/views/**/*.blade.php",
-        "./storage/framework/views/*.php",
         "./vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php",
         "./vendor/laravel/jetstream/**/*.blade.php",
         "./vendor/wireui/wireui/resources/**/*.blade.php",

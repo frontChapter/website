@@ -28,13 +28,13 @@ class Register extends Component
     ])]
     public string $username = '';
 
-    #[Validate('required|min:3|max:69|email|unique:users')]
+    #[Validate('required|email|unique:users')]
     public string $email = '';
 
-    #[Validate('required|min:3|max:69|string')]
+    #[Validate('required|min:6|max:15|string')]
     public string $password = '';
 
-    #[Validate('required|min:3|max:69|same:password')]
+    #[Validate('required|min:6|max:15|same:password')]
     public string $passwordConfirmation = '';
 
     public function register()

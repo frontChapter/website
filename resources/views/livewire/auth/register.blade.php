@@ -22,16 +22,16 @@
         <div class="px-4 py-8 bg-white shadow sm:rounded-lg sm:px-10">
             <form wire:submit.prevent="register">
                 <div class="flex flex-col gap-4">
-                    <x-input :label="__('First name')" wire:model.blur='firstName' />
-                    <x-input :label="__('Last name')" wire:model.blur='lastName' />
-                    <x-input :label="__('User name')" wire:model.blur='username' />
-                    <x-input :label="__('Email')" wire:model.blur='email' type="email" />
-                    <x-input :label="__('Password')" wire:model.blur='password' type="password" />
-                    <x-input :label="__('Password confirmation')" wire:model.blur='passwordConfirmation' type="password" />
+                    <x-input required :label="__('First name')" wire:model.blur='firstName' />
+                    <x-input required :label="__('Last name')" wire:model.blur='lastName' />
+                    <x-input required :label="__('User name')" wire:model.blur='username' />
+                    <x-input required :label="__('Email')" wire:model.blur='email' type="email" />
+                    <x-input required :label="__('Password')" wire:model.blur='password' type="password" />
+                    <x-input required :label="__('Password confirmation')" wire:model.blur='passwordConfirmation' type="password" />
                 </div>
 
                 <div class="mt-6">
-                    <x-button type="submit" spinner="register" primary class="w-full" :label="__('register')" icon="user-add" />
+                    <x-button type="submit" spinner="register" primary class="w-full" :label="__('Register')" icon="user-add" />
                 </div>
             </form>
         </div>

@@ -58,3 +58,20 @@
  * vazirmatn-web Font Styles
  */
 @import url(../css/vazir-web-font.css );
+
+.evand-widget-event-registration .evand-panel {
+    @apply max-w-full  #{!important};
+}
+
+.evand-panel {
+    @apply w-full flex flex-col rounded-lg shadow-md border-0 bg-white dark:bg-secondary-800 #{!important};
+
+    .evand-panel-header {
+        @apply px-4 py-2.5 flex justify-between items-center border-b dark:border-0 #{!important};
+    }
+
+    .header-right {
+        @apply font-medium whitespace-normal text-secondary-700 dark:text-secondary-400 #{!important};
+    }
+}
+
