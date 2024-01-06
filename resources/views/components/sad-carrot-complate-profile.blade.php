@@ -11,7 +11,7 @@
                 {{ __('Complete your profile so that both Front Chapter Carrot and us and other users can get to know you better. ❤️') }}
             </p>
         </div>
-        <div class="lg:ms-auto">
+        <div class="lg:ms-auto min-w-max">
             <x-button wire:navigate rounded primary icon="pencil" :label="__('Edit Profile')"
                 :href="route('profile.show')" />
         </div>
