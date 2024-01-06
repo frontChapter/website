@@ -1,0 +1,13 @@
+{
+  "platform": "laravel",
+  "app": "frontchapter-dashboard",
+  "laravel": {
+    "phpVersion": "8.2"
+  },
+  "disks": [
+    {
+      "name": "data",
+      "mountTo": "storage"
+    }
+  ]
+}
