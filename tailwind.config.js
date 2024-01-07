@@ -21,13 +21,13 @@ module.exports = {
                 vazir: ["Vazirmatn", ...defaultTheme.fontFamily.sans],
             },
             keyframes: {
-                blink: {
-                    "0%, 100%": { opacity: "1" },
-                    "50%": { opacity: "0" },
+                recolor: {
+                    "0%, 100%": { 'border-color': colors.orange[200] },
+                    "50%": { 'border-color': colors.orange[600] },
                 },
             },
             animation: {
-                blink: "blink 1s linear infinite",
+                recolor: "recolor 2s linear infinite",
             },
         },
     },

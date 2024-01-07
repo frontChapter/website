@@ -1,3 +1,9 @@
+<x-slot name="header">
+    <h2 class="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
+        {{ __('Profile') }} {{ $user->name }}
+    </h2>
+</x-slot>
+
 <div class="container mx-auto my-8">
     <div class="grid grid-cols-12 gap-x-4 ">
         <div class="col-span-12 p-2 xl:col-span-4">
@@ -5,8 +11,8 @@
                 <x-slot name="header">
                     <div class="relative flex gap-4 px-2 pt-4 pb-2 border-b md:px-4">
                         <div class="z-40 -mt-12 w-28">
-                            <x-avatar size="w-28 h-28 min-w-28" squared class="shadow-md" src="{{ $user->profile_photo_url }}"
-                                alt="{{ $user->name }}" />
+                            <x-avatar size="w-28 h-28 min-w-28" squared class="shadow-md"
+                                src="{{ $user->profile_photo_url }}" alt="{{ $user->name }}" />
                         </div>
                         <div class="flex flex-wrap justify-start w-full gap-4">
                             <div class="flex flex-col gap-1.5 me-auto">
@@ -76,5 +82,4 @@
             </div>
         </div>
     </div>
-    {{-- Close your eyes. Count to one. That is how long forever feels. --}}
 </div>
