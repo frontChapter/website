@@ -69,9 +69,9 @@
                 }">
                     <template x-if="!config.multiselect">
                         <div @class([
-                                'absolute left-0 inset-y-0 w-[calc(100%-3.5rem)] flex items-center',
-                                'pl-2.5' =>  $icon,
-                                'pl-3.5' => !$icon,
+                                'absolute start-0 inset-y-0 w-[calc(100%-3.5rem)] flex items-center',
+                                'ps-2.5' =>  $icon,
+                                'ps-3.5' => !$icon,
                             ])
                             x-on:click="toggle">
                             @if ($icon)
@@ -139,7 +139,7 @@
             </x-slot>
 
             <x-slot name="append">
-                <div class="absolute inset-y-0 right-0 flex items-center pr-2 gap-x-2">
+                <div class="absolute inset-y-0 flex items-center pe-2 end-0 gap-x-2">
                     @if ($clearable && !$readonly && !$disabled)
                         <button
                             x-show="!isEmpty()"

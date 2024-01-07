@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 use App\Enums\SexEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -35,7 +36,6 @@ class User extends Authenticatable implements MustVerifyEmail
         'last_name',
         'username',
         'birth_date',
-        'job_title',
         'sex',
         'email',
         'password',
@@ -78,7 +78,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     public function attributes(): HasMany
     {
-        return $this->hasMany(User::class);
+        return $this->hasMany(UserAttribute::class);
     }
 
     /**
@@ -96,18 +96,21 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function getProfilePhotoUrlAttribute(): string
     {
-        if ($this->profile_photo_path) {
-            return  Storage::disk($this->profilePhotoDisk())
-                ->url($this->profile_photo_path);
-        } elseif (Gravatar::exists($this->email)) {
-            return Gravatar::url($this->email);
+        try {
+            if ($this->profile_photo_path) {
+                return  Storage::disk($this->profilePhotoDisk())
+                    ->url($this->profile_photo_path);
+            } elseif (Gravatar::exists($this->email)) {
+                return Gravatar::url($this->email);
+            }
+        } catch (\Throwable $th) {
         }
         return $this->defaultProfilePhotoUrl();
     }
 
     public function isCompleted(): bool
     {
-        if(empty($this->birth_date) || empty($this->job_title) || empty($this->sex)) {
+        if(empty($this->birth_date) || empty($this->sex) || $this->attributes()->count() < 5) {
             return false;
         }
         return true;
