@@ -6,8 +6,9 @@ use App\Livewire\Auth\Passwords\Email;
 use App\Livewire\Auth\Passwords\Reset;
 use App\Livewire\Auth\Register;
 use App\Livewire\Auth\Verify;
-use App\Livewire\Profile\Profile;
-use App\Livewire\Profile\Ticket\ListTickets;
+use App\Livewire\Profile\ShowProfile;
+use App\Livewire\Ticket\ListTickets;
+use App\Livewire\User\ListAdditional;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,7 +36,7 @@ Route::middleware('guest')->group(function () {
         ->name('register');
 });
 
-Route::get('/profile/{user:username}', Profile::class)->name('profile');
+Route::get('/profile/{user:username}', ShowProfile::class)->name('profile');
 
 Route::get('/', function () {
     return view('dashboard');
@@ -44,6 +45,10 @@ Route::get('/', function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/tickets', ListTickets::class)->name('ticket');
+
+    Route::prefix('user')->group(function () {
+        Route::get('/additional', ListAdditional::class)->name('profile.additional');
+    });
 
     Route::get('email/verify', Verify::class)
         ->middleware('throttle:6,1')

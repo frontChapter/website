@@ -1,7 +1,5 @@
 @use('App\Enums\SexEnum')
-@php
-    $state['birth_date'] = verta($state['birth_date'])->formatJalaliDate();
-@endphp
+
 <x-form-section submit="updateProfileInformation">
     <x-slot name="title">
         {{ __('Profile Information') }}
@@ -63,19 +61,6 @@
             <x-input :label="__('Last name')" required wire:model.blur='state.last_name' name="last_name" />
         </div>
         <div class="col-span-6 sm:col-span-4">
-            <x-input :label="__('User name')" required wire:model.blur='state.username' name="username" />
-        </div>
-        <div class="col-span-6 sm:col-span-4">
-            <x-input dir="ltr" class="rtl:text-right ltr:text-left" placeholder="####/##/##" :label="__('Birth date')" wire:model.blur='state.birth_date' name="birth_date" />
-        </div>
-        <div class="col-span-6 sm:col-span-4">
-            <x-select :label="__('Sex')" wire:model.defer="state.sex" name="sex" :clearable="false" :flip-options="true">
-                @foreach (SexEnum::cases() as $case)
-                <x-select.option :label="$case->label()" :value="$case->value" />
-                @endforeach
-            </x-select>
-        </div>
-        <div class="col-span-6 sm:col-span-4">
             <x-input :label="__('Email')" required wire:model.blur='state.email' name="email" type="email" />
 
             @if (Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::emailVerification()) && ! $this->user->hasVerifiedEmail())
@@ -94,12 +79,18 @@
                 @endif
             @endif
         </div>
-        <hr class="col-span-6 border-t sm:col-span-4">
         <div class="col-span-6 sm:col-span-4">
-            <x-textarea :label="__('Bio')" wire:model.blur="state.bio" name="bio" :placeholder="__('Write a little about yourself')" />
+            <x-input :label="__('User name')" required wire:model.blur='state.username' name="username" />
         </div>
         <div class="col-span-6 sm:col-span-4">
-            <x-input :label="__('Job title')" wire:model.blur='state.job_title' name="job_title" />
+            <x-input dir="ltr" class="rtl:text-right ltr:text-left" placeholder="####/##/##" :label="__('Birth date')" wire:model.blur='state.birth_date' name="birth_date" />
+        </div>
+        <div class="col-span-6 sm:col-span-4">
+            <x-select :label="__('Sex')" wire:model.defer="state.sex" name="sex" :clearable="false" :flip-options="true">
+                @foreach (SexEnum::cases() as $case)
+                <x-select.option :label="$case->label()" :value="$case->value" />
+                @endforeach
+            </x-select>
         </div>
     </x-slot>
 

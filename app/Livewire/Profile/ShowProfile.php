@@ -5,7 +5,7 @@ namespace App\Livewire\Profile;
 use App\Models\User;
 use Livewire\Component;
 
-class Profile extends Component
+class ShowProfile extends Component
 {
     public User $user;
 
@@ -16,6 +16,6 @@ class Profile extends Component
 
     public function render()
     {
-        return view('livewire.profile.profile');
+        return view('livewire.profile.show-profile');
     }
 }

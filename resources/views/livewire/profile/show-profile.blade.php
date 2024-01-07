@@ -1,3 +1,5 @@
+@use('App\Enums\AttributeTypeEum')
+
 <x-slot name="header">
     <h2 class="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
         {{ __('Profile') }} {{ $user->name }}
@@ -38,13 +40,17 @@
                     </div>
                 </x-slot>
                 <div class="flex flex-col gap-2">
-                    <div class="flex gap-4">
+                    @foreach ($user->attributes()->whereIn('type', [AttributeTypeEum::Job, AttributeTypeEum::Company])->get() as $attribute)
+                    <div class="flex items-center gap-4">
                         <div class="flex gap-2 w-28">
-                            <x-heroicon-o-briefcase class="w-6 h-6" />
-                            <p class="text-lg">{{ __('Job') }}</p>
+                            <div class="min-w-max">
+                                @svg($attribute->type->iconName(), 'w-6 h-6')
+                            </div>
+                            <p class="text-lg">{{ $attribute->type->label() }}</p>
                         </div>
-                        <p class="text-lg">{{ $user->job_title }}</p>
+                        {!! $attribute->type->htmlValue($attribute->value) !!}
                     </div>
+                    @endforeach
                     <div class="flex gap-4">
                         <div class="flex gap-2 w-28">
                             <x-heroicon-o-envelope class="w-6 h-6" />
@@ -73,11 +79,28 @@
             <div class="flex flex-col gap-4 mt-8">
                 <x-sad-carrot-complate-profile :show="auth()->id() === $user->id && !auth()->user()->isCompleted()" />
                 <x-card :title="__('About me')">
-                    @if(!empty($user->bio))
-                    <p>{{ $user->bio }}</p>
-                    @else
+                    @forelse ($user->attributes()->whereType(AttributeTypeEum::Bio)->get() as $attribute)
+                    <p>{{ $attribute->value }}</p>
+                    @empty
                     <p>{{ __('Write a little about yourself') }}</p>
-                    @endif
+                    @endforelse
+                </x-card>
+                <x-card :title="__('Links')">
+                    <div class="flex flex-col gap-2">
+                        @forelse ($user->attributes()->whereNotIn('type', [AttributeTypeEum::Job, AttributeTypeEum::Bio, AttributeTypeEum::Company])->get() as $attribute)
+                        <div class="flex items-center gap-4">
+                            <div class="flex gap-2 w-28">
+                                <div class="min-w-max">
+                                    @svg($attribute->type->iconName(), 'w-6 h-6')
+                                </div>
+                                <p class="text-lg">{{ $attribute->type->label() }}</p>
+                            </div>
+                            {!! $attribute->type->htmlValue($attribute->value) !!}
+                        </div>
+                        @empty
+                        <p>{{ __('Place for your social links') }}</p>
+                        @endforelse
+                    </div>
                 </x-card>
             </div>
         </div>

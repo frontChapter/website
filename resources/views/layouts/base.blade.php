@@ -23,6 +23,7 @@
 <body @if(app()->getLocale() === 'fa') dir="rtl" @else dir="ltr" @endif
     class="font-vazir bg-gray-50 dark:bg-gray-800 dark:text-white">
     @yield('body')
+    <x-notifications z-index="z-50" position="bottom-left" />
     @livewireScripts
     @wireUiScripts
 </body>

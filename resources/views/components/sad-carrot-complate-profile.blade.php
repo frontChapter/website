@@ -8,7 +8,7 @@
                 {{ __('This beautiful carrot of ours is sad, because they could not be friends with you!') }}
             </h4>
             <p>
-                {{ __('Complete your profile so that both Front Chapter Carrot and us and other users can get to know you better. ❤️') }}
+                {{ __('Complete your account and additional data in edit profile page so that both Front Chapter Carrot and us and other users can get to know you better. ❤️') }}
             </p>
         </div>
         <div class="lg:ms-auto min-w-max">

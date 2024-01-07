@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Profile\Ticket;
+namespace App\Livewire\Ticket;
 
 use App\Models\Ticket;
 use Livewire\Component;
@@ -9,7 +9,7 @@ class ListTickets extends Component
 {
     public function render()
     {
-        return view('livewire.profile.ticket.list-tickets', [
+        return view('livewire.ticket.list-tickets', [
             'tickets' => auth()->user()->tickets
         ]);
     }

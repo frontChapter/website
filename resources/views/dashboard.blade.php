@@ -7,10 +7,13 @@
 
     <div class="container mx-auto my-8">
         <div class="flex flex-col gap-y-4">
-            {{-- <x-card class="md:py-20">
+            @guest
+            <x-card class="md:py-20">
                 <x-logo class="w-48 h-48 mx-auto mb-6" />
                 <p class="text-4xl font-black text-center w-100">{{ __('FrontChapter') }}</p>
-            </x-card> --}}
+            </x-card>
+            @endguest
+            @auth
             @if(!empty(env('EVAND_SLUG')))
             <div class="evand-widget evand-widget-event-registration" data-event-slug="{{ env('EVAND_SLUG') }}" data-setting="">
                 <script>
@@ -18,6 +21,7 @@
                 </script>
             </div>
             @endif
+            @endauth
         </div>
     </div>
 
