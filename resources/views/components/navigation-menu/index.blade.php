@@ -5,23 +5,16 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="flex items-center shrink-0">
-                    <a href="{{ route('dashboard') }}">
+                    <a href="{{ route('home') }}">
                         <x-application-mark class="block w-auto h-9" />
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link wire:navigate href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-nav-link>
-
-                    <x-nav-link wire:navigate href="{{ route('profile', [auth()->user()]) }}" :active="request()->is('profile/*')">
-                        {{ __('Profile') }}
-                    </x-nav-link>
-                </div>
+                <x-navigation-menu.links :$links />
             </div>
 
+            @auth()
             <div class="hidden sm:flex sm:items-center sm:ms-6">
                 <!-- Teams Dropdown -->
                 @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
@@ -108,8 +101,8 @@
 
                         <!-- Account Management -->
                         <x-dropdown.header :label="__('Manage Account')">
-                            <x-dropdown.item href="{{ route('profile.show') }}">
-                                {{ __('Edit profile') }}
+                            <x-dropdown.item href="{{ route('profile', [auth()->user()]) }}">
+                                {{ __('Profile') }}
                             </x-dropdown.item>
                             @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                             <x-dropdown.item wire:navigate href="{{ route('api-tokens.index') }}">
@@ -120,8 +113,7 @@
                             <!-- Authentication -->
                             <form method="POST" action="{{ route('logout') }}" x-data>
                                 @csrf
-                                <x-dropdown.item href="{{ route('logout') }}"
-                                    @click.prevent="$root.submit();">
+                                <x-dropdown.item href="{{ route('logout') }}" @click.prevent="$root.submit();">
                                     {{ __('Log Out') }}
                                 </x-dropdown.item>
                             </form>
@@ -129,6 +121,14 @@
                     </x-dropdown>
                 </div>
             </div>
+            @endauth
+
+            @guest
+            <div class="flex items-center gap-2">
+                <x-button light wire:navigate :href="route('login')" :label="__('Login')" />
+                <x-button icon="user-add" primary wire:navigate :href="route('register')" :label="__('Register')" />
+            </div>
+            @endguest
 
             <!-- Hamburger -->
             <div class="flex items-center -me-2 sm:hidden">
@@ -148,12 +148,9 @@
 
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
-        <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link wire:navigate href="{{ route('profile', [auth()->user()]) }}" :active="request()->routeIs('profile')">
-                {{ __('Profile') }}
-            </x-responsive-nav-link>
-        </div>
+        <x-navigation-menu.responsive-links :$links />
 
+        @auth
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
             <div class="flex items-center px-4">
@@ -172,7 +169,7 @@
 
             <div class="mt-3 space-y-1">
                 <!-- Account Management -->
-                <x-responsive-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
+                <x-responsive-nav-link href="{{ route('profile', [auth()->user()]) }}" :active="request()->routeIs('profile')">
                     {{ __('Profile') }}
                 </x-responsive-nav-link>
 
@@ -227,5 +224,6 @@
                 @endif
             </div>
         </div>
+        @endauth
     </div>
 </nav>

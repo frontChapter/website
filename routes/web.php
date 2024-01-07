@@ -7,6 +7,7 @@ use App\Livewire\Auth\Passwords\Reset;
 use App\Livewire\Auth\Register;
 use App\Livewire\Auth\Verify;
 use App\Livewire\Profile\Profile;
+use App\Livewire\Profile\Ticket\ListTickets;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,9 +21,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return redirect()->route('dashboard');
-})->name('home');
+Route::get('password/reset', Email::class)
+    ->name('password.request');
+
+Route::get('password/reset/{token}', Reset::class)
+    ->name('password.reset');
 
 Route::middleware('guest')->group(function () {
     Route::get('login', Login::class)
@@ -32,15 +35,15 @@ Route::middleware('guest')->group(function () {
         ->name('register');
 });
 
-Route::get('password/reset', Email::class)
-    ->name('password.request');
+Route::get('/profile/{user:username}', Profile::class)->name('profile');
 
-Route::get('password/reset/{token}', Reset::class)
-    ->name('password.reset');
+Route::get('/', function () {
+    return view('dashboard');
+})->name('home');
+
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile/{user:username}', Profile::class)->name('profile');
-
+    Route::get('/tickets', ListTickets::class)->name('ticket');
 
     Route::get('email/verify', Verify::class)
         ->middleware('throttle:6,1')
@@ -48,13 +51,4 @@ Route::middleware('auth')->group(function () {
 
     Route::get('password/confirm', Confirm::class)
         ->name('password.confirm');
-});
-
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session')
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
 });
