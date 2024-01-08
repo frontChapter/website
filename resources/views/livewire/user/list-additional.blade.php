@@ -1,7 +1,7 @@
 @use('App\Enums\AttributeTypeEum')
 
 <x-slot name="header">
-    <h2 class="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
+    <h2 class="text-xl font-semibold leading-tight text-secondary-800 dark:text-secondary-200">
         {{ __('Manage Additional Data') }}
     </h2>
 </x-slot>
@@ -20,17 +20,8 @@
         </x-slot>
 
         <x-slot name="form">
-            @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-            @endif
             <div class="flex items-end col-span-6 gap-2">
-                <h4 class="py-2 text-gray-900 me-4">{{ __('New') }}:</h4>
+                <h4 class="py-2 me-4">{{ __('New') }}:</h4>
                 <x-select :placeholder="__('Additional Data')" wire:model.blur="type" name="type" :clearable="false"
                     :flip-options="true">
                     @foreach (AttributeTypeEum::cases() as $case)
@@ -41,7 +32,7 @@
                     <x-button wire:click='add' spinner='add' :label="__('Add')" />
                 </div>
             </div>
-            <hr class="w-full col-span-6">
+            <hr class="w-full col-span-6 dark:border-secondary-600">
 
             <div class="flex flex-col col-span-6 gap-2">
                 @foreach ($forms as $index => $form)
@@ -70,7 +61,7 @@
                 @foreach ($attributes as $attribute)
                 <div wire:key='$attribute->id' class="flex items-center gap-2">
                     <p class="my-2 font-medium w-28 me-2 min-w-max">{{ $attribute->type->label() }}:</p>
-                    <div class="flex w-full gap-2 p-2 border rounded-lg">
+                    <div class="flex w-full gap-2 p-2 border rounded-lg dark:border-secondary-600">
                         @svg($attribute->type->iconName(), 'w-6 h-6 m-2')
                         <div class="w-full py-2">
                             {!! $attribute->type->htmlValue($attribute->value) !!}

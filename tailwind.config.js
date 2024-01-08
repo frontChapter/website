@@ -5,15 +5,15 @@ module.exports = {
     darkMode: "class",
     theme: {
         colors: {
+            ...colors,
             primary: colors.orange,
-            secondary: colors.gray,
+            secondary: colors.zinc,
             success: colors.green,
             error: colors.red,
             positive: colors.emerald,
             negative: colors.red,
             warning: colors.amber,
             info: colors.blue,
-            ...colors,
         },
         extend: {
             fontFamily: {
@@ -22,12 +22,17 @@ module.exports = {
             },
             keyframes: {
                 recolor: {
-                    "0%, 100%": { 'border-color': colors.orange[200] },
-                    "50%": { 'border-color': colors.orange[600] },
+                    "0%, 100%": { "border-color": colors.orange[200] },
+                    "50%": { "border-color": colors.orange[600] },
+                },
+                "text-recolor": {
+                    "0%, 100%": { "color": colors.orange[200] },
+                    "50%": { "color": colors.orange[600] },
                 },
             },
             animation: {
                 recolor: "recolor 2s linear infinite",
+                "text-recolor": "text-recolor 2s linear infinite",
             },
         },
     },

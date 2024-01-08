@@ -1,13 +1,13 @@
 @use('App\Enums\AttributeTypeEum')
 
 <x-slot name="header">
-    <h2 class="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
+    <h2 class="text-xl font-semibold leading-tight text-secondary-800 dark:text-secondary-200">
         {{ __('Profile') }} {{ $user->name }}
     </h2>
 </x-slot>
 
 <div class="container mx-auto my-8">
-    <div class="grid grid-cols-12 gap-x-4 ">
+    <div class="grid grid-cols-12 gap-x-4">
         <div class="col-span-12 p-2 xl:col-span-4">
             <x-card cardClasses="mt-8">
                 <x-slot name="header">
@@ -98,7 +98,7 @@
                             {!! $attribute->type->htmlValue($attribute->value) !!}
                         </div>
                         @empty
-                        <p>{{ __('Place for your social links') }}</p>
+                        <p>{{ __('Place for social links') }}</p>
                         @endforelse
                     </div>
                 </x-card>

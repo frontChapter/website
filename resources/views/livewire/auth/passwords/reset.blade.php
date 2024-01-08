@@ -6,13 +6,13 @@
             <x-logo class="w-auto h-16 mx-auto text-indigo-600" />
         </a>
 
-        <h2 class="mt-6 text-3xl font-extrabold leading-9 text-center text-gray-900">
+        <h2 class="mt-6 text-3xl font-extrabold leading-9 text-center">
             {{ __('Reset Password') }}
         </h2>
     </div>
 
     <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <div class="px-4 py-8 bg-white shadow sm:rounded-lg sm:px-10">
+        <x-card>
             <form wire:submit.prevent="resetPassword">
                 <input wire:model="token" type="hidden">
 
@@ -26,6 +26,6 @@
                     <x-button type="submit" spinner="resetPassword" primary class="w-full" :label="__('Reset Password')" />
                 </div>
             </form>
-        </div>
+        </x-card>
     </div>
 </div>
