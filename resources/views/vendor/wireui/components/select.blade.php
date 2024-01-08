@@ -78,7 +78,7 @@
                                 <x-dynamic-component
                                     :component="WireUi::component('icon')"
                                     :name="$icon"
-                                    class="w-5 h-5 mr-1 text-gray-400 dark:text-gray-600"
+                                    class="w-5 h-5 mr-1 text-secondary-400 dark:text-secondary-600"
                                 />
                             @endif
 
@@ -97,7 +97,7 @@
                                     <x-dynamic-component
                                         :component="WireUi::component('icon')"
                                         :name="$icon"
-                                        class="w-5 h-5 text-gray-400 dark:text-gray-600"
+                                        class="w-5 h-5 text-secondary-400 dark:text-secondary-600"
                                     />
                                 @endif
 
@@ -186,7 +186,7 @@
                 <x-dynamic-component
                     :component="WireUi::component('input')"
                     :placeholder="trans('wireui::messages.searchHere')"
-                    class="bg-slate-100"
+                    class="bg100"
                     x-ref="search"
                     x-model.debounce.500ms="search"
                     x-on:keydown.arrow-down.prevent="$event.shiftKey || getNextFocusable().focus()"
@@ -207,7 +207,7 @@
             x-on:keydown.arrow-up.prevent="getPrevFocusable().focus()">
             <div class="w-full h-0.5 rounded-full relative overflow-hidden"
                 :class="{
-                    'bg-gray-200 dark:bg-gray-700': asyncData.fetching
+                    'bg-secondary-200 dark:bg-secondary-700': asyncData.fetching
                 }">
                 <div class="bg-primary-500 h-0.5 rounded-full absolute animate-linear-progress"
                     style="width: 30%"
@@ -225,7 +225,7 @@
                 <template x-for="(option, index) in displayOptions" :key="`${index}.${option.value}`">
                     <li tabindex="-1" :index="index">
                         <div class="px-2 py-0.5">
-                            <div class="w-full h-8 rounded animate-pulse bg-slate-200 dark:bg-slate-600"></div>
+                            <div class="w-full h-8 rounded animate-pulse bg-secondary-200 dark:bg-secondary-600"></div>
                         </div>
                     </li>
                 </template>

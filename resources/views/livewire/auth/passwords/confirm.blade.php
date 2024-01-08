@@ -6,10 +6,10 @@
             <x-logo class="w-auto h-16 mx-auto text-indigo-600" />
         </a>
 
-        <h2 class="mt-6 text-3xl font-extrabold leading-9 text-center text-gray-900">
+        <h2 class="mt-6 text-3xl font-extrabold leading-9 text-center text-secondary-900">
             {{ __('Confirm your password') }}
         </h2>
-        <p class="mt-2 text-sm leading-5 text-center text-gray-600 max-w">
+        <p class="mt-2 text-sm leading-5 text-center text-secondary-600 max-w">
             {{ __('Please confirm your password before continuing') }}
         </p>
     </div>

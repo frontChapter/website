@@ -6,6 +6,7 @@ use App\Livewire\Auth\Passwords\Email;
 use App\Livewire\Auth\Passwords\Reset;
 use App\Livewire\Auth\Register;
 use App\Livewire\Auth\Verify;
+use App\Livewire\Home\ShowHome;
 use App\Livewire\Profile\ShowProfile;
 use App\Livewire\Ticket\ListTickets;
 use App\Livewire\User\ListAdditional;
@@ -38,9 +39,7 @@ Route::middleware('guest')->group(function () {
 
 Route::get('/profile/{user:username}', ShowProfile::class)->name('profile');
 
-Route::get('/', function () {
-    return view('dashboard');
-})->name('home');
+Route::get('/', ShowHome::class)->name('home');
 
 
 Route::middleware('auth')->group(function () {

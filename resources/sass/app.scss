@@ -64,30 +64,30 @@
 }
 
 .evand-panel {
-    @apply w-full flex flex-col rounded-lg border shadow-primary-100 shadow-lg bg-white animate-recolor dark:bg-secondary-800 #{!important};
+    @apply w-full flex flex-col rounded-lg border shadow-primary-100 shadow-lg dark:shadow-secondary-900 bg-white animate-recolor dark:bg-secondary-800 #{!important};
 
     .evand-panel-header {
-        @apply px-4 py-4 flex justify-between items-center border-b border-gray-200 #{!important};
+        @apply px-4 py-4 flex justify-between items-center border-b border-secondary-200 dark:border-secondary-600 #{!important};
 
         .header-right {
-            @apply text-lg font-medium whitespace-normal text-secondary-700 dark:text-secondary-400 #{!important};
+            @apply text-lg font-medium whitespace-normal text-secondary-700 dark:text-secondary-300 #{!important};
         }
     }
 
     .evand-panel-body {
         @apply px-4 py-4 dark:border-0 #{!important};
 
-        .ticket-title {
-            @apply font-medium text-base #{!important};
-        }
-        .ticket-price {
-            @apply font-medium text-base #{!important};
+        .event-ticket {
+            @apply border-b border-secondary-200 dark:border-secondary-600 #{!important};
+            .ticket-title, .ticket-price {
+                @apply font-medium text-base dark:text-secondary-400 text-secondary-600 #{!important};
+            }
         }
     }
 
 
     .evand-panel-footer {
-        @apply px-4 py-4 border-t border-gray-200 #{!important};
+        @apply px-4 py-4 border-t border-secondary-200 dark:border-secondary-600 #{!important};
 
         .evand-right{
             @apply hidden #{!important};
@@ -96,7 +96,7 @@
             @apply float-none w-full flex #{!important};
 
             .evand-button{
-                @apply outline-none mx-auto inline-flex justify-center items-center transition-all ease-in duration-150 focus:ring-2 focus:ring-offset-2 hover:shadow-sm disabled:opacity-80 disabled:cursor-not-allowed rounded gap-x-2 text-sm px-4 py-2 ring-warning-500 text-white bg-warning-500 hover:bg-warning-600 hover:ring-warning-600 dark:ring-offset-slate-800 dark:bg-warning-700 dark:ring-warning-700 dark:hover:bg-warning-600 dark:hover:ring-warning-600 #{!important};
+                @apply outline-none mx-auto inline-flex justify-center items-center transition-all ease-in duration-150 focus:ring-2 focus:ring-offset-2 hover:shadow-sm disabled:opacity-80 disabled:cursor-not-allowed rounded gap-x-2 text-sm px-4 py-2 ring-warning-500 text-white bg-warning-500 hover:bg-warning-600 hover:ring-warning-600 dark:ring-offset-secondary-800 dark:bg-warning-700 dark:ring-warning-700 dark:hover:bg-warning-600 dark:hover:ring-warning-600 #{!important};
             }
             // @apply hidden #{!important};
         }
@@ -115,12 +115,12 @@
         @apply mb-4 #{!important};
 
         .evand-modal-close {
-            @apply text-gray-900 text-3xl h-11 w-11 rounded-lg border border-gray-900 bg-white #{!important};
+            @apply text-secondary-900 text-3xl h-11 w-11 rounded-lg border border-secondary-900 bg-white dark:border-secondary-700 font-normal dark:text-secondary-500 dark:bg-secondary-800 #{!important};
         }
     }
 
     iframe {
-        @apply w-full rounded-lg shadow-lg border border-gray-900 bg-white #{!important};
+        @apply w-full rounded-lg shadow-lg border border-secondary-900 bg-white dark:border-secondary-700 #{!important};
     }
 }
 
