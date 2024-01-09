@@ -54,13 +54,13 @@ enum AttributeTypeEum: string
     public function htmlValue(string $value): string
     {
         return match ($this) {
-            static::Link => "<a class='text-primary-500 hover:text-primary-600' href='$value'>$value</a>",
-            static::Instagram => "<a class='text-primary-500 hover:text-primary-600' href='$value'>$value</a>",
-            static::Linkedin => "<a class='text-primary-500 hover:text-primary-600' href='$value'>$value</a>",
-            static::Resume => "<a class='text-primary-500 hover:text-primary-600' href='$value'>$value</a>",
-            static::Bio => "<p>$value</p>",
-            static::Job => "<p>$value</p>",
-            static::Company => "<p>$value</p>",
+            static::Link => "<a class='overflow-hidden text-ellipsis text-primary-500 hover:text-primary-600' href='$value'>$value</a>",
+            static::Instagram => "<a class='overflow-hidden text-ellipsis text-primary-500 hover:text-primary-600' href='$value'>$value</a>",
+            static::Linkedin => "<a class='overflow-hidden text-ellipsis text-primary-500 hover:text-primary-600' href='$value'>$value</a>",
+            static::Resume => "<a class='overflow-hidden text-ellipsis text-primary-500 hover:text-primary-600' href='$value'>$value</a>",
+            static::Bio => "<p class='overflow-hidden text-ellipsis'>$value</p>",
+            static::Job => "<p class='overflow-hidden text-ellipsis'>$value</p>",
+            static::Company => "<p class='overflow-hidden text-ellipsis'>$value</p>",
         };
     }
 }
