@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
-Route::post('/orders/create/webhook', function (Request $request) {
+Route::post('/tickets/webhook', function (Request $request) {
     $order = [];
     $order['data'] = $request->all();
 
