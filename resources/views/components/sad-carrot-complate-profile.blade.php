@@ -1,5 +1,5 @@
-@if ($show)
-<x-card cardClasses='mb-2' class="border rounded-lg shadow-lg border-error-700 shadow-error-100">
+@if (!$show)
+<x-card cardClasses='mb-2' class="border rounded-lg shadow-lg border-error-700 shadow-error-100 dark:shadow-error-950">
     <div class="flex flex-col items-center justify-center gap-4 lg:flex-row">
         <x-avatar class="shadow-lg" squared size="w-48 h-48 lg:w-24 lg:h-24" src="{{ asset('images/sad-carrot.jpg') }}"
             alt="{{ __('Sad carrot') }}" />
