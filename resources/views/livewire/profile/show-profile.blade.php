@@ -8,7 +8,7 @@
 
 <div class="container mx-auto my-8">
     <div class="grid grid-cols-12 gap-x-4">
-        <div class="col-span-12 p-2 xl:col-span-4">
+        <div class="col-span-12 xl:col-span-4">
             <x-card cardClasses="mt-8">
                 <x-slot name="header">
                     <div class="relative flex gap-4 px-2 pt-4 pb-2 border-b md:px-4">
@@ -42,7 +42,7 @@
                 <div class="flex flex-col gap-2">
                     @foreach ($user->attributes()->whereIn('type', [AttributeTypeEum::Job, AttributeTypeEum::Company])->get() as $attribute)
                     <div class="flex items-center gap-4">
-                        <div class="flex gap-2 w-28">
+                        <div class="flex gap-2 w-28 min-w-28">
                             <div class="min-w-max">
                                 @svg($attribute->type->iconName(), 'w-6 h-6')
                             </div>
@@ -75,7 +75,7 @@
                 </div>
             </x-card>
         </div>
-        <div class="col-span-12 p-2 xl:col-span-8">
+        <div class="col-span-12 xl:col-span-8">
             <div class="flex flex-col gap-4 mt-8">
                 <x-sad-carrot-complate-profile :show="auth()->id() === $user->id && !auth()->user()->isCompleted()" />
                 <x-card :title="__('About me')">
@@ -89,7 +89,7 @@
                     <div class="flex flex-col gap-2">
                         @forelse ($user->attributes()->whereNotIn('type', [AttributeTypeEum::Job, AttributeTypeEum::Bio, AttributeTypeEum::Company])->get() as $attribute)
                         <div class="flex items-center gap-4">
-                            <div class="flex gap-2 w-28">
+                            <div class="flex gap-2 w-28 min-w-28">
                                 <div class="min-w-max">
                                     @svg($attribute->type->iconName(), 'w-6 h-6')
                                 </div>

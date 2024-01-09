@@ -7,7 +7,7 @@
     @include('layouts.template.header')
 
     <!-- Page Content -->
-    <main>
+    <main class="p-2">
         @isset ($slot)
         {{ $slot }}
         @endisset
