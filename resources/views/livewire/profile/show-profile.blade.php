@@ -11,7 +11,7 @@
         <div class="col-span-12 xl:col-span-4">
             <x-card cardClasses="mt-8">
                 <x-slot name="header">
-                    <div class="relative flex gap-4 px-2 pt-4 pb-2 border-b md:px-4">
+                    <div class="relative flex gap-4 px-2 pt-4 pb-2 border-b dark:border-secondary-700 md:px-4">
                         <div class="z-40 -mt-12 w-28">
                             <x-avatar size="w-28 h-28 min-w-28" squared class="shadow-md"
                                 src="{{ $user->profile_photo_url }}" alt="{{ $user->name }}" />
