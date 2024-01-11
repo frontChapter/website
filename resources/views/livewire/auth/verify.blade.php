@@ -9,17 +9,6 @@
         <h2 class="mt-6 text-3xl font-extrabold leading-9 text-center">
             {{ __('Verify your email address') }}
         </h2>
-
-        <p class="mt-2 text-sm leading-5 text-center text-secondary-600 dark:text-secondary-400 max-w">
-            {{ __('Or') }}
-            <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="font-medium transition duration-150 ease-in-out text-primary-600 hover:text-primary-500 focus:outline-none focus:underline">
-                {{ __('Log Out') }}
-            </a>
-
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                @csrf
-            </form>
-        </p>
     </div>
 
     <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
@@ -36,5 +25,9 @@
                 </p>
             </div>
         </x-card>
+
+        <div class="flex w-full">
+            <x-button class="mx-auto mt-2" sm flat light :href="route('home')" :label="__('Back To Home')" icon="arrow-right" />
+        </div>
     </div>
 </div>

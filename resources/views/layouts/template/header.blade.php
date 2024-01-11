@@ -1,13 +1,14 @@
 @php
     $links = [];
 
-    $links[] = [
-        'label' => __('Home'),
-        'url' => route('home'),
-        'isActive' => request()->routeIs('home'),
-    ];
-
     if(auth()->check()){
+        $links[] = [
+            'label' => __('Front Chapter 2024'),
+            'url' => route('conf1402'),
+            'isActive' => request()->routeIs('conf1402'),
+            'blinkBdge' => true,
+        ];
+
         $links[] = [
             'label' => __('My tickets'),
             'url' => route('ticket'),

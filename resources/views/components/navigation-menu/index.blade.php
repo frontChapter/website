@@ -2,11 +2,11 @@
     class="bg-white border-b border-secondary-100 dark:bg-secondary-800 dark:border-secondary-700">
     <!-- Primary Navigation Menu -->
     <div class="container px-4 mx-auto sm:px-2 md:px-0">
-        <div class="flex h-16">
+        <div class="flex h-16 gap-2">
             <div class="flex">
                 <!-- Logo -->
                 <div class="flex items-center shrink-0">
-                    <a href="{{ route('home') }}">
+                    <a href="{{ route('conf1402') }}">
                         <x-application-mark class="block w-auto h-9" />
                     </a>
                 </div>

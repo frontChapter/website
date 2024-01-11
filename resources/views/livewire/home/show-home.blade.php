@@ -1,8 +1,10 @@
+@auth
 <x-slot name="header">
     <h2 class="text-xl font-semibold leading-tight text-secondary-800 dark:text-secondary-200">
         {{ __('Home') }}
     </h2>
 </x-slot>
+@endauth
 
 <div class="container mx-auto my-8">
     <div class="flex flex-col gap-y-4">

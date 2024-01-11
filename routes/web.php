@@ -23,6 +23,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::view('/', 'welcome')->name('home');
+
+
 Route::get('password/reset', Email::class)
     ->name('password.request');
 
@@ -39,10 +42,10 @@ Route::middleware('guest')->group(function () {
 
 Route::get('/profile/{user:username}', ShowProfile::class)->name('profile');
 
-Route::get('/', ShowHome::class)->name('home');
-
-
 Route::middleware('auth')->group(function () {
+
+    Route::get('/conf1402', ShowHome::class)->name('conf1402');
+
     Route::get('/tickets', ListTickets::class)->name('ticket');
 
     Route::prefix('user')->group(function () {
