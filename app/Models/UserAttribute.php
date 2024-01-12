@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Enums\AttributeTypeEum;
+use App\Enums\AttributeTypeEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -29,7 +29,7 @@ class UserAttribute extends Model
      * @var array<string, string>
      */
     protected $casts = [
-        'type' => AttributeTypeEum::class,
+        'type' => AttributeTypeEnum::class,
     ];
 
     /**

@@ -1,4 +1,4 @@
-@use('App\Enums\AttributeTypeEum')
+@use('App\Enums\AttributeTypeEnum')
 
 <x-slot name="header">
     <h2 class="text-xl font-semibold leading-tight text-secondary-800 dark:text-secondary-200">
@@ -40,7 +40,7 @@
                     </div>
                 </x-slot>
                 <div class="flex flex-col gap-2">
-                    @foreach ($user->attributes()->whereIn('type', [AttributeTypeEum::Job, AttributeTypeEum::Company])->get() as $attribute)
+                    @foreach ($user->attributes()->whereIn('type', [AttributeTypeEnum::Job, AttributeTypeEnum::Company])->get() as $attribute)
                     <div class="flex items-center gap-4">
                         <div class="flex gap-2 w-28 min-w-28">
                             <div class="min-w-max">
@@ -78,8 +78,8 @@
         <div class="col-span-12 xl:col-span-8">
             <div class="flex flex-col gap-4 mt-8">
                 <x-sad-carrot-complate-profile :show="auth()->id() === $user->id && !auth()->user()->isCompleted()" />
-                <x-card :title="__('About me')">
-                    @forelse ($user->attributes()->whereType(AttributeTypeEum::Bio)->get() as $attribute)
+                <x-card :title="__('Bio')">
+                    @forelse ($user->attributes()->whereType(AttributeTypeEnum::Bio)->get() as $attribute)
                     <p>{{ $attribute->value }}</p>
                     @empty
                     <p>{{ __('Write a little about yourself') }}</p>
@@ -87,7 +87,7 @@
                 </x-card>
                 <x-card :title="__('Links')">
                     <div class="flex flex-col gap-2">
-                        @forelse ($user->attributes()->whereNotIn('type', [AttributeTypeEum::Job, AttributeTypeEum::Bio, AttributeTypeEum::Company])->get() as $attribute)
+                        @forelse ($user->attributes()->whereNotIn('type', [AttributeTypeEnum::Job, AttributeTypeEnum::Bio, AttributeTypeEnum::Company])->get() as $attribute)
                         <div class="flex items-center gap-4">
                             <div class="flex gap-2 w-28 min-w-28">
                                 <div class="min-w-max">
