@@ -40,17 +40,28 @@
                     </div>
                 </x-slot>
                 <div class="flex flex-col gap-2">
-                    @foreach ($user->attributes()->whereIn('type', [AttributeTypeEnum::Job, AttributeTypeEnum::Company])->get() as $attribute)
+                    @if (isset($additionalAttributes[AttributeTypeEnum::Job->value]))
                     <div class="flex items-center gap-4">
                         <div class="flex gap-2 w-28 min-w-28">
                             <div class="min-w-max">
-                                @svg($attribute->type->iconName(), 'w-6 h-6')
+                                @svg($additionalAttributes[AttributeTypeEnum::Job->value]['icon'], 'w-6 h-6')
                             </div>
-                            <p class="text-lg">{{ $attribute->type->label() }}</p>
+                            <p class="text-lg">{{ AttributeTypeEnum::Job->label() }}</p>
                         </div>
-                        {!! $attribute->type->htmlValue($attribute->value) !!}
+                        {!! $additionalAttributes[AttributeTypeEnum::Job->value]['html'] !!}
                     </div>
-                    @endforeach
+                    @endif
+                    @if (isset($additionalAttributes[AttributeTypeEnum::Company->value]))
+                    <div class="flex items-center gap-4">
+                        <div class="flex gap-2 w-28 min-w-28">
+                            <div class="min-w-max">
+                                @svg($additionalAttributes[AttributeTypeEnum::Company->value]['icon'], 'w-6 h-6')
+                            </div>
+                            <p class="text-lg">{{ AttributeTypeEnum::Company->label() }}</p>
+                        </div>
+                        {!! $additionalAttributes[AttributeTypeEnum::Company->value]['html'] !!}
+                    </div>
+                    @endif
                     <div class="flex gap-4">
                         <div class="flex gap-2 w-28">
                             <x-heroicon-o-envelope class="w-6 h-6" />
@@ -79,27 +90,43 @@
             <div class="flex flex-col gap-4 mt-8">
                 <x-sad-carrot-complate-profile :show="auth()->id() === $user->id && !auth()->user()->isCompleted()" />
                 <x-card :title="__('Bio')">
-                    @forelse ($user->attributes()->whereType(AttributeTypeEnum::Bio)->get() as $attribute)
-                    <p>{{ $attribute->value }}</p>
-                    @empty
+                    @if (isset($additionalAttributes[AttributeTypeEnum::Bio->value]))
+                    <div class="flex items-center gap-4">
+                        <div class="flex gap-2 w-28 min-w-28">
+                            <div class="min-w-max">
+                                @svg($additionalAttributes[AttributeTypeEnum::Bio->value]['icon'], 'w-6 h-6')
+                            </div>
+                            <p class="text-lg">{{ AttributeTypeEnum::Bio->label() }}</p>
+                        </div>
+                        {{ $additionalAttributes[AttributeTypeEnum::Bio->value]['value'] }}
+                    </div>
+                    @else
                     <p>{{ __('Write a little about yourself') }}</p>
-                    @endforelse
+                    @endif
                 </x-card>
                 <x-card :title="__('Links')">
                     <div class="flex flex-col gap-2">
-                        @forelse ($user->attributes()->whereNotIn('type', [AttributeTypeEnum::Job, AttributeTypeEnum::Bio, AttributeTypeEnum::Company])->get() as $attribute)
+                        @if( isset($additionalAttributes[AttributeTypeEnum::Link->value]) ||
+                        isset($additionalAttributes[AttributeTypeEnum::Instagram->value]) ||
+                        isset($additionalAttributes[AttributeTypeEnum::Linkedin->value]) ||
+                        isset($additionalAttributes[AttributeTypeEnum::Resume->value]) )
+                        @foreach ($additionalAttributes as $key => $attribute)
+                        @if($key !== AttributeTypeEnum::Bio->value && $key !== AttributeTypeEnum::Job->value && $key !==
+                        AttributeTypeEnum::Company->value)
                         <div class="flex items-center gap-4">
                             <div class="flex gap-2 w-28 min-w-28">
                                 <div class="min-w-max">
-                                    @svg($attribute->type->iconName(), 'w-6 h-6')
+                                    @svg($attribute['icon'], 'w-6 h-6')
                                 </div>
-                                <p class="text-lg">{{ $attribute->type->label() }}</p>
+                                <p class="text-lg">{{ $attribute['label'] }}</p>
                             </div>
-                            {!! $attribute->type->htmlValue($attribute->value) !!}
+                            {!! $attribute['html'] !!}
                         </div>
-                        @empty
+                        @endif
+                        @endforeach
+                        @else
                         <p>{{ __('Place for social links') }}</p>
-                        @endforelse
+                        @endif
                     </div>
                 </x-card>
             </div>
