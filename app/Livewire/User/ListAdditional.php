@@ -2,7 +2,7 @@
 
 namespace App\Livewire\User;
 
-use App\Enums\AttributeTypeEum;
+use App\Enums\AttributeTypeEnum;
 use App\Models\UserAttribute;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
@@ -14,66 +14,57 @@ class ListAdditional extends Component
 
     public array $forms = [];
 
-    public AttributeTypeEum $type = AttributeTypeEum::Link;
-
     public function rules(): array
     {
         return [
-            'forms.*.type' => ['string', 'min:3', 'max:256', Rule::enum(AttributeTypeEum::class)],
             'forms.*.key' => ['string', 'min:3', 'max:100'],
             'forms.*.value' => ['string', 'min:3', 'max:500'],
         ];
     }
 
-    public function add()
+    public function mount()
     {
-        if (
-            !UserAttribute::whereType($this->type->value)
-            ->whereUserId(auth()->id())
-            ->count()
-        ) {
-            $this->forms[] = [
-                'key' => '',
-                'value' => '',
-                'typeInstance' => $this->type,
-                'type' => $this->type->value,
+        $attributes = auth()->user()->attributes()->selectRaw('*, type as sType')->get()->keyBy('sType')->toArray();
+
+        foreach ($attributes as $attribute) {
+            $this->forms[$attribute['type']] = [
+                'value' => $attribute['value'],
+                'key' => $attribute['key'],
             ];
-        } else {
-            $this->notification()->error(
-                __('Error'),
-                __('This item has already been created.'),
-            );
         }
     }
 
-
-    public function save($index)
+    public function save()
     {
-        $this->validateOnly("forms.$index");
+        $this->validate();
 
-        UserAttribute::create([
-            'user_id' => auth()->id(),
-            'key' => strip_tags($this->forms[$index]['key']),
-            'value' => strip_tags($this->forms[$index]['value']),
-            'type' => strip_tags($this->forms[$index]['type']),
-        ]);
+        foreach (AttributeTypeEnum::cases() as $case) {
 
-        unset($this->forms[$index]);
-    }
+            if(
+                (!isset($this->forms[$case->value]['key']) && !isset($this->forms[$case->value]['value'])) ||
+                (empty($this->forms[$case->value]['key']) && empty($this->forms[$case->value]['value']))
+            ) {
+                UserAttribute::whereUserId(auth()->id())->whereType($case->value)->delete();
+            } else {
+                UserAttribute::updateOrCreate(
+                    [
+                        'user_id' => auth()->id(),
+                        'type' => $case->value,
+                    ],
+                    [
+                        'key' => strip_tags($this->forms[$case->value]['key'] ?? null),
+                        'value' => strip_tags($this->forms[$case->value]['value'] ?? null),
+                    ]
+                );
+            }
 
-    public function delete($id)
-    {
-        $userAttribute = UserAttribute::find($id);
-
-        if (!is_null($userAttribute) && $userAttribute->user_id === auth()->id()) {
-            $userAttribute->delete();
         }
+
+        $this->dispatch('saved');
     }
 
     public function render()
     {
-        return view('livewire.user.list-additional', [
-            'attributes' => auth()->user()->attributes
-        ]);
+        return view('livewire.user.list-additional');
     }
 }
