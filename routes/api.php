@@ -1,5 +1,6 @@
 <?php
 
+use App\Events\TicketPurchased;
 use App\Models\Ticket;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -42,11 +43,16 @@ Route::post('/tickets/webhook', function (Request $request) {
     $order['order_id'] = $data['order']['data']['id'];
     $order['order_price'] = $data['order']['data']['price'];
 
-    if(isset($data['discount'])){
+    if(isset($data['discount'])) {
         $order['discount_code'] = $data['discount']['data']['code'];
         $order['discount_percentage'] = $data['discount']['data']['percentage'];
         $order['discount_price'] = $data['discount']['data']['price'];
     }
 
-    Ticket::create($order);
+    $ticket = Ticket::create($order);
+
+    TicketPurchased::dispatch($ticket);
+
+
+
 });
