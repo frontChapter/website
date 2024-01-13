@@ -52,7 +52,4 @@ Route::post('/tickets/webhook', function (Request $request) {
     $ticket = Ticket::create($order);
 
     TicketPurchased::dispatch($ticket);
-
-
-
 });
