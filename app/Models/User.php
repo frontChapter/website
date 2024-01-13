@@ -18,7 +18,7 @@ use Laravel\Sanctum\HasApiTokens;
 use RKocak\Gravatar\Facades\Gravatar;
 use RKocak\Gravatar\Traits\HasGravatar;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens;
     use HasFactory;
