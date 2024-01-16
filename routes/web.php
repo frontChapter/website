@@ -44,7 +44,8 @@ Route::get('/profile/{user:username}', ShowProfile::class)->name('profile');
 
 Route::middleware('auth')->group(function () {
 
-    Route::get('/conf1402', ShowHome::class)->name('conf1402');
+    Route::get('/conf1402', ShowHome::class)->name('conf1402')
+        ->middleware('utm.store');
 
     Route::get('/tickets', ListTickets::class)->name('ticket');
 
