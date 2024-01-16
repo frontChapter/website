@@ -16,7 +16,7 @@ module.exports = {
         },
         extend: {
             fontFamily: {
-                kalameh: ["KalamehWeb", ...defaultTheme.fontFamily.sans],
+                dana: ["DanaVF", ...defaultTheme.fontFamily.sans],
                 vazir: ["Vazirmatn", ...defaultTheme.fontFamily.sans],
             },
             keyframes: {
@@ -25,8 +25,8 @@ module.exports = {
                     "50%": { "border-color": colors.orange[600] },
                 },
                 "text-recolor": {
-                    "0%, 100%": { "color": colors.orange[200] },
-                    "50%": { "color": colors.orange[600] },
+                    "0%, 100%": { color: colors.orange[200] },
+                    "50%": { color: colors.orange[600] },
                 },
             },
             animation: {
