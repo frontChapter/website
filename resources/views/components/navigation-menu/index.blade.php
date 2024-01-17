@@ -98,12 +98,12 @@
 
                             <!-- Account Management -->
                             @hasanyrole(['Super Admin', 'admin', 'admin-panel'])
-                            <x-dropdown.item icon="beaker" :href="route('filament.admin.home')">
+                            <x-dropdown.item icon="collection" :href="route('filament.admin.home')">
                                 {{ __('Admin Panel') }}
                             </x-dropdown.item>
                             @endhasanyrole
                             <x-dropdown.header :label="__('Manage Account')">
-                                <x-dropdown.item wire:navigate icon="collection" href="{{ route('profile', [auth()->user()]) }}">
+                                <x-dropdown.item wire:navigate icon="user" href="{{ route('profile', [auth()->user()]) }}">
                                     {{ __('Profile') }}
                                 </x-dropdown.item>
                                 @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
