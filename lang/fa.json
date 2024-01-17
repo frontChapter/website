@@ -935,7 +935,7 @@
     ":number people": ":number نفر",
     ":number Tickets": ":number بلیت",
     "If you have purchased tickets, but they are not displayed on this page, make sure your email is the same as the email you used to purchase tickets at the Evand.": "اگر بلیط خریداری کرده‌اید، اما در این صفحه نمایش داده نمی‌شوند، مطمئن شوید که ایمیل شما همان ایمیلی است که برای خرید بلیط در ایوند استفاده کرده‌اید.",
-    "Admin Panel": "پنل ادمین",
+    "Admin Panel": "پنل مدیریت",
     "filament-spatie-roles-permissions::filament-spatie.section.users": "کاربران",
     "": "",
     "test": "test"
