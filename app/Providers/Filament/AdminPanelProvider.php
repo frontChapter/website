@@ -63,7 +63,7 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->font(
                 'DanaVariableFont',
-                asset('css/dana-web-font.css', app()->environment('APP_ENV') == 'production'),
+                secure_asset('css/dana-web-font.css'),
                 LocalFontProvider::class,
             )
             ->plugins([
