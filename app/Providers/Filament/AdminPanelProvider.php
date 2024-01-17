@@ -5,6 +5,7 @@ namespace App\Providers\Filament;
 use Althinect\FilamentSpatieRolesPermissions\FilamentSpatieRolesPermissionsPlugin;
 use App\Filament\Pages\Dashboard;
 use App\Filament\Resources\UserResource;
+use Awcodes\FilamentGravatar\GravatarPlugin;
 use Filament\FontProviders\LocalFontProvider;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -62,10 +63,16 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->font(
                 'DanaVariableFont',
-                asset('css/dana-web-font.css'),
+                asset('css/dana-web-font.css', app()->environment('APP_ENV') === 'production'),
                 LocalFontProvider::class,
             )
-            ->plugin(FilamentSpatieRolesPermissionsPlugin::make())
+            ->plugins([
+                FilamentSpatieRolesPermissionsPlugin::make(),
+                GravatarPlugin::make()
+                    ->default('robohash')
+                    ->size(200)
+                    ->rating('pg'),
+            ])
             ->spa()
             ->authMiddleware([
                 Authenticate::class,

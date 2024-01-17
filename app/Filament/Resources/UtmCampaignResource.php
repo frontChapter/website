@@ -53,7 +53,7 @@ class UtmCampaignResource extends Resource
                             ->translateLabel()
                             ->required()
                             ->maxLength(255),
-                        Forms\Components\TextArea::make('description')
+                        Forms\Components\Textarea::make('description')
                             ->translateLabel()
                             ->required(),
                     ]),
