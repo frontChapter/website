@@ -2,23 +2,26 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-
+use Althinect\FilamentSpatieRolesPermissions\Concerns\HasSuperAdmin;
 use App\Enums\SexEnum;
+use Filament\Models\Contracts\FilamentUser;
+use Filament\Panel;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use RKocak\Gravatar\Facades\Gravatar;
 use RKocak\Gravatar\Traits\HasGravatar;
+use Spatie\Permission\Traits\HasPermissions;
+use Spatie\Permission\Traits\HasRoles;
 
-class User extends Authenticatable implements MustVerifyEmail
+class User extends Authenticatable implements MustVerifyEmail, FilamentUser
 {
     use HasApiTokens;
     use HasFactory;
@@ -26,6 +29,10 @@ class User extends Authenticatable implements MustVerifyEmail
     use Notifiable;
     use TwoFactorAuthenticatable;
     use HasGravatar;
+    use HasSuperAdmin;
+    use SoftDeletes;
+    use HasRoles;
+    use HasPermissions;
 
     /**
      * The attributes that are mass assignable.
@@ -74,6 +81,15 @@ class User extends Authenticatable implements MustVerifyEmail
         'profile_photo_url',
     ];
 
+    public function canAccessPanel(Panel $panel): bool
+    {
+        if (app()->environment() === 'dev') {
+            return true;
+        }
+
+        return $this->hasVerifiedEmail() && $this->hasAnyRole(['Super Admin', 'admin', 'admin-panel']);
+    }
+
     /**
      * Get User Attributes
      */
@@ -99,7 +115,7 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         try {
             if ($this->profile_photo_path) {
-                return  Storage::disk($this->profilePhotoDisk())
+                return Storage::disk($this->profilePhotoDisk())
                     ->url($this->profile_photo_path);
             } elseif (Gravatar::exists($this->email)) {
                 return Gravatar::url($this->email);
@@ -111,7 +127,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function isCompleted(): bool
     {
-        if(empty($this->birth_date) || empty($this->sex) || $this->attributes()->count() < 5) {
+        if (empty($this->birth_date) || empty($this->sex) || $this->attributes()->count() < 5) {
             return false;
         }
         return true;
@@ -120,7 +136,7 @@ class User extends Authenticatable implements MustVerifyEmail
     public function getAgeAttribute(): string | null
     {
         return !empty($this->birth_date) ?
-            verta()->parse($this->birth_date)->diffYears() . ' ' . __('years old') :
-            null;
+        verta()->parse($this->birth_date)->diffYears() . ' ' . __('years old') :
+        null;
     }
 }

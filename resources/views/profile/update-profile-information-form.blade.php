@@ -88,7 +88,7 @@
         <div class="col-span-6 sm:col-span-4">
             <x-select :label="__('Sex')" wire:model.defer="state.sex" name="sex" :clearable="false" :flip-options="true">
                 @foreach (SexEnum::cases() as $case)
-                <x-select.option :label="$case->label()" :value="$case->value" />
+                <x-select.option :label="$case->getLabel()" :value="$case->value" />
                 @endforeach
             </x-select>
         </div>

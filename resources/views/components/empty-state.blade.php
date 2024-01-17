@@ -1,9 +1,18 @@
 <div
-    class="flex flex-col w-full max-w-3xl gap-6 p-4 py-12 mx-auto text-center border border-2 border-secondary-300 border-dashed rounded-lg lg:py-24">
+    class="flex flex-col w-full max-w-3xl gap-6 p-4 py-12 mx-auto text-center border border-2 border-dashed rounded-lg border-secondary-300 lg:py-24">
+    @isset($icon)
     <div class="text-secondary-600">
         {{ $icon }}
     </div>
-    <p class="text-lg">
+    @endisset
+    @isset ($title)
+    <h4 class="text-2xl font-semibold">
+        {{ $title }}
+    </h4>
+    @endisset
+    @isset($description)
+    <p class="text-lg font-light text-secondary-700 dark:text-secondary-300">
         {{ $description }}
     </p>
+    @endisset
 </div>

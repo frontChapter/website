@@ -36,4 +36,5 @@
     @endif
 
     <x-check-email-verified />
+    <livewire:campaign.utm-campaign />
 </div>

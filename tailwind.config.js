@@ -16,7 +16,7 @@ module.exports = {
         },
         extend: {
             fontFamily: {
-                dana: ["DanaVF", ...defaultTheme.fontFamily.sans],
+                dana: ["DanaVariableFont", ...defaultTheme.fontFamily.sans],
                 vazir: ["Vazirmatn", ...defaultTheme.fontFamily.sans],
             },
             keyframes: {

@@ -47,7 +47,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/conf1402', ShowHome::class)->name('conf1402')
         ->middleware('utm.store');
 
-    Route::get('/tickets', ListTickets::class)->name('ticket');
+    Route::get('/tickets', ListTickets::class)->name('ticket')->middleware('verified');
 
     Route::prefix('user')->group(function () {
         Route::get('/additional', ListAdditional::class)->name('profile.additional');

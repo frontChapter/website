@@ -18,7 +18,7 @@ class ShowProfile extends Component
                 'value' => $item->value,
                 'key' => $item->key,
                 'icon' => $item->type->iconName(),
-                'label' => $item->type->label(),
+                'label' => $item->type->getLabel(),
                 'html' => $item->type->htmlValue($item->value),
             ];
         }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Events\UtmCampaignVisited;
 use App\Models\UtmVisit;
 use Closure;
 use Illuminate\Http\Request;
@@ -17,16 +18,16 @@ class StoreUtmQueries
     public function handle(Request $request, Closure $next): Response
     {
         if($request->has('utm_campaign') && $request->has('utm_medium') && $request->has('utm_source')) {
-            UtmVisit::create([
-                'utm_campaign' => $request->get('utm_campaign',),
-                'utm_medium' => $request->get('utm_medium'),
-                'utm_source' => $request->get('utm_source'),
-                'utm_term' => $request->get('utm_term', null),
-                'utm_content' => $request->get('utm_content', null),
-                'referer' => $request->get('referer'),
-                'user_ip_address' => $request->ip(),
-                'user_id' => auth()->id() ?? null,
-            ]);
+            UtmCampaignVisited::dispatch(
+                $request->get('utm_campaign'),
+                $request->get('utm_medium'),
+                $request->get('utm_source'),
+                $request->ip(),
+                $request->get('utm_term', null),
+                $request->get('utm_content', null),
+                $request->get('referer', null),
+                auth()->id() ?? null,
+            );
         }
 
         return $next($request);

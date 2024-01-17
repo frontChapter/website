@@ -14,6 +14,8 @@
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ url(asset('favicon.ico')) }}">
 
+    <link rel="stylesheet" href="{{ asset('css/dana-web-font.css') }}">
+
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     @livewireStyles
     @livewireScripts
