@@ -87,10 +87,6 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
-                ImageColumn::make('profile_photo_url')
-                    ->label('Photo')
-                    ->translateLabel()
-                    ->circular(),
                 TextColumn::make('first_name')
                     ->translateLabel()
                     ->sortable()

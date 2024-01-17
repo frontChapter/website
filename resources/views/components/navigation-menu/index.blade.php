@@ -1,3 +1,4 @@
+@persist('header')
 <nav x-data="{ open: false }"
     class="bg-white border-b border-secondary-100 dark:bg-secondary-800 dark:border-secondary-700">
     <!-- Primary Navigation Menu -->
@@ -103,7 +104,7 @@
                             </x-dropdown.item>
                             @endhasanyrole
                             <x-dropdown.header :label="__('Manage Account')">
-                                <x-dropdown.item icon="collection" href="{{ route('profile', [auth()->user()]) }}">
+                                <x-dropdown.item wire:navigate icon="collection" href="{{ route('profile', [auth()->user()]) }}">
                                     {{ __('Profile') }}
                                 </x-dropdown.item>
                                 @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
@@ -173,7 +174,7 @@
 
             <div class="mt-3 space-y-1">
                 <!-- Account Management -->
-                <x-responsive-nav-link href="{{ route('profile', [auth()->user()]) }}"
+                <x-responsive-nav-link wire:navigate href="{{ route('profile', [auth()->user()]) }}"
                     :active="request()->routeIs('profile')">
                     {{ __('Profile') }}
                 </x-responsive-nav-link>
@@ -232,3 +233,4 @@
         @endauth
     </div>
 </nav>
+@endpersist

@@ -40,7 +40,7 @@ Route::middleware('guest')->group(function () {
         ->name('register');
 });
 
-Route::get('/profile/{user:username}', ShowProfile::class)->name('profile');
+Route::get('/profile/{user:username}', ShowProfile::class)->name('profile')->lazy();
 
 Route::middleware('auth')->group(function () {
 

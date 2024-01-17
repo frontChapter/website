@@ -11,7 +11,8 @@
     <div>
         <div class="container px-4 py-10 mx-auto sm:px-2 md:px-00">
             @if (Laravel\Fortify\Features::canUpdateProfileInformation())
-            @livewire('profile.update-profile-information-form')
+            <livewire:profile.update-profile-information-form lazy />
+            {{-- @livewire('profile.update-profile-information-form') --}}
 
             <x-section-border />
             @endif
