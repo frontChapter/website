@@ -12,7 +12,7 @@ class UtmCampaign extends Component
     public function mount()
     {
         if(request()->has('utm_campaign')) {
-            $utmCampaign = ModelsUtmCampaign::whereUtmCampaign(request()->get('utm_campaign'))->first();
+            $utmCampaign = ModelsUtmCampaign::whereNotNull('description')->whereUtmCampaign(request()->get('utm_campaign'))->first();
 
             if(!is_null($utmCampaign)) {
                 $this->utmCampaign = $utmCampaign;
