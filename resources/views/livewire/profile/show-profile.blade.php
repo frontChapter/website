@@ -46,7 +46,7 @@
                             <div class="min-w-max">
                                 @svg($additionalAttributes[AttributeTypeEnum::Job->value]['icon'], 'w-6 h-6')
                             </div>
-                            <p class="text-lg">{{ AttributeTypeEnum::Job->label() }}</p>
+                            <p class="text-lg">{{ AttributeTypeEnum::Job->getLabel() }}</p>
                         </div>
                         {!! $additionalAttributes[AttributeTypeEnum::Job->value]['html'] !!}
                     </div>
@@ -57,7 +57,7 @@
                             <div class="min-w-max">
                                 @svg($additionalAttributes[AttributeTypeEnum::Company->value]['icon'], 'w-6 h-6')
                             </div>
-                            <p class="text-lg">{{ AttributeTypeEnum::Company->label() }}</p>
+                            <p class="text-lg">{{ AttributeTypeEnum::Company->getLabel() }}</p>
                         </div>
                         {!! $additionalAttributes[AttributeTypeEnum::Company->value]['html'] !!}
                     </div>
@@ -74,7 +74,7 @@
                             <x-heroicon-o-user-circle class="w-6 h-6" />
                             <p class="text-lg">{{ __('Sex') }}</p>
                         </div>
-                        <p class="text-lg">{{ $user->sex->label() }}</p>
+                        <p class="text-lg">{{ $user->sex->getLabel() }}</p>
                     </div>
                     <div class="flex gap-4">
                         <div class="flex gap-2 w-28">
@@ -96,7 +96,7 @@
                             <div class="min-w-max">
                                 @svg($additionalAttributes[AttributeTypeEnum::Bio->value]['icon'], 'w-6 h-6')
                             </div>
-                            <p class="text-lg">{{ AttributeTypeEnum::Bio->label() }}</p>
+                            <p class="text-lg">{{ AttributeTypeEnum::Bio->getLabel() }}</p>
                         </div>
                         {{ $additionalAttributes[AttributeTypeEnum::Bio->value]['value'] }}
                     </div>

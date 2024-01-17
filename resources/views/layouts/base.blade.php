@@ -14,6 +14,8 @@
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ url(asset('favicon.ico')) }}">
 
+    <link rel="stylesheet" href="{{ asset('css/dana-web-font.css') }}">
+
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     @livewireStyles
     @livewireScripts
@@ -23,7 +25,7 @@
 </head>
 
 <body @if(app()->getLocale() === 'fa') dir="rtl" @else dir="ltr" @endif
-    class="font-vazir bg-secondary-50 dark:bg-secondary-900 dark:text-secondary-300">
+    class="font-dana bg-secondary-50 dark:bg-secondary-900 dark:text-secondary-300">
     @yield('body')
     <x-notifications z-index="z-50" position="bottom-left" />
 

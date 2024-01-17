@@ -1,0 +1,36 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('utm_visits', function (Blueprint $table) {
+            $table->id();
+            $table->string('utm_campaign');
+            $table->string('utm_medium');
+            $table->string('utm_source');
+            $table->string('utm_term')->nullable();
+            $table->string('utm_content')->nullable();
+            $table->string('referer')->nullable();
+
+            $table->string('user_ip_address');
+            $table->foreignId('user_id')->nullable()->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('utm_visits');
+    }
+};

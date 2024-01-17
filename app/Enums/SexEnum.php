@@ -2,14 +2,16 @@
 
 namespace App\Enums;
 
-enum SexEnum: string
+use Filament\Support\Contracts\HasLabel;
+
+enum SexEnum: string implements HasLabel
 {
     case Unknown = 'unknown';
     case Woman = 'woman';
     case Man = 'man';
     case Other = 'other';
 
-    public function label(): string
+    public function getLabel(): ?string
     {
         return match ($this) {
             static::Unknown => __('Unknown'),

@@ -24,17 +24,17 @@
                 @foreach (AttributeTypeEnum::cases() as $case)
                 @if($case->inputType() === 'input.url')
                 <div class="w-full mb-2">
-                    <x-input dir="ltr" :label="$case->label()" wire:model.blur='forms.{{ $case->value }}.value'
+                    <x-input dir="ltr" :label="$case->getLabel()" wire:model.blur='forms.{{ $case->value }}.value'
                         name="forms.{{ $case->value }}.value" type="url" />
                 </div>
                 @elseif($case->inputType() === 'input.text')
                 <div class="w-full mb-2">
-                    <x-input :label="$case->label()" wire:model.blur='forms.{{ $case->value }}.value'
+                    <x-input :label="$case->getLabel()" wire:model.blur='forms.{{ $case->value }}.value'
                         name="forms.{{ $case->value }}.value" />
                 </div>
                 @elseif($case->inputType() === 'textarea')
                 <div class="w-full mb-2">
-                    <x-textarea :label="$case->label()" wire:model.blur="forms.{{ $case->value }}.value"
+                    <x-textarea :label="$case->getLabel()" wire:model.blur="forms.{{ $case->value }}.value"
                         name="forms.{{ $case->value }}.value" />
                 </div>
                 @endif

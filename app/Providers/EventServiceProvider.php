@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use App\Events\TicketPurchased;
+use App\Events\UtmCampaignVisited;
+use App\Listeners\CreateUtmVisitRecord;
 use App\Listeners\SendTicketPurchasedNotification;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -22,6 +24,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         TicketPurchased::class => [
             SendTicketPurchasedNotification::class,
+        ],
+        UtmCampaignVisited::class => [
+            CreateUtmVisitRecord::class,
         ],
     ];
 

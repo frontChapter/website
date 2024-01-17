@@ -2,7 +2,9 @@
 
 namespace App\Enums;
 
-enum AttributeTypeEnum: string
+use Filament\Support\Contracts\HasLabel;
+
+enum AttributeTypeEnum: string implements HasLabel
 {
     case Job = 'job';
     case Company = 'company';
@@ -12,7 +14,7 @@ enum AttributeTypeEnum: string
     case Linkedin = 'linkedin';
     case Resume = 'resume';
 
-    public function label(): string
+    public function getLabel(): string
     {
         return match ($this) {
             static::Job => __('Job'),
