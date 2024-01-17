@@ -18,7 +18,7 @@
         @if(!empty(env('EVAND_SLUG')))
         <div class="flex flex-col gap-4 py-4 text-center xl:py-8">
             <h2 class="text-4xl font-black leading-normal animate-text-recolor md:text-5xl xl:text-6xl xl:leading-relaxed">{{ __('Registration in the second Front Chapter conference') }}</h2>
-            <p class="text-xl">{{ __('February 2024') }} - {{ __('Mazandaran, Fereydunkenar') }}</p>
+            <p class="text-xl">{{ __('February 2024') }} - {{ __('Mazandaran, Babolsar') }}</p>
         </div>
         <div class="evand-widget evand-widget-event-registration" data-event-slug="{{ env('EVAND_SLUG') }}"
         data-setting="">

@@ -1,4 +1,3 @@
-@persist('header')
 <nav x-data="{ open: false }"
     class="bg-white border-b border-secondary-100 dark:bg-secondary-800 dark:border-secondary-700">
     <!-- Primary Navigation Menu -->
@@ -233,4 +232,3 @@
         @endauth
     </div>
 </nav>
-@endpersist
