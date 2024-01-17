@@ -12,6 +12,7 @@ use Filament\Tables;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 
 class UtmVisitResource extends Resource
 {
@@ -144,12 +145,17 @@ class UtmVisitResource extends Resource
         return false;
     }
 
+    public static function canEdit(Model $record): bool
+    {
+        return false;
+    }
+
     public static function getPages(): array
     {
         return [
             'index' => Pages\ListUtmVisits::route('/'),
             // 'create' => Pages\CreateUtmVisit::route('/create'),
-            'edit' => Pages\EditUtmVisit::route('/{record}/edit'),
+            // 'edit' => Pages\EditUtmVisit::route('/{record}/edit'),
         ];
     }
 }

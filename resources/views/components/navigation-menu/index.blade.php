@@ -1,4 +1,3 @@
-@persist('header')
 <nav x-data="{ open: false }"
     class="bg-white border-b border-secondary-100 dark:bg-secondary-800 dark:border-secondary-700">
     <!-- Primary Navigation Menu -->
@@ -98,15 +97,18 @@
                             </x-slot>
 
                             <!-- Account Management -->
-                            @hasanyrole(['Super Admin', 'admin', 'admin-panel'])
-                            <x-dropdown.item icon="beaker" :href="route('filament.admin.home')">
-                                {{ __('Admin Panel') }}
-                            </x-dropdown.item>
-                            @endhasanyrole
-                            <x-dropdown.header :label="__('Manage Account')">
-                                <x-dropdown.item wire:navigate icon="collection" href="{{ route('profile', [auth()->user()]) }}">
+                            {{-- <x-dropdown.header separator :label="__('Manage Account')"> --}}
+                                <x-dropdown.item wire:navigate icon="user" href="{{ route('profile', [auth()->user()]) }}">
                                     {{ __('Profile') }}
                                 </x-dropdown.item>
+                                <x-dropdown.item wire:navigate icon="pencil-alt" href="{{ route('profile.show', [auth()->user()]) }}">
+                                    {{ __('Edit Profile') }}
+                                </x-dropdown.item>
+                                @hasanyrole(['Super Admin', 'admin', 'admin-panel'])
+                                <x-dropdown.item separator icon="collection" :href="route('filament.admin.home')">
+                                    {{ __('Admin Panel') }}
+                                </x-dropdown.item>
+                                @endhasanyrole
                                 @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                                 <x-dropdown.item wire:navigate href="{{ route('api-tokens.index') }}">
                                     {{ __('API Tokens') }}
@@ -116,11 +118,11 @@
                                 <!-- Authentication -->
                                 <form method="POST" action="{{ route('logout') }}" x-data>
                                     @csrf
-                                    <x-dropdown.item icon="logout" href="{{ route('logout') }}" @click.prevent="$root.submit();">
+                                    <x-dropdown.item separator icon="logout" href="{{ route('logout') }}" @click.prevent="$root.submit();">
                                         {{ __('Log Out') }}
                                     </x-dropdown.item>
                                 </form>
-                            </x-dropdown.header>
+                            {{-- </x-dropdown.header> --}}
                         </x-dropdown>
                     </div>
                 </div>
@@ -233,4 +235,3 @@
         @endauth
     </div>
 </nav>
-@endpersist
