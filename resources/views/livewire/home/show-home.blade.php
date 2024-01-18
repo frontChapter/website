@@ -25,6 +25,8 @@
         </div>
         @endif
         @endauth
+
+        <livewire:home.ticket-buyers lazy/>
     </div>
 </div>
 
