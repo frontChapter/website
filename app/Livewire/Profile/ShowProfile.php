@@ -13,7 +13,7 @@ class ShowProfile extends Component
     public function mount(User $user)
     {
         $this->user = $user;
-        foreach(auth()->user()->attributes as $item) {
+        foreach($this->user->attributes as $item) {
             $this->additionalAttributes[$item->type->value] = [
                 'value' => $item->value,
                 'key' => $item->key,

@@ -5,6 +5,8 @@ namespace App\Models;
 use Althinect\FilamentSpatieRolesPermissions\Concerns\HasSuperAdmin;
 use App\Enums\SexEnum;
 use Filament\Models\Contracts\FilamentUser;
+use Filament\Models\Contracts\HasAvatar;
+use Filament\Models\Contracts\HasName;
 use Filament\Panel;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -21,7 +23,7 @@ use RKocak\Gravatar\Traits\HasGravatar;
 use Spatie\Permission\Traits\HasPermissions;
 use Spatie\Permission\Traits\HasRoles;
 
-class User extends Authenticatable implements MustVerifyEmail, FilamentUser
+class User extends Authenticatable implements MustVerifyEmail, FilamentUser, HasAvatar, HasName
 {
     use HasApiTokens;
     use HasFactory;
@@ -113,16 +115,12 @@ class User extends Authenticatable implements MustVerifyEmail, FilamentUser
 
     public function getProfilePhotoUrlAttribute(): string
     {
-        try {
-            if ($this->profile_photo_path) {
-                return Storage::disk($this->profilePhotoDisk())
-                    ->url($this->profile_photo_path);
-            } elseif (Gravatar::exists($this->email)) {
-                return Gravatar::url($this->email);
-            }
-        } catch (\Throwable $th) {
+        if ($this->profile_photo_path && Storage::disk($this->profilePhotoDisk())->exists($this->profile_photo_path)) {
+            return Storage::disk($this->profilePhotoDisk())
+                ->url($this->profile_photo_path);
         }
-        return $this->defaultProfilePhotoUrl();
+
+        return Gravatar::for($this->email)->default('identicon')->get();
     }
 
     public function isCompleted(): bool
@@ -131,6 +129,16 @@ class User extends Authenticatable implements MustVerifyEmail, FilamentUser
             return false;
         }
         return true;
+    }
+
+    public function getFilamentAvatarUrl(): ?string
+    {
+        return $this->profile_photo_url;
+    }
+
+    public function getFilamentName(): string
+    {
+        return $this->getNameAttribute();
     }
 
     public function getAgeAttribute(): string | null
