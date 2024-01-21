@@ -107,7 +107,7 @@ class User extends Authenticatable implements MustVerifyEmail, FilamentUser, Has
      */
     public function tickets(): HasMany
     {
-        return $this->hasMany(Ticket::class);
+        return $this->hasMany(Ticket::class, 'email', 'email');
     }
 
     public function getNameAttribute(): string
