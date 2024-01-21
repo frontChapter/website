@@ -51,6 +51,12 @@ Route::post('/tickets/webhook', function (Request $request) {
 
     $order['price'] = $data['price'];
 
+    $order['email'] = $data['email'];
+    $order['mobile'] = $data['mobile'];
+    $order['first_name'] = $data['first_name'];
+    $order['last_name'] = $data['last_name'];
+    $order['ticket_id'] = $data['ticket_id'];
+
     $order['ticket_title'] = $data['ticket']['data']['title'];
     $order['ticket_price'] = $data['ticket']['data']['price'];
     $order['ticket_description'] = $data['ticket']['data']['description'];

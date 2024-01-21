@@ -54,6 +54,12 @@ class TicketsController extends Controller
             $order['user_id'] = $user->id;
         }
 
+        $order['email'] = $data['email'];
+        $order['mobile'] = $data['mobile'];
+        $order['first_name'] = $data['first_name'];
+        $order['last_name'] = $data['last_name'];
+        $order['ticket_id'] = $data['ticket_id'];
+
         $order['price'] = $data['price'];
 
         $order['ticket_title'] = $data['ticket']['data']['title'];
