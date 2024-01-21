@@ -63,21 +63,21 @@
                     </div>
                     @endif
                     <div class="flex gap-4">
-                        <div class="flex gap-2 w-28">
+                        <div class="flex gap-2 w-28 min-w-28">
                             <x-heroicon-o-envelope class="w-6 h-6" />
                             <p class="text-lg">{{ __('Email') }}</p>
                         </div>
-                        <a href="mailto:{{ $user->email }}" class="text-lg underline">{{ $user->email }}</a>
+                        <a href="mailto:{{ $user->email }}" class="text-lg underline overflow-hidden text-ellipsis">{{ $user->email }}</a>
                     </div>
                     <div class="flex gap-4">
-                        <div class="flex gap-2 w-28">
+                        <div class="flex gap-2 w-28 min-w-28">
                             <x-heroicon-o-user-circle class="w-6 h-6" />
                             <p class="text-lg">{{ __('Sex') }}</p>
                         </div>
                         <p class="text-lg">{{ $user->sex->getLabel() }}</p>
                     </div>
                     <div class="flex gap-4">
-                        <div class="flex gap-2 w-28">
+                        <div class="flex gap-2 w-28 min-w-28">
                             <x-heroicon-o-briefcase class="w-6 h-6" />
                             <p class="text-lg">{{ __('Age') }}</p>
                         </div>
@@ -89,22 +89,24 @@
         <div class="col-span-12 xl:col-span-8">
             <div class="flex flex-col gap-4 mt-8">
                 <x-sad-carrot-complate-profile :show="auth()->id() === $user->id && !auth()->user()->isCompleted()" />
-                <x-card :title="__('Bio')">
+                    <x-card>
+                    <x-slot name="title">
+                        @svg($additionalAttributes[AttributeTypeEnum::Bio->value]['icon'], 'w-6 h-6 me-2 inline')
+                        {{ __('Bio') }}
+                    </x-slot>
                     @if (isset($additionalAttributes[AttributeTypeEnum::Bio->value]))
-                    <div class="flex items-center gap-4">
-                        <div class="flex gap-2 w-28 min-w-28">
-                            <div class="min-w-max">
-                                @svg($additionalAttributes[AttributeTypeEnum::Bio->value]['icon'], 'w-6 h-6')
-                            </div>
-                            <p class="text-lg">{{ AttributeTypeEnum::Bio->getLabel() }}</p>
-                        </div>
+                    <p>
                         {{ $additionalAttributes[AttributeTypeEnum::Bio->value]['value'] }}
-                    </div>
+                    </p>
                     @else
                     <p>{{ __('Write a little about yourself') }}</p>
                     @endif
                 </x-card>
-                <x-card :title="__('Links')">
+                <x-card>
+                    <x-slot name="title">
+                        @svg('heroicon-o-link', 'w-6 h-6 me-2 inline')
+                        {{ __('Links') }}
+                    </x-slot>
                     <div class="flex flex-col gap-2">
                         @if( isset($additionalAttributes[AttributeTypeEnum::Link->value]) ||
                         isset($additionalAttributes[AttributeTypeEnum::Instagram->value]) ||
