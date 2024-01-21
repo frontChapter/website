@@ -70,7 +70,7 @@ class Ticket extends Model
      */
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'email', 'email');
     }
 
     public function getBuyerNameAttribute(): string
@@ -84,7 +84,7 @@ class Ticket extends Model
     public function getBuyerProfilePhotoUrlAttribute(): string
     {
         if(is_null($this->user)) {
-            return Gravatar::for($this->email)->default('identicon')->get();
+            return Gravatar::for($this->email ?? '')->default('identicon')->get();
         }
         return $this->user->profile_photo_url;
     }
