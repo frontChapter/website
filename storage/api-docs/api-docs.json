@@ -1,0 +1,33 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "FrontChapter API Documentation",
+        "contact": {
+            "email": "aligolkarali@gmail.com"
+        },
+        "version": "0.1"
+    },
+    "servers": [
+        {
+            "url": "https://frontchapter.local/api/",
+            "description": "local host"
+        },
+        {
+            "url": "https://panel.frontchapter.ir/api/",
+            "description": "production"
+        }
+    ],
+    "paths": {
+        "/api/tickets/users": {
+            "get": {
+                "summary": "Display a listing of the Users resource.",
+                "operationId": "05547c739b01532bd162b493da7f8cbf",
+                "responses": {
+                    "200": {
+                        "description": "An example endpoint"
+                    }
+                }
+            }
+        }
+    }
+}

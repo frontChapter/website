@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Althinect\FilamentSpatieRolesPermissions\Concerns\HasSuperAdmin;
 use App\Enums\SexEnum;
+use App\Models\Scopes\User\NameScope;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Models\Contracts\HasAvatar;
 use Filament\Models\Contracts\HasName;
@@ -81,6 +82,7 @@ class User extends Authenticatable implements MustVerifyEmail, FilamentUser, Has
      */
     protected $appends = [
         'profile_photo_url',
+        'name',
     ];
 
     public function canAccessPanel(Panel $panel): bool

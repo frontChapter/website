@@ -33,8 +33,9 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
-            ->brandLogo(asset('images/logo.png'))
-            ->brandLogoHeight('48px')
+            ->brandLogo(asset('images/logo-horizontal-brand-dark.png'))
+            ->darkModeBrandLogo(asset('images/logo-horizontal-brand-light.png'))
+            ->brandLogoHeight('38px')
             ->brandName(__('FrontChapter'))
             ->globalSearch(false)
             ->colors([

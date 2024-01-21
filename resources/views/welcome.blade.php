@@ -3,7 +3,6 @@
 <div class="container h-screen mx-auto">
     <div class="flex flex-col items-center justify-center h-full gap-y-4">
             <x-logo class="w-48 h-48 mx-auto mb-6" />
-            <p class="text-4xl font-black text-center w-100">{{ __('FrontChapter') }}</p>
             @guest
             <div class="flex items-center gap-2 mt-4">
                 <x-button light wire:navigate :href="route('login')" :label="__('Login')" />
