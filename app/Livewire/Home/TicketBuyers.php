@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Home;
 
+use App\Models\Ticket;
 use App\Models\User;
 use Illuminate\Database\Query\Builder;
 use Livewire\Component;
@@ -13,8 +14,18 @@ class TicketBuyers extends Component
 
     public function render()
     {
+        // dd(Ticket::select('tickets.email', 'tickets.first_name', 'tickets.last_name', 'tickets.user_id', 'users.username')
+        //         ->leftJoin('users', 'user_id', 'users.id')
+        //         ->groupBy('email', 'first_name', 'last_name', 'email', 'user_id', 'users.username')
+        //         ->inRandomOrder()
+        //         ->get());
         return view('livewire.home.ticket-buyers', [
-            'users' => User::whereHas('tickets')->inRandomOrder()->get(),
+            'buyers' => Ticket::select('tickets.email', 'tickets.first_name', 'tickets.last_name', 'tickets.user_id', 'users.username')
+                ->leftJoin('users', 'user_id', 'users.id')
+                ->groupBy('email', 'first_name', 'last_name', 'email', 'user_id', 'users.username')
+                ->inRandomOrder()
+                ->get(),
+            // 'users' => User::whereHas('tickets')->inRandomOrder()->get(),
         ]);
     }
 }
