@@ -63,7 +63,7 @@ return [
      */
     'servers' => [
         'Localhost' => 'http://frontchapter.local/api',
-        'Production' => 'https://panel.frontchapter.ir/api'
+        'Production' => 'https://api.frontchapter.ir/api'
     ],
 
     'middleware' => [
