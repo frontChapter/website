@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use RKocak\Gravatar\Facades\Gravatar;
 
 class Ticket extends Model
 {
@@ -18,6 +19,11 @@ class Ticket extends Model
     protected $fillable = [
         'user_id',
         'price',
+        'mobile',
+        'email',
+        'last_name',
+        'first_name',
+        'ticket_id',
         'ticket_title',
         'ticket_price',
         'ticket_description',
@@ -46,6 +52,17 @@ class Ticket extends Model
         'data' => 'object',
     ];
 
+
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array<int, string>
+     */
+    protected $appends = [
+        'buyer_profile_photo_url',
+        'buyer_name',
+    ];
+
     /**
      * Get the user that owns the UtmVisit
      *
@@ -54,5 +71,21 @@ class Ticket extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function getBuyerNameAttribute(): string
+    {
+        if(is_null($this->user)) {
+            return $this->attributes['first_name'] . ' ' . $this->attributes['last_name'];
+        }
+        return $this->user->attributes['first_name'] . ' ' . $this->user->attributes['last_name'];
+    }
+
+    public function getBuyerProfilePhotoUrlAttribute(): string
+    {
+        if(is_null($this->user)) {
+            return Gravatar::for($this->email)->default('identicon')->get();
+        }
+        return $this->user->profile_photo_url;
     }
 }

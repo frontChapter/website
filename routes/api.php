@@ -15,11 +15,26 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider and all of them will
 | be assigned to the "api" middleware group. Make something great!
 |
-*/
+ */
 
-// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
+Route::prefix('/v1')
+    ->group(function () {
+        // Route::prefix('/users')->group(function () {
+        //     Route::middleware('auth:sanctum')->get('/', function (Request $request) {
+        //         return $request->user();
+        //     });
+        // });
+
+        Route::prefix('/tickets')->group(function () {
+            Route::get('/registers', [App\Http\Controllers\Api\V1\TicketsController::class, 'registers']);
+            Route::post('/webhook', [App\Http\Controllers\Api\V1\TicketsController::class, 'storeWebHook']);
+        });
+        Route::prefix('/users')->group(function () {
+            Route::get('/', function () {
+                return User::get('*');
+            });
+        });
+    });
 
 Route::post('/tickets/webhook', function (Request $request) {
     $order = [];
@@ -30,7 +45,7 @@ Route::post('/tickets/webhook', function (Request $request) {
     $user = User::whereEmail($data['email'])
         ->first();
 
-    if(!is_null($user)) {
+    if (!is_null($user)) {
         $order['user_id'] = $user->id;
     }
 
@@ -43,7 +58,7 @@ Route::post('/tickets/webhook', function (Request $request) {
     $order['order_id'] = $data['order']['data']['id'];
     $order['order_price'] = $data['order']['data']['price'];
 
-    if(isset($data['discount'])) {
+    if (isset($data['discount'])) {
         $order['discount_code'] = $data['discount']['data']['code'];
         $order['discount_percentage'] = $data['discount']['data']['percentage'];
         $order['discount_price'] = $data['discount']['data']['price'];
