@@ -31,10 +31,10 @@ class Register extends Component
     #[Validate('required|email|unique:users')]
     public string $email = '';
 
-    #[Validate('required|min:6|max:15|string')]
+    #[Validate('required|min:6|max:40|string')]
     public string $password = '';
 
-    #[Validate('required|min:6|max:15|same:password')]
+    #[Validate('required|min:6|max:40|same:password')]
     public string $passwordConfirmation = '';
 
     public function register()
