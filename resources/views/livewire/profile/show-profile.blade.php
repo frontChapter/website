@@ -91,7 +91,7 @@
                 <x-sad-carrot-complate-profile :show="auth()->id() === $user->id && !auth()->user()->isCompleted()" />
                     <x-card>
                     <x-slot name="title">
-                        @svg($additionalAttributes[AttributeTypeEnum::Bio->value]['icon'], 'w-6 h-6 me-2 inline')
+                        @svg('heroicon-o-identification', 'w-6 h-6 me-2 inline')
                         {{ __('Bio') }}
                     </x-slot>
                     @if (isset($additionalAttributes[AttributeTypeEnum::Bio->value]))
