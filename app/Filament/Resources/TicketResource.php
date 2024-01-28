@@ -130,7 +130,7 @@ class TicketResource extends Resource
             ->filters([
                 SelectFilter::make('user')
                     ->translateLabel()
-                    ->relationship('user', 'first_name', fn (Builder $query) => $query->selectRaw("users.id, CONCAT(users.first_name , ' ' , users.last_name) as first_name"))
+                    ->relationship('user', 'first_name', fn (Builder $query) => $query->selectRaw("users.id, email, CONCAT(users.first_name , ' ' , users.last_name) as first_name"))
                     ->searchable()
                     ->preload(),
             ])
