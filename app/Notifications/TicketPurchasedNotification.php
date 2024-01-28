@@ -38,7 +38,7 @@ class TicketPurchasedNotification extends Notification
             ->subject(Lang::get('Ticket purchased'))
             ->line(Lang::get('Deer :name,', ['name' => $notifiable->name]))
             ->line(Lang::get('We are very happy that you have joined the participants of the biggest front-end conference in Iran.'))
-            ->line(Lang::get('We are impatiently waiting for your warm presence on the 29th day of February in the beautiful city of Babolsar.'))
+            ->line(Lang::get('We are impatiently waiting for your warm presence on the 29th day of February in the beautiful city of Amol.'))
             ->line(Lang::get('You can follow the complete ticket information through the link below :)'))
             ->action(Lang::get('My tickets'), route('ticket'));
     }

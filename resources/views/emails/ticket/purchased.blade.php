@@ -5,7 +5,7 @@
 
 {{ __('We are very happy that you have joined the participants of the biggest front-end conference in Iran.') }}
 
-{{ __('We are impatiently waiting for your warm presence on the 29th day of February in the beautiful city of Babolsar.') }}
+{{ __('We are impatiently waiting for your warm presence on the 29th day of February in the beautiful city of Amol.') }}
 
 {{ __('We will display your name and Gravatar image on the conference page as a participant.') }}
 

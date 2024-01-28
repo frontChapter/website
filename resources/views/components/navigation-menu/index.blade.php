@@ -6,7 +6,7 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="flex items-center shrink-0">
-                    <a href="{{ route('conf1402') }}">
+                    <a wire:navigate href="{{ route('conf1402') }}">
                         <x-application-mark class="block w-auto h-9" />
                     </a>
                 </div>
@@ -16,11 +16,13 @@
             </div>
 
             <div class="flex items-center gap-4 ms-auto">
+                @livewire('tools.language-select')
+
                 @auth()
-                <div class="hidden sm:flex sm:items-center sm:ms-6">
+                <div class="hidden sm:flex sm:items-center">
                     <!-- Teams Dropdown -->
                     @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
-                    <div class="relative ms-3">
+                    <div class="relative">
                         <x-dropdown align="right" width="60">
                             <x-slot name="trigger">
                                 <span class="inline-flex rounded-md">
@@ -75,12 +77,14 @@
                     @endif
 
                     <!-- Settings Dropdown -->
-                    <div class="relative pt-1 ms-3">
-                        <x-dropdown align="left" class="text-start">
+                    <div class="relative pt-1">
+                        <x-dropdown :align="app()->getLocale() === 'fa' ? 'left' : 'right'" class="text-start">
                             <x-slot name="trigger">
                                 <span class="inline-flex rounded-md">
                                     <button type="button"
-                                        class="inline-flex items-center gap-2 text-sm font-medium leading-4 transition duration-150 ease-in-out border border-transparent rounded-md text-secondary-500 dark:text-secondary-400 hover:text-secondary-700 dark:hover:text-secondary-300 focus:outline-none focus:bg-secondary-50 focus:border-secondary-400 active:border-secondary-400 dark:focus:border-secondary-600 dark:active:border-secondary-600 dark:focus:bg-secondary-700 active:bg-secondary-50 dark:active:bg-secondary-700">
+                                        class="inline-flex items-center gap-2 text-sm font-medium leading-4 transition duration-150 ease-in-out border border-transparent rounded-md text-secondary-500
+                                        dark:text-secondary-400 hover:text-secondary-700 dark:hover:text-secondary-300 focus:outline-none focus:bg-secondary-50 focus:border-secondary-400
+                                        active:border-secondary-400 dark:focus:border-secondary-600 dark:active:border-secondary-600 dark:focus:bg-secondary-700 active:bg-secondary-50 dark:active:bg-secondary-700">
                                         @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
                                         <x-avatar squared sm src="{{ Auth::user()->profile_photo_url }}"
                                             alt="{{ Auth::user()->name }}" />
@@ -178,8 +182,19 @@
                 <!-- Account Management -->
                 <x-responsive-nav-link wire:navigate href="{{ route('profile', [auth()->user()]) }}"
                     :active="request()->routeIs('profile')">
+                    @svg('heroicon-o-user', 'w-5 me-2')
                     {{ __('Profile') }}
                 </x-responsive-nav-link>
+                <x-responsive-nav-link wire:navigate icon="pencil-alt" href="{{ route('profile.show', [auth()->user()]) }}">
+                    @svg('heroicon-o-pencil-square', 'w-5 me-2')
+                    {{ __('Edit Profile') }}
+                </x-responsive-nav-link>
+                @hasanyrole(['Super Admin', 'admin', 'admin-panel'])
+                <x-responsive-nav-link :href="route('filament.admin.home')">
+                    @svg('heroicon-o-rectangle-stack', 'w-5 me-2')
+                    {{ __('Admin Panel') }}
+                </x-responsive-nav-link>
+                @endhasanyrole
 
                 @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                 <x-responsive-nav-link href="{{ route('api-tokens.index') }}"
@@ -193,6 +208,7 @@
                     @csrf
 
                     <x-responsive-nav-link href="{{ route('logout') }}" @click.prevent="$root.submit();">
+                        @svg('heroicon-o-arrow-left-start-on-rectangle', 'w-5 me-2')
                         {{ __('Log Out') }}
                     </x-responsive-nav-link>
                 </form>

@@ -1,7 +1,7 @@
 @auth
 <x-slot name="header">
     <h2 class="text-xl font-semibold leading-tight text-secondary-800 dark:text-secondary-200">
-        {{ __('Home') }}
+        {{ __('Front Chapter 2024') }}
     </h2>
 </x-slot>
 @endauth
@@ -10,7 +10,7 @@
     <div class="flex flex-col gap-y-4">
         @guest
         <x-card class="md:py-20">
-            <x-logo class="w-48 h-48 mx-auto mb-6" />
+            <x-logo class="h-48 mx-auto mb-6" />
             <p class="text-4xl font-black text-center w-100">{{ __('FrontChapter') }}</p>
         </x-card>
         @endguest
@@ -18,7 +18,7 @@
         @if(!empty(env('EVAND_SLUG')))
         <div class="flex flex-col gap-4 py-4 text-center xl:py-8">
             <h2 class="text-4xl font-black leading-normal animate-text-recolor md:text-5xl xl:text-6xl xl:leading-relaxed">{{ __('Registration in the second Front Chapter conference') }}</h2>
-            <p class="text-xl">{{ __('February 2024') }} - {{ __('Mazandaran, Babolsar') }}</p>
+            <p class="text-xl">{{ __('29 February 2024') }} - {{ __('Mazandaran, Amol') }}</p>
         </div>
         <div class="evand-widget evand-widget-event-registration" data-event-slug="{{ env('EVAND_SLUG') }}"
         data-setting="">

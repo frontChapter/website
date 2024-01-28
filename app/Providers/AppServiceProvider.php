@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use Filament\Support\Facades\FilamentView;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 
@@ -28,5 +30,11 @@ class AppServiceProvider extends ServiceProvider
         Paginator::defaultView('pagination::default');
 
         Paginator::defaultSimpleView('pagination::simple-default');
+
+        FilamentView::registerRenderHook(
+            'panels::global-search.before',
+            fn(): string => Blade::render('@livewire(\'tools.language-select\')'),
+        );
+
     }
 }
