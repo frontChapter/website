@@ -18,7 +18,7 @@ enum AttributeTypeEnum: string implements HasLabel
     {
         return match ($this) {
             static::Job => __('Job'),
-            static::Company => __('Working Company Name'),
+            static::Company => __('Company'),
             static::Bio => __('Bio'),
             static::Link => __('Site'),
             static::Instagram => __('Instagram'),
