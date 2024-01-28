@@ -44,7 +44,7 @@ class AdminPanelProvider extends PanelProvider
                 SubstituteBindings::class,
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
-                Localization::class
+                // Localization::class
             ])
             ->login()
             ->brandLogo(asset('images/logo-horizontal-brand-dark-en.png'))

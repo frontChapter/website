@@ -101,7 +101,7 @@ class UserResource extends Resource
                     ->searchable(),
                 TextColumn::make('age')
                     ->translateLabel()
-                    ->sortable()
+                    ->sortable(['birth_date'])
                     ->searchable(),
                 TextColumn::make('sex')
                     ->translateLabel()
