@@ -29,6 +29,11 @@ Route::prefix('/v1')
             Route::get('/registers', [App\Http\Controllers\Api\V1\TicketsController::class, 'registers']);
             Route::post('/webhook', [App\Http\Controllers\Api\V1\TicketsController::class, 'storeWebHook']);
         });
+
+        Route::prefix('/sites')->group(function () {
+            Route::post('/', [App\Http\Controllers\Api\V1\SitesController::class, 'store']);
+        });
+
         Route::prefix('/users')->group(function () {
             Route::get('/', function () {
                 return User::get('*');
