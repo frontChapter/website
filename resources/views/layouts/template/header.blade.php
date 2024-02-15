@@ -10,9 +10,23 @@
         ];
 
         $links[] = [
+            'label' => __('Front Chapter Festival'),
+            'url' => route('festival-site'),
+            'isActive' => request()->routeIs('festival-site'),
+            'blinkBdge' => true,
+        ];
+
+        $links[] = [
             'label' => __('My tickets'),
             'url' => route('ticket'),
             'isActive' => request()->routeIs('ticket'),
+        ];
+    } else {
+        $links[] = [
+            'label' => __('Front Chapter Festival'),
+            'url' => route('festival-site'),
+            'isActive' => request()->routeIs('festival-site'),
+            'blinkBdge' => true,
         ];
     }
 @endphp

@@ -3,7 +3,7 @@
         <div class="flex items-center pb-3 border-b-2 border-negative-200 dark:border-negative-700">
             <x-dynamic-component
                 :component="WireUi::component('icon')"
-                class="w-5 h-5 text-negative-400 dark:text-negative-600 shrink-0 mr-3"
+                class="w-5 h-5 me-3 text-negative-400 dark:text-negative-600 shrink-0"
                 name="exclamation-circle"
             />
 
@@ -12,8 +12,8 @@
             </span>
         </div>
 
-        <div class="ml-5 pl-1 mt-2">
-            <ul class="list-disc space-y-1 text-sm text-negative-700 dark:text-negative-600">
+        <div class="mt-2 ms-5 ps-1">
+            <ul class="space-y-1 text-sm list-disc text-negative-700 dark:text-negative-600">
                 @foreach ($getErrorMessages($errors) as $message)
                     <li>{{ head($message) }}</li>
                 @endforeach
