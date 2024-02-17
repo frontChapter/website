@@ -37,12 +37,14 @@
             </x-card>
         </a>
         @empty
-        <x-empty-state :title="__('There are no sites.')"
-            :description="__('Register the site you created in Liara from the register section so that we can display it here.')">
-            <x-slot name="icon">
-                <x-heroicon-s-globe-alt class="w-24 h-24 mx-auto" />
-            </x-slot>
-        </x-empty-state>
+        <div class="col-span-12">
+            <x-empty-state :title="__('There are no sites.')"
+                :description="__('Register the site you created in Liara from the register section so that we can display it here.')">
+                <x-slot name="icon">
+                    <x-heroicon-s-globe-alt class="w-24 h-24 mx-auto" />
+                </x-slot>
+            </x-empty-state>
+        </div>
         @endforelse
     </div>
 </div>
