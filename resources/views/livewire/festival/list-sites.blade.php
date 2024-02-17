@@ -5,7 +5,7 @@
 </x-slot>
 <x-slot name="headerAction">
     <div class="flex items-center h-full gap-2">
-        <x-button target="_blank" icon="external-link" green href="https://frontchapter.landin.ir/my-site-festival/"
+        <x-button target="_blank" icon="external-link" green href="https://festival.frontchapter.ir/i-am-a-hero"
             :label="__('Festival Landing Page')" />
         <x-button primary :href="route('festival-site.register')" :label="__('Register In Festival')" />
     </div>
