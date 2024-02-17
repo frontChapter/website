@@ -32,14 +32,13 @@ Route::get('/', function () {
 
 Route::get('/profile/{user:username}', ShowProfile::class)->name('profile')->lazy();
 
-Route::prefix('/festival')->group(function () {
-
+Route::middleware('utm.store')->prefix('/festival')->group(function () {
     Route::get('/', ListSites::class)->name('festival-site');
     Route::get('/register', RegisterSite::class)
         ->name('festival-site.register')
         ->middleware('auth');
     Route::get('/{festivalSite:uuid}', SingleSite::class)->name('festival-site.single');
-})->middleware('utm.store');
+});
 
 Route::get('/conf1402', ShowHome::class)->name('conf1402')
     ->middleware('utm.store');
