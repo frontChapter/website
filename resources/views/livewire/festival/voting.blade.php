@@ -1,6 +1,6 @@
 <div>
     @if (count($votes) > 0)
-    <x-button green wire:click="$toggle('showModal')" :label="__('شرکت در رای گیری')" />
+    <x-button class="w-full" green wire:click="$toggle('showModal')" :label="__('شرکت در رای گیری')" />
     <x-modal blur align="center" wire:model.defer="showModal">
         @foreach ($votes as $vote)
         <x-card cardClasses="{{ $level === $loop->iteration ? '' : 'hidden' }} relative">
@@ -34,15 +34,14 @@
         <x-card cardClasses="{{ $level > count($votes) ? '' : 'hidden' }} relative">
             <div class="flex flex-col items-center justify-center gap-2 mx-auto">
                 <div class="flex items-end mb-6">
-                    <x-carrot-score.full class="w-8 h-8" />
-                    <x-carrot-score.full class="w-12 h-12" />
-                    <x-carrot-score.full class="w-20 h-20" />
-                    <x-carrot-score.full class="w-12 h-12" />
-                    <x-carrot-score.full class="w-8 h-8" />
+                    <img src="{{ asset('images/happy-carrot.jpg') }}" class="w-32 h-32 rounded" alt="{{ __('Happy Carrot') }}">
                 </div>
                 <h4 class="text-3xl font-bold">{{ __('Completed') }} 🎉</h4>
                 <p class="text-center">
-                    {{ __('All your votes are saved and influence the selection of the winner.') }}
+                    {{ __('Your vote has been saved,') }}
+                </p>
+                <p class="text-center">
+                    {{ __("But it's not the end! now it's time to send this page to your geek firends so they can vote too :)") }}
                 </p>
             </div>
             <x-slot:footer>
