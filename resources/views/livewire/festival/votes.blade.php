@@ -2,7 +2,7 @@
     <x-card :title="__('Votes')">
         <div class="flex flex-col gap-4">
             @foreach ($votes as $vote)
-            <div class="flex flex-col gap-2">
+            <div class="flex @if(!$loop->first) border-t border-gray-500 pt-4 @endif flex-col gap-2">
                 <h4 class="text-xl font-semibold">
                     {{ $vote->title }}
                 </h4>

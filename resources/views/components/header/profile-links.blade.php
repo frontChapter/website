@@ -14,7 +14,7 @@
 @endphp
 
 <x-navigation-menu.links :$links />
-<div class="flex items-center h-full sm:hidden">
+<div class="flex items-center h-full lg:hidden">
     <x-dropdown align="left" class="text-start">
         <x-slot name="trigger">
             <span class="inline-flex rounded-md">
