@@ -39,7 +39,7 @@ Route::prefix('/festival')->group(function () {
         ->name('festival-site.register')
         ->middleware('auth');
     Route::get('/{festivalSite:uuid}', SingleSite::class)->name('festival-site.single');
-});
+})->middleware('utm.store');
 
 Route::get('/conf1402', ShowHome::class)->name('conf1402')
     ->middleware('utm.store');
