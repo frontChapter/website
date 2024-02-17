@@ -17,7 +17,7 @@ class RegisterSite extends Component
 
     #[Url]
     #[Validate('required|string')]
-    public $appID;
+    public string $appId;
 
     #[Validate('required|string')]
     public $name;
@@ -28,14 +28,22 @@ class RegisterSite extends Component
     #[Validate('nullable|mimes:jpg,jpeg,png|max:1024')]
     public $photo;
 
+    public function mount()
+    {
+        if (!empty($this->appId)) {
+            $this->appId = str($this->appId)->replace('fcf1402-', '');
+            $this->validateApplication();
+        }
+    }
+
     public function validateApplication()
     {
-        $this->validateOnly('appID');
+        $this->validateOnly('appId');
 
         $festivalSite = $this->getFestivalSite();
 
         if (empty($festivalSite)) {
-            return $this->addError('appID', trans('This application ID does not exist on the liara platform or created before'));
+            return $this->addError('appId', trans('This application ID does not exist on the liara platform or created before'));
         }
 
         $this->level = 2;
@@ -49,14 +57,14 @@ class RegisterSite extends Component
 
             if (empty($festivalSite)) {
                 $this->level = 1;
-                return $this->addError('appID', trans('This application ID does not exist on the liara platform or created before'));
+                return $this->addError('appId', trans('This application ID does not exist on the liara platform or created before'));
             }
 
             $festivalSite->user_id = auth()->id();
             $festivalSite->name = $this->name;
             $festivalSite->url = $this->url;
 
-            if(!empty($this->photo)) {
+            if (!empty($this->photo)) {
                 $path = $this->photo->store('sites/logos', 'public');
                 $festivalSite->logo = $path;
             }
@@ -68,10 +76,11 @@ class RegisterSite extends Component
         }
     }
 
-    public function getFestivalSite(): FestivalSite|null
+    public function getFestivalSite(): FestivalSite | null
     {
-        $name = 'fcf1402-' . $this->appID;
-        return FestivalSite::whereAppID($name)
+        $name = 'fcf1402-' . $this->appId;
+
+        return FestivalSite::whereAppId($name)
             ->whereStatus(FestivalSiteStatus::PENDING)
             ->first();
     }
