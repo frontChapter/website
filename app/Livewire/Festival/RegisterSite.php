@@ -16,6 +16,8 @@ class RegisterSite extends Component
     public int $level = 1;
 
     #[Url]
+    public string $appID;
+
     #[Validate('required|string')]
     public string $appId;
 
@@ -30,8 +32,8 @@ class RegisterSite extends Component
 
     public function mount()
     {
-        if (!empty($this->appId)) {
-            $this->appId = str($this->appId)->replace('fcf1402-', '');
+        if (!empty($this->appID)) {
+            $this->appId = str($this->appID)->replace('fcf1402-', '');
             $this->validateApplication();
         }
     }
