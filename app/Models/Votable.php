@@ -5,7 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\MorphTo;
+use Illuminate\Database\Eloquent\Relations\MorphPivot;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 
 class Votable extends Model
 {
@@ -25,11 +26,13 @@ class Votable extends Model
     ];
 
     /**
-     * Get the parent commentable model.
+     * Get the vote that owns the votable
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function commentable(): MorphTo
+    public function voted(): BelongsTo
     {
-        return $this->morphTo();
+        return $this->belongsTo(Vote::class);
     }
 
     /**
@@ -37,7 +40,7 @@ class Votable extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function creator(): BelongsTo
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }

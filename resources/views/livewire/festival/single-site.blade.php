@@ -24,14 +24,14 @@
                         </p>
                     </div>
                 </div>
-                <div class="flex flex-col order-2 gap-1 md:order-3 ms-auto">
+                <div class="flex flex-col items-stretch order-2 gap-2 md:order-3 ms-auto">
+                    @auth
+                    <livewire:festival.voting :site="$site" />
+                    @else
+                    <x-button green :href="route('login', ['redirect', route('festival-site.single', $site)])" icon="lock-closed" :label="__('Login to vote')" />
+                    @endauth
                     <x-button target="_blank" primary outline icon="external-link" :href="$site->url"
                         :label="__('Visit Site')" />
-                    @auth
-                        <livewire:festival.voting :site="$site" />
-                    @else
-                        <x-button green :href="route('login')" icon="lock-closed" :label="__('Login to vote')" />
-                    @endauth
                 </div>
             </div>
         </x-card>

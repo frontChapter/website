@@ -52,10 +52,10 @@ class VoteToSite extends Component
             }
 
             $this->dispatch('voted');
-            $this->notification()->success(
-                $title = __('Vote Saved'),
-                $description = __('Your vote was successfully saved')
-            );
+            // $this->notification()->success(
+            //     $title = __('Vote Saved'),
+            //     $description = __('Your vote was successfully saved')
+            // );
         } catch (TooManyRequestsException $exception) {
             $this->notification()->error(
                 $title = __('Slow down'),
