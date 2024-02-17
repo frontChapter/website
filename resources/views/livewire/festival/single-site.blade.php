@@ -1,15 +1,15 @@
 <x-slot name="header">
-    <h2 class="text-xl font-semibold leading-tight text-secondary-800 dark:text-secondary-200">
+    <h1 class="text-xl font-semibold leading-tight text-secondary-800 dark:text-secondary-200">
         {{ $site->name }}
-    </h2>
+    </h1>
 </x-slot>
 <div class="container mx-auto my-8">
     <div class="flex flex-col gap-8">
         <x-card>
-            <div class="flex items-center gap-4">
-                <x-avatar squared size="h-24 w-24" :src="$site->logo_url" :alt="$site->name" />
-                <div>
-                    <h2 class="mb-2 text-2xl font-bold md:text-3xl">
+            <div class="flex flex-wrap items-center gap-x-4 gap-y-6">
+                <x-avatar class="order-1" squared size="w-24 h-24" :src="$site->logo_url" :alt="$site->name" />
+                <div class="order-3 md:order-2">
+                    <h2 class="hidden mb-2 text-xl font-bold md:block md:text-3xl">
                         {{ $site->name }}
                     </h2>
                     <div class="flex items-center gap-3">
@@ -24,7 +24,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="flex flex-col gap-1 ms-auto">
+                <div class="flex flex-col order-2 gap-1 md:order-3 ms-auto">
                     <x-button target="_blank" primary outline icon="external-link" :href="$site->url"
                         :label="__('Visit Site')" />
                     @auth

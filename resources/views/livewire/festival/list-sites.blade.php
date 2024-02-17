@@ -1,18 +1,24 @@
 <x-slot name="header">
-    <h2 class="text-xl font-semibold leading-tight text-secondary-800 dark:text-secondary-200">
+    <h2 class="text-lg font-semibold leading-tight sm:text-xl text-secondary-800 dark:text-secondary-200">
         {{ __('I am a HERO Festival') }}
     </h2>
 </x-slot>
 <x-slot name="headerAction">
     <div class="flex items-center h-full gap-2">
-        <x-button target="_blank" icon="external-link" green href="https://festival.frontchapter.ir/i-am-a-hero"
-            :label="__('Festival Details')" />
+        <div class="hidden md:flex">
+            <x-button target="_blank" icon="external-link" green href="https://festival.frontchapter.ir/i-am-a-hero"
+                :label="__('More Details')" />
+        </div>
         <x-button primary :href="route('festival-site.register')" :label="__('Register In Festival')" />
     </div>
 </x-slot>
 
 <div class="container mx-auto my-8">
     <div class="grid grid-cols-12 gap-4">
+        <div class="flex justify-center col-span-12 md:hidden">
+            <x-button target="_blank" icon="external-link" green href="https://festival.frontchapter.ir/i-am-a-hero"
+                :label="__('More Details About Festival')" />
+        </div>
         @forelse ($sites as $site)
         <a wire:navigate href="{{ route('festival-site.single', $site) }}"
             class="col-span-12 2xl:col-span-3 lg:col-span-4 md:col-span-6">

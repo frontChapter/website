@@ -19,7 +19,7 @@
                 @livewire('tools.language-select')
 
                 @auth()
-                <div class="hidden sm:flex sm:items-center">
+                <div class="hidden lg:flex sm:items-center">
                     <!-- Teams Dropdown -->
                     @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
                     <div class="relative">
@@ -82,9 +82,7 @@
                             <x-slot name="trigger">
                                 <span class="inline-flex rounded-md">
                                     <button type="button"
-                                        class="inline-flex items-center gap-2 text-sm font-medium leading-4 transition duration-150 ease-in-out border border-transparent rounded-md text-secondary-500
-                                        dark:text-secondary-400 hover:text-secondary-700 dark:hover:text-secondary-300 focus:outline-none focus:bg-secondary-50 focus:border-secondary-400
-                                        active:border-secondary-400 dark:focus:border-secondary-600 dark:active:border-secondary-600 dark:focus:bg-secondary-700 active:bg-secondary-50 dark:active:bg-secondary-700">
+                                        class="inline-flex items-center gap-2 text-sm font-medium leading-4 transition duration-150 ease-in-out border border-transparent rounded-md text-secondary-500 dark:text-secondary-400 hover:text-secondary-700 dark:hover:text-secondary-300 focus:outline-none focus:bg-secondary-50 focus:border-secondary-400 active:border-secondary-400 dark:focus:border-secondary-600 dark:active:border-secondary-600 dark:focus:bg-secondary-700 active:bg-secondary-50 dark:active:bg-secondary-700">
                                         @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
                                         <x-avatar squared sm src="{{ Auth::user()->profile_photo_url }}"
                                             alt="{{ Auth::user()->name }}" />
@@ -141,7 +139,7 @@
             </div>
 
             <!-- Hamburger -->
-            <div class="flex items-center -me-2 sm:hidden">
+            <div class="flex items-center -me-2 lg:hidden">
                 <button @click="open = ! open"
                     class="inline-flex items-center justify-center p-2 transition duration-150 ease-in-out rounded-md text-secondary-400 dark:text-secondary-500 hover:text-secondary-500 dark:hover:text-secondary-400 hover:bg-secondary-100 dark:hover:bg-secondary-900 focus:outline-none focus:bg-secondary-100 dark:focus:bg-secondary-900 focus:text-secondary-500 dark:focus:text-secondary-400">
                     <svg class="w-6 h-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
@@ -157,7 +155,7 @@
     </div>
 
     <!-- Responsive Navigation Menu -->
-    <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
+    <div :class="{'block': open, 'hidden': ! open}" class="hidden lg:hidden">
         <x-navigation-menu.responsive-links :$links />
 
         @auth

@@ -8,7 +8,7 @@
                 <span class="text-xl font-semibold text-right">{{ $vote->title }}</span>
             </x-slot:title>
             <x-slot:action>
-                <span class="opacity-80">{{ $level }} {{ __('of') }} {{ count($votes) }}</span>
+                <span class="hidden opacity-80 md:block">{{ $level }} {{ __('of') }} {{ count($votes) }}</span>
             </x-slot:action>
             <div class="flex flex-col items-center justify-center mx-auto gap-x-4 gap-y-2">
                 <p class="text-center">{{ $vote->description }}</p>
