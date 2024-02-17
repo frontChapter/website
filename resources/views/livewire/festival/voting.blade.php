@@ -1,6 +1,6 @@
 <div>
     @if (count($votes) > 0)
-    <x-button green icon="external-link" wire:click="$toggle('showModal')" :label="__('شرکت در رای گیری')" />
+    <x-button green wire:click="$toggle('showModal')" :label="__('شرکت در رای گیری')" />
     <x-modal blur align="center" wire:model.defer="showModal">
         @foreach ($votes as $vote)
         <x-card cardClasses="{{ $level === $loop->iteration ? '' : 'hidden' }} relative">
