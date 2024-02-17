@@ -9,7 +9,7 @@
     ];
 
     $links[] = [
-        'label' => __('Front Chapter Festival'),
+        'label' => __('I am a HERO Festival'),
         'url' => route('festival-site'),
         'isActive' => request()->routeIs('festival-site'),
         'blinkBdge' => true,

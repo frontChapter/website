@@ -1,6 +1,6 @@
 <x-slot name="header">
     <h2 class="text-xl font-semibold leading-tight text-secondary-800 dark:text-secondary-200">
-        {{ __('Front Chapter Festival') }}
+        {{ __('I am a HERO Festival') }}
     </h2>
 </x-slot>
 <x-slot name="headerAction">
