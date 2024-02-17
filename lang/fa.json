@@ -972,6 +972,10 @@
     "All your votes are saved and influence the selection of the winner.": "تمام آرای شما ذخیره شده و در انتخاب برنده تأثیر گذار است.",
     ":number votes": ":number رای",
     "No one has voted yet!": "هنوز کسی رای نداده است!",
+    "You must log in first to register for the conference.": "برای ثبت نام در همایش باید ابتدا وارد شوید.",
+    "Festival Landing Page": "صفحه فرود جشنواره",
+    "Login to vote": "برای رای دادن وارد شوید",
+    "Score": "امتیاز",
     "": "",
     "test": "test"
 }

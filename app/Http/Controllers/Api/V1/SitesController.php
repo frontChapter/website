@@ -15,7 +15,7 @@ class SitesController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'project_id' => 'required|string',
+            'project_id' => 'required|string|unique:festival_sites,app_id',
         ]);
 
         $festivalSite = FestivalSite::create([

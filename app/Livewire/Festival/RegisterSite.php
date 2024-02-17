@@ -4,6 +4,7 @@ namespace App\Livewire\Festival;
 
 use App\Enums\FestivalSiteStatus;
 use App\Models\FestivalSite;
+use Livewire\Attributes\Url;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -14,8 +15,9 @@ class RegisterSite extends Component
 
     public int $level = 1;
 
+    #[Url]
     #[Validate('required|string')]
-    public $appId;
+    public $appID;
 
     #[Validate('required|string')]
     public $name;
@@ -28,12 +30,12 @@ class RegisterSite extends Component
 
     public function validateApplication()
     {
-        $this->validateOnly('appId');
+        $this->validateOnly('appID');
 
         $festivalSite = $this->getFestivalSite();
 
         if (empty($festivalSite)) {
-            return $this->addError('appId', trans('This application ID does not exist on the liara platform or created before'));
+            return $this->addError('appID', trans('This application ID does not exist on the liara platform or created before'));
         }
 
         $this->level = 2;
@@ -47,7 +49,7 @@ class RegisterSite extends Component
 
             if (empty($festivalSite)) {
                 $this->level = 1;
-                return $this->addError('appId', trans('This application ID does not exist on the liara platform or created before'));
+                return $this->addError('appID', trans('This application ID does not exist on the liara platform or created before'));
             }
 
             $festivalSite->user_id = auth()->id();
@@ -66,10 +68,10 @@ class RegisterSite extends Component
         }
     }
 
-    public function getFestivalSite() : FestivalSite|null
+    public function getFestivalSite(): FestivalSite|null
     {
-        $name = 'fcf1402-' . $this->appId;
-        return FestivalSite::whereAppId($name)
+        $name = 'fcf1402-' . $this->appID;
+        return FestivalSite::whereAppID($name)
             ->whereStatus(FestivalSiteStatus::PENDING)
             ->first();
     }

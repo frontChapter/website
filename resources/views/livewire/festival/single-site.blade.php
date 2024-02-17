@@ -27,7 +27,11 @@
                 <div class="flex flex-col gap-1 ms-auto">
                     <x-button target="_blank" primary outline icon="external-link" :href="$site->url"
                         :label="__('Visit Site')" />
-                    <livewire:festival.voting :site="$site" />
+                    @auth
+                        <livewire:festival.voting :site="$site" />
+                    @else
+                        <x-button green :href="route('login')" icon="lock-closed" :label="__('Login to vote')" />
+                    @endauth
                 </div>
             </div>
         </x-card>

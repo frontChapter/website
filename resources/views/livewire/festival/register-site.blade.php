@@ -13,7 +13,7 @@
                 <div class="flex justify-between">
                     <p>{{ __('Application ID') }}:</p>
                     <div class="flex gap-2">
-                        <p class="px-1 py-0.5 font-mono rounded-sm bg-gray-100 dark:bg-secondary-900">fcf1402-{{ $appId }}</p>
+                        <p class="px-1 py-0.5 font-mono rounded-sm bg-gray-100 dark:bg-secondary-900">fcf1402-{{ $appID }}</p>
                         <x-button.circle xs spinner="level" wire:click="$set('level', 1)" icon="pencil" class="ms-auto"
                             green type="button" />
                     </div>
@@ -60,7 +60,7 @@
         @else
         <form class="flex flex-col gap-4" wire:submit="validateApplication">
             <x-card>
-                <x-input dir="ltr" class="!pl-[5.5rem] tracking-wider" wire:model.blur="appId" placeholder="mysite"
+                <x-input dir="ltr" class="!pl-[5.5rem] tracking-wider" wire:model.blur="appID" placeholder="mysite"
                     :label="__('Your Liara Application Id')">
                     <x-slot:prepend>
                         <div dir="ltr"

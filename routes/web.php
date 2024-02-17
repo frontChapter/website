@@ -26,7 +26,9 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
-Route::view('/', 'welcome')->name('home');
+Route::get('/', function () {
+    return redirect()->route('conf1402');
+})->name('home');
 
 Route::get('/profile/{user:username}', ShowProfile::class)->name('profile')->lazy();
 
@@ -39,10 +41,10 @@ Route::prefix('/festival')->group(function () {
     Route::get('/{festivalSite:uuid}', SingleSite::class)->name('festival-site.single');
 });
 
-Route::middleware('auth')->group(function () {
+Route::get('/conf1402', ShowHome::class)->name('conf1402')
+    ->middleware('utm.store');
 
-    Route::get('/conf1402', ShowHome::class)->name('conf1402')
-        ->middleware('utm.store');
+Route::middleware('auth')->group(function () {
 
     Route::get('/tickets', ListTickets::class)->name('ticket')->middleware('verified');
 
