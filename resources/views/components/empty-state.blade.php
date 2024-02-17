@@ -1,5 +1,5 @@
 <div
-    class="flex flex-col w-full max-w-3xl gap-6 p-4 py-12 mx-auto text-center border border-2 border-dashed rounded-lg border-secondary-300 lg:py-24">
+    class="flex flex-col w-full max-w-3xl gap-6 p-4 py-12 mx-auto text-center @if(!isset($borderless)) border border-2 border-dashed rounded-lg border-secondary-300 @endif lg:py-24">
     @isset($icon)
     <div class="text-secondary-600">
         {{ $icon }}

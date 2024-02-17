@@ -8,23 +8,28 @@
 
 <div class="container mx-auto my-8">
     <div class="flex flex-col gap-y-4">
-        @guest
-        <x-card class="md:py-20">
-            <x-logo class="h-48 mx-auto mb-6" />
-            <p class="text-4xl font-black text-center w-100">{{ __('FrontChapter') }}</p>
-        </x-card>
-        @endguest
-        @auth
         @if(!empty(env('EVAND_SLUG')))
         <div class="flex flex-col gap-4 py-4 text-center xl:py-8">
             <h2 class="text-4xl font-black leading-normal animate-text-recolor md:text-5xl xl:text-6xl xl:leading-relaxed">{{ __('Registration in the second Front Chapter conference') }}</h2>
             <p class="text-xl">{{ __('29 February 2024') }} - {{ __('Mazandaran, Amol') }}</p>
         </div>
+        @auth
         <div class="evand-widget evand-widget-event-registration" data-event-slug="{{ env('EVAND_SLUG') }}"
         data-setting="">
+        @else
+        <div class="max-w-3xl mx-auto">
+            <x-alert icon="information-circle" :title="__('You must log in first to register for the conference.')">
+                <x-slot:actions>
+                    <div class="flex items-center gap-2">
+                        <x-button light wire:navigate :href="route('login')" :label="__('Login')" />
+                        <x-button icon="user-add" primary wire:navigate :href="route('register')" :label="__('Register')" />
+                    </div>
+                </x-slot:actions>
+            </x-alert>
+        </div>
+        @endauth
         </div>
         @endif
-        @endauth
 
         <livewire:home.ticket-buyers lazy/>
     </div>

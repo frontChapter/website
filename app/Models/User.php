@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Althinect\FilamentSpatieRolesPermissions\Concerns\HasSuperAdmin;
 use App\Enums\SexEnum;
-use App\Models\Scopes\User\NameScope;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Models\Contracts\HasAvatar;
 use Filament\Models\Contracts\HasName;

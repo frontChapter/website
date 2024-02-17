@@ -9,17 +9,17 @@
 
 @php
     $colors = [
-        'success' => 'bg-success-50 border-success-200 text-success-900 dark:bg-secondary-800 dark:text-success-100 dark:border-success-900',
-        'primary' => 'bg-primary-50 border-primary-200 text-primary-900 dark:bg-secondary-800 dark:text-primary-100 dark:border-primary-900',
-        'info' => 'bg-info-50 border-info-200 text-info-900 dark:bg-secondary-800 dark:text-info-100 dark:border-info-900',
-        'warning' => 'bg-warning-50 border-warning-200 text-warning-900 dark:bg-secondary-800 dark:text-warning-100 dark:border-warning-900',
-        'error' => 'bg-error-50 border-error-200 text-error-900 dark:bg-secondary-800 dark:text-error-100 dark:border-error-900',
+        'success' => 'bg-success-50 border-success-200 text-success-900 dark:bg-secondary-800 dark:text-success-200 dark:border-success-900',
+        'primary' => 'bg-primary-50 border-primary-200 text-primary-900 dark:bg-secondary-800 dark:text-primary-200 dark:border-primary-900',
+        'info' => 'bg-info-50 border-info-200 text-info-900 dark:bg-secondary-800 dark:text-info-200 dark:border-info-900',
+        'warning' => 'bg-warning-50 border-warning-200 text-warning-900 dark:bg-secondary-800 dark:text-warning-200 dark:border-warning-900',
+        'error' => 'bg-error-50 border-error-200 text-error-900 dark:bg-secondary-800 dark:text-error-200 dark:border-error-900',
     ];
 
     $iconColors = [
         'success' => 'text-success-300 dark:text-success-300',
         'primary' => 'text-primary-300 dark:text-primary-300',
-        'info' => 'text-info-300 dark:text-info-300',
+        'info' => 'text-info-300 dark:text-info-500',
         'warning' => 'text-warning-300 dark:text-warning-300',
         'error' => 'text-error-300 dark:text-error-300',
     ];
@@ -39,11 +39,11 @@
         </div>
         <div class="w-full">
             @if ($title)
-                <p class="hidden text-base font-medium sm:block">{{ __($title) }}</p>
+                <p class="hidden text-base font-semibold sm:block">{{ __($title) }}</p>
             @endif
             <div class="w-full @if(!empty($title)) mt-1 opacity-95 text-sm @endif">
                 @if ($description)
-                    <p>{{ __($description) }}</p>
+                    <p class="font-light opacity-70">{{ __($description) }}</p>
                 @endif
 
                 @if ($slot)
