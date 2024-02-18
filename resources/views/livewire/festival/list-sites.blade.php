@@ -52,5 +52,14 @@
             </x-empty-state>
         </div>
         @endforelse
+
+        @if($sites->hasPages())
+        <div class="col-span-12">
+            <x-card>
+                {{ $sites->links() }}
+            </x-card>
+        </div>
+        @endif
+
     </div>
 </div>

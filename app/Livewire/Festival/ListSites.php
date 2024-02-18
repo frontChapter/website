@@ -6,13 +6,16 @@ use App\Enums\FestivalSiteStatus;
 use App\Models\FestivalSite;
 use App\Models\Votable;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class ListSites extends Component
 {
+    use WithPagination;
+
     public function getSites()
     {
         return FestivalSite::whereStatus(FestivalSiteStatus::PUBLISHED)
-            ->get();
+            ->paginate(24);
     }
 
     public function score($siteId)
