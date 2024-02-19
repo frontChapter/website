@@ -5,7 +5,7 @@
         <div id="base-canvas-post" class="relative" style="width: 1080px; height: 1080px; background-image: url({{ asset('images/festival-post-back.jpg') }})">
             <img class="w-[180px] h-[180px] rounded-[28px] absolute top-[490px] right-[122px]" src="{{ $site->logo_url }}" alt="{{ $site->name }}" />
                 <div class="absolute justify-center gap-4 max-w-[620px] max-h-[186px] h-[186px] top-[457px] right-[340px] flex flex-col">
-                    <p class="text-5xl font-bold leading-snug text-secondary-50">{{ $site->name }}</p>
+                    <p class="text-5xl font-bold leading-snug text-right text-secondary-50">{{ $site->name }}</p>
                     <p class="text-3xl text-right text-secondary-200" dir="ltr">{{ $site->url }}</p>
                 </div>
                 <div class="qrcode absolute top-[793px] right-[781px]">
