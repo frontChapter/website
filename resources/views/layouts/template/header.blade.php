@@ -31,6 +31,7 @@
     <header class="bg-white shadow dark:bg-secondary-800">
         <div class="container flex items-stretch gap-2 px-4 mx-auto sm:px-2 md:px-0">
             <div class="py-6">
+                @section('title', strip_tags($header))
                 {{ $header }}
             </div>
             @if (isset($headerAction))

@@ -119,4 +119,19 @@
     }
 }
 
+.qrcode {
+    rect {
+        display: none;
+    }
 
+    path {
+        @apply fill-slate-200 #{!important};
+    }
+}
+
+
+.poster-image {
+    canvas {
+        @apply w-full h-full #{!important};
+    }
+}

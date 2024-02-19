@@ -3,7 +3,6 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\VoteResource\Pages;
-use App\Filament\Resources\VoteResource\RelationManagers;
 use App\Models\Vote;
 use Ariaieboy\FilamentJalaliDatetime\JalaliDateTimeColumn;
 use Filament\Forms;
@@ -11,14 +10,17 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class VoteResource extends Resource
 {
     protected static ?string $model = Vote::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-hand-thumb-up';
+
+    public static function getNavigationGroup(): ?string
+    {
+        return __('Festival');
+    }
 
     public static function getModelLabel(): string
     {
@@ -34,6 +36,10 @@ class VoteResource extends Resource
     {
         return $form
             ->schema([
+                Forms\Components\TextInput::make('icon')
+                    ->translateLabel()
+                    ->required()
+                    ->maxLength(255),
                 Forms\Components\TextInput::make('title')
                     ->translateLabel()
                     ->required()
@@ -51,8 +57,8 @@ class VoteResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('title')
-                ->translateLabel()
-                ->searchable(),
+                    ->translateLabel()
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('creator.name')
                     ->translateLabel()
                     ->sortable(),

@@ -8,7 +8,7 @@
         <x-card>
             <div class="flex flex-wrap items-center gap-x-4 gap-y-6">
                 <x-avatar class="order-1" squared size="w-24 h-24" :src="$site->logo_url" :alt="$site->name" />
-                <div class="order-3 md:order-2">
+                <div class="order-3 w-full md:order-2 md:w-fit">
                     <h2 class="hidden mb-2 text-xl font-bold md:block md:text-3xl">
                         {{ $site->name }}
                     </h2>
@@ -19,9 +19,9 @@
                             {{ $site->user->name }}
                         </a>
                         <div class="w-1.5 h-1.5 bg-gray-500 rounded-full"></div>
-                        <p class="text-xl opacity-90">
+                        <a target="_blank" href="$site->url" class="text-xl transition-colors opacity-90 hover:text-primary-500">
                             {{ $site->url }}
-                        </p>
+                        </a>
                     </div>
                 </div>
                 <div class="flex flex-col items-stretch order-2 gap-2 md:order-3 ms-auto">
@@ -35,7 +35,7 @@
                 </div>
             </div>
         </x-card>
-
         <livewire:festival.votes :site="$site" />
+        <livewire:festival.sites-poster-generator :site="$site" />
     </div>
 </div>

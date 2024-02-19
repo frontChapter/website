@@ -10,8 +10,9 @@
             <x-slot:action>
                 <span class="opacity-80">{{ $level }} {{ __('of') }} {{ count($votes) }}</span>
             </x-slot:action>
-            <div class="flex flex-col items-center justify-center mx-auto gap-x-4 gap-y-2">
-                <p class="text-center">{{ $vote->description }}</p>
+            <div class="flex flex-col items-center justify-center gap-6 mx-auto">
+                @svg($vote->icon, 'w-24 h-24 my-2 mx-auto text-green-500')
+                <p class="text-2xl font-medium text-center">{{ $vote->description }}</p>
                 <div class="flex flex-col items-center gap-2 mx-auto lg:ms-auto min-w-max">
                     <p class="text-lg font-medium">{{ __('Carrot Vote') }}:</p>
                     <livewire:festival.vote-to-site wire:key='{{ $vote->id }}' :site="$site" :vote="$vote" />

@@ -17,6 +17,7 @@ class Vote extends Model
      * @var array<int, string>
      */
     protected $fillable = [
+        'icon',
         'title',
         'description',
         'created_by',
