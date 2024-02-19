@@ -4,15 +4,18 @@ namespace App\Models;
 
 use App\Enums\FestivalSiteStatus;
 use App\Traits\Uuids;
+use CyrildeWit\EloquentViewable\Contracts\Viewable;
+use CyrildeWit\EloquentViewable\InteractsWithViews;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Support\Facades\Storage;
 
-class FestivalSite extends Model
+class FestivalSite extends Model implements Viewable
 {
     use HasFactory, Uuids;
+    use InteractsWithViews;
 
     /**
      * The attributes that are mass assignable.

@@ -12,6 +12,8 @@ class SingleSite extends Component
     public function mount(FestivalSite $festivalSite)
     {
         $this->site = $festivalSite;
+
+        views($festivalSite)->record();
     }
 
     public function render()

@@ -29,7 +29,7 @@
                         <h2 class="mb-1 text-xl font-semibold">
                             {{ $site->name }}
                         </h2>
-                        <p class="opacity-90">
+                        <p class="opacity-90 rtl:text-right" dir="ltr">
                             {{ $site->url }}
                         </p>
                     </div>
