@@ -3,15 +3,15 @@
 <x-card cardClasses="text-center border border-primary-400" :title="__('🔥Share Poster')">
     <div class="w-0 h-0 overflow-hidden opacity-0">
         <div id="base-canvas-post" class="relative" style="width: 1080px; height: 1080px; background-image: url({{ asset('images/festival-post-back.jpg') }})">
-            <img class="w-[180px] h-[180px] rounded-[28px] absolute top-[490px] right-[122px]" src="{{ $site->logo_url }}" alt="{{ $site->name }}" />
-                <div class="absolute justify-center gap-4 max-w-[620px] max-h-[186px] h-[186px] top-[457px] right-[340px] flex flex-col">
+            <img class="w-[180px] h-[180px] rounded-[28px] absolute top-[461px] right-[122px]" src="{{ $site->logo_url }}" alt="{{ $site->name }}" />
+                <div class="absolute justify-center gap-4 max-w-[620px] max-h-[186px] h-[186px] top-[427px] right-[340px] flex flex-col">
                     <p class="text-5xl font-bold leading-snug text-right text-secondary-50">{{ $site->name }}</p>
                     <p class="text-3xl text-right text-secondary-200" dir="ltr">{{ $site->url }}</p>
                 </div>
-                <div class="qrcode absolute top-[793px] right-[781px]">
+                <div class="qrcode absolute top-[743px] right-[781px]">
                     {!! QrCode::size(150)->format('svg')->generate($shortUrl); !!}
             </div>
-            <p class="absolute top-[876px] text-secondary-200 right-[119px] text-3xl" dir="ltr">{{ $shortUrl }}</p>
+            <p class="absolute top-[836px] text-secondary-200 right-[119px] text-3xl" dir="ltr">{{ $shortUrl }}</p>
         </div>
     </div>
     <div class="w-0 h-0 overflow-hidden opacity-0">
@@ -31,27 +31,24 @@
         <div class="flex flex-col gap-2">
             <div id="base-post" class="w-full overflow-hidden rounded-lg aspect-square max-w-64 max-h-64"></div>
             <a id="base-post-download" class="flex flex-col w-full" download="post.png">
-                <x-button icon="download" @click="downloadfiles('base-post')" :label="__('Download Image')" />
+                <x-button icon="download" @click="download('base-post')" :label="__('Download Image')" />
             </a>
         </div>
         <div class="flex flex-col gap-2">
             <div id="base-story" class="w-auto aspect-[9/16] overflow-hidden aspect rounded-lg max-w-64 max-h-64"></div>
             <a id="base-story-download" class="flex flex-col w-full" download="story.png">
-                <x-button icon="download" @click="downloadfiles('base-story')" :label="__('Download Image')" />
+                <x-button icon="download" @click="download('base-story')" :label="__('Download Image')" />
             </a>
         </div>
     </div>
 </x-card>
-@script
 <script>
-    function downloadfiles(id) {
+    function download(id) {
         if(id) {
             const download = document.getElementById(`${id}-download`);
-            const child = document.getElementById(id).children[0] ?? '';
-            const image = child.toDataURL("image/jpeg")
+            const image = document.getElementById(id).children[0].toDataURL("image/jpeg")
                 .replace("image/jpeg", "image/octet-stream");
             download.setAttribute("href", image);
         }
     }
 </script>
-@endscript
