@@ -42,7 +42,7 @@
         </div>
     </div>
 </x-card>
-
+@script
 <script>
     function download(id) {
         const download = document.getElementById(`${id}-download`);
@@ -51,3 +51,4 @@
         download.setAttribute("href", image);
     }
 </script>
+@endscript
