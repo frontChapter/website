@@ -3,22 +3,24 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\FestivalSiteResource\Pages;
-use App\Filament\Resources\FestivalSiteResource\RelationManagers;
+use App\Filament\Resources\FestivalSiteResource\RelationManagers\VotesRelationManager;
 use App\Models\FestivalSite;
-use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class FestivalSiteResource extends Resource
 {
     protected static ?string $model = FestivalSite::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-fire';
+
+    public static function getNavigationGroup(): ?string
+    {
+        return __('Festival');
+    }
 
     public static function getModelLabel(): string
     {
@@ -37,7 +39,7 @@ class FestivalSiteResource extends Resource
                 Forms\Components\Select::make('user.name')
                     ->required()
                     ->translateLabel()
-                    ->options(User::all()->pluck('name', 'id'))
+                    ->relationship(name: 'user', titleAttribute: 'name')
                     ->searchable(),
                 Forms\Components\TextInput::make('app_id')
                     ->required()
@@ -66,11 +68,11 @@ class FestivalSiteResource extends Resource
                     ->sortable()
                     ->translateLabel()
                     ->sortable(),
-                    Tables\Columns\TextColumn::make('url')
+                Tables\Columns\TextColumn::make('url')
                     ->sortable()
                     ->translateLabel()
                     ->sortable(),
-                    Tables\Columns\TextColumn::make('name')
+                Tables\Columns\TextColumn::make('name')
                     ->sortable()
                     ->translateLabel()
                     ->sortable(),
@@ -92,7 +94,7 @@ class FestivalSiteResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            VotesRelationManager::class,
         ];
     }
 

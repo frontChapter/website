@@ -9,6 +9,7 @@ use App\Livewire\Auth\Verify;
 use App\Livewire\Festival\ListSites;
 use App\Livewire\Festival\RegisterSite;
 use App\Livewire\Festival\SingleSite;
+use App\Livewire\Festival\SitesPosterGenerator;
 use App\Livewire\Home\ShowHome;
 use App\Livewire\Profile\ShowProfile;
 use App\Livewire\Ticket\ListTickets;
@@ -39,6 +40,7 @@ Route::middleware('utm.store')->prefix('/festival')->group(function () {
         ->middleware('auth');
     Route::get('/{festivalSite:uuid}', SingleSite::class)->name('festival-site.single');
 });
+// Route::get('/image-create/festival/{festivalSite:uuid}', SitesPosterGenerator::class)->name('festival-site.image');
 
 Route::get('/conf1402', ShowHome::class)->name('conf1402')
     ->middleware('utm.store');

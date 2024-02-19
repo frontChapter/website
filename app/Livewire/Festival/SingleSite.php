@@ -14,7 +14,6 @@ class SingleSite extends Component
         $this->site = $festivalSite;
     }
 
-
     public function render()
     {
         return view('livewire.festival.single-site', [

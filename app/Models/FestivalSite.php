@@ -30,6 +30,15 @@ class FestivalSite extends Model
     ];
 
     /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var array<int, string>
+     */
+    protected $hidden = [
+        'app_id',
+    ];
+
+    /**
      * The attributes that should be cast.
      *
      * @var array<string, string>
@@ -62,6 +71,6 @@ class FestivalSite extends Model
             return Storage::disk('public')->url($this->logo);
         }
 
-        return null;
+        return asset('images/thumbnail.jpg');
     }
 }

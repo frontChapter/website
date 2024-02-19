@@ -1,19 +1,38 @@
 <div>
-    <x-card :title="__('Votes')">
-        <div class="flex flex-col gap-4">
-            @foreach ($votes as $vote)
-            <div class="flex @if(!$loop->first) border-t border-gray-500 pt-4 @endif flex-col gap-2">
-                <h4 class="text-xl font-semibold">
+    <div class="grid flex-col grid-cols-12 gap-4">
+        <h2 class="col-span-12 text-3xl font-bold">
+            {{ __('Votes') }}
+        </h2>
+        @foreach ($votes as $vote)
+        <x-card cardClasses="col-span-12 sm:col-span-6 lg:col-span-3">
+            <div class="flex flex-col h-full gap-2 text-center">
+                @svg($vote->icon, 'w-24 h-24 my-6 mx-auto text-green-500')
+                <h4 class="text-xl font-semibold text-gray-950 dark:text-secondary-50">
                     {{ $vote->title }}
                 </h4>
-                <div class="grid grid-cols-12 gap-2">
-                    <div class="col-span-12 md:col-span-4 lg:col-span-3 xl:col-span-2">
-                        <livewire:festival.votes-results :vote="$vote" :site="$site" />
-                    </div>
-                    <p class="col-span-12 md:col-span-8 lg:col-span-9 xl:col-span-10">{{ $vote->description }}</p>
+                <p class="mb-4">{{ $vote->description }}</p>
+                <div class="mx-auto mt-auto">
+                    <livewire:festival.votes-results :vote="$vote" :site="$site" />
                 </div>
             </div>
-            @endforeach
+        </x-card>
+        @endforeach
+        <x-card cardClasses="col-span-12 sm:col-span-6 lg:col-span-3">
+            <div class="flex flex-col h-full gap-2 text-center">
+                @svg('heroicon-s-chart-bar', 'w-24 h-24 my-6 mx-auto text-green-500')
+                <h4 class="text-xl font-semibold text-gray-950 dark:text-secondary-50">
+                    {{ __('Overall score') }}
+                </h4>
+                <p>
+                    {{ __('This score is obtained automatically based on other scores') }}
+                </p>
+                <div class="flex flex-col items-center gap-4 mx-auto mt-auto">
+                    <span class="text-2xl">({{ bcdiv($this->score(), 1, 2) }})</span>
+                    <x-carrot-score size="w-6 h-6" :score="$this->score()" />
+                </div>
+            </div>
+        </x-card>
+        <div class="d-flex">
         </div>
-    </x-card>
+    </div>
 </div>
