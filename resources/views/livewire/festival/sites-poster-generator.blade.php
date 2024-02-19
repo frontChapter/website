@@ -29,13 +29,13 @@
     </div>
     <div class="flex gap-4 poster-image" x-data>
         <div class="flex flex-col gap-2">
-            <div id="base-post" class="w-full overflow-hidden rounded-lg aspect-square max-w-64 max-h-64"></div>
+            <div id="base-post" class="w-full overflow-hidden rounded-lg bg-secondary-100 dark:bg-secondary-900 aspect-square max-w-64 max-h-64"></div>
             <a id="base-post-download" class="flex flex-col w-full" download="post.png">
                 <x-button icon="download" @click="download('base-post')" :label="__('Download Image')" />
             </a>
         </div>
         <div class="flex flex-col gap-2">
-            <div id="base-story" class="w-auto aspect-[9/16] overflow-hidden aspect rounded-lg max-w-64 max-h-64"></div>
+            <div id="base-story" class="bg-secondary-100 dark:bg-secondary-900 w-auto aspect-[9/16] overflow-hidden aspect rounded-lg max-w-64 max-h-64"></div>
             <a id="base-story-download" class="flex flex-col w-full" download="story.png">
                 <x-button icon="download" @click="download('base-story')" :label="__('Download Image')" />
             </a>
