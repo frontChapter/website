@@ -30,6 +30,7 @@ class FestivalSite extends Model implements Viewable
         'url',
         'logo',
         'status',
+        'score',
     ];
 
     /**

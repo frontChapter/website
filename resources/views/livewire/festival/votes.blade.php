@@ -27,8 +27,8 @@
                     {{ __('This score is obtained automatically based on other scores') }}
                 </p>
                 <div class="flex flex-col items-center gap-4 mx-auto mt-auto">
-                    <span class="text-2xl">({{ bcdiv($this->score(), 1, 2) }})</span>
-                    <x-carrot-score size="w-6 h-6" :score="$this->score()" />
+                    <span class="text-2xl">({{ bcdiv($site->score, 1, 2) }})</span>
+                    <x-carrot-score size="w-6 h-6" :score="$site->score" />
                 </div>
             </div>
         </x-card>
