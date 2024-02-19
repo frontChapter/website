@@ -46,7 +46,7 @@ class RegisterSite extends Component
         ];
     }
 
-    public function mount(FestivalSite | null $festivalSite = null)
+    public function mount($festivalSite = null)
     {
         if (!empty($festivalSite) && auth()->user()->cannot('update', $festivalSite)) {
             return \abort(403);
