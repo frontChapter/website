@@ -25,11 +25,11 @@
             <x-card>
                 <div class="flex items-center gap-4">
                     <x-avatar squared size="h-14 w-14" :src="$site->logo_url" :alt="$site->name" />
-                    <div>
+                    <div class="w-[calc(100%-4.5rem)]">
                         <h2 class="mb-1 text-xl font-semibold">
                             {{ $site->name }}
                         </h2>
-                        <p class="opacity-90 rtl:text-right" dir="ltr">
+                        <p class="flex-1 overflow-hidden whitespace-nowrap max-w-fit opacity-90 text-ellipsis rtl:text-right" dir="ltr">
                             {{ $site->url }}
                         </p>
                     </div>

@@ -12,14 +12,14 @@
                     <h2 class="hidden mb-2 text-xl font-bold md:block md:text-3xl">
                         {{ $site->name }}
                     </h2>
-                    <div class="flex items-center gap-3">
+                    <div class="flex items-center w-full gap-3">
                         <a wire:navigate href="{{ route('profile', ['user' => $site->user->username]) }}"
-                            class="flex items-center gap-1 text-xl leading-none text-primary-500 dark:hover:text-primary-400 hover:text-primary-600">
+                            class="flex items-center gap-1 text-xl leading-none min-w-max text-primary-500 dark:hover:text-primary-400 hover:text-primary-600">
                             <x-avatar xs :src="$site->user->profile_photo_url" :alt="$site->user->name" />
                             {{ $site->user->name }}
                         </a>
                         <div class="w-1.5 h-1.5 bg-gray-500 rounded-full"></div>
-                        <a target="_blank" dir="ltr" href="{{ $site->url }}" class="text-xl transition-colors opacity-90 hover:text-primary-500">
+                        <a target="_blank" dir="ltr" href="{{ $site->url }}" class="overflow-hidden text-xl transition-colors text-nowrap text-ellipsis opacity-90 hover:text-primary-500">
                             {{ $site->url }}
                         </a>
                     </div>
