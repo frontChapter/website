@@ -31,11 +31,13 @@
         <div class="flex flex-col gap-2">
             <div id="base-post" class="w-full overflow-hidden rounded-lg aspect-square max-w-64 max-h-64"></div>
             <a id="base-post-download" class="flex flex-col w-full" download="post.png">
+                <x-button icon="download" @click="downloadfiles('base-post')" :label="__('Download Image')" />
             </a>
         </div>
         <div class="flex flex-col gap-2">
             <div id="base-story" class="w-auto aspect-[9/16] overflow-hidden aspect rounded-lg max-w-64 max-h-64"></div>
             <a id="base-story-download" class="flex flex-col w-full" download="story.png">
+                <x-button icon="download" @click="downloadfiles('base-story')" :label="__('Download Image')" />
             </a>
         </div>
     </div>
