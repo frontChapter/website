@@ -30,7 +30,7 @@
     <div class="flex gap-4 poster-image" x-data>
         <div class="flex flex-col gap-2">
             <div id="base-post" class="w-full overflow-hidden rounded-lg h-ful max-w-64 max-h-64"></div>
-            <a id="base-post-download" class="flex flex-col w-full" download="post.png">
+            <a id="base-post-download" class="flex aspect-square flex-col w-full" download="post.png">
                 <x-button icon="download" @click="download('base-post')" :label="__('Download Image')" />
             </a>
         </div>
