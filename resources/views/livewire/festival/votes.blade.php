@@ -4,7 +4,7 @@
             {{ __('Votes') }}
         </h2>
         @foreach ($votes as $vote)
-        <x-card cardClasses="col-span-12 sm:col-span-6 lg:col-span-3">
+        <x-card cardClasses="col-span-12 sm:col-span-6 lg:col-span-3 border border-green-500">
             <div class="flex flex-col h-full gap-2 text-center">
                 @svg($vote->icon, 'w-24 h-24 my-6 mx-auto text-green-500')
                 <h4 class="text-xl font-semibold text-gray-950 dark:text-secondary-50">
@@ -17,9 +17,9 @@
             </div>
         </x-card>
         @endforeach
-        <x-card cardClasses="col-span-12 sm:col-span-6 lg:col-span-3">
+        <x-card cardClasses="col-span-12 sm:col-span-6 lg:col-span-3 border border-yellow-500">
             <div class="flex flex-col h-full gap-2 text-center">
-                @svg('heroicon-s-chart-bar', 'w-24 h-24 my-6 mx-auto text-green-500')
+                @svg('heroicon-s-chart-bar', 'w-24 h-24 my-6 mx-auto text-yellow-500')
                 <h4 class="text-xl font-semibold text-gray-950 dark:text-secondary-50">
                     {{ __('Overall score') }}
                 </h4>

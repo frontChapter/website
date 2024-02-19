@@ -956,7 +956,7 @@
     "Register Site": "ثبت سایت",
     "My Portfolio Site": "سایت پورتفولیو من",
     "Attention": "توجه",
-    "The site address you enter must be active and accessable": "آدرس سایت که وارد می‌کنید باید فعال و در دسترس باشد",
+    "The site address you enter must be hosted on liara.run": "آدرس سایت که وارد می‌کنید باید بر روی Liara.run میزبانی شده باشد.",
     "Visit Site": "مشاهده سایت",
     "Vote": "رای",
     "Votes": "رای‌ها",
@@ -986,6 +986,9 @@
     "Download Image": "دانلود تصویر",
     "Overall score": "نمره کلی",
     "This score is obtained automatically based on other scores": "این نمره به صورت خودکار بر اساس دیگر نمرات به دست می‌آید",
+    "Site hosting not valid": "میزبانی سایت نامعتبر است.",
+    "To participate in the contest, your site must be hosted on Liara": "برای شرکت در مسابقه، سایت شما باید حتما برروی لیارا میزبانی شود",
+    "Edit Site": "ویرایش سایت",
     "": "",
     "test": "test"
 }
