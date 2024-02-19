@@ -6,19 +6,21 @@
             <div class="flex">
                 <div class="flex items-center gap-2 shrink-0">
                     <!-- Hamburger -->
-                    <x-dropdown align="left" :persistent="1" class="text-start">
-                        <x-slot name="trigger">
-                            <span class="inline-flex rounded-md">
-                                <x-button class="!px-2" @click="open = ! open" flat light>
-                                    @svg('heroicon-s-bars-3', 'w-8 h-8')
-                                </x-button>
-                            </span>
-                        </x-slot>
+                    <div class="lg:hidden">
+                        <x-dropdown :align="app()->getLocale() === 'fa' ? 'right' : 'left'" :persistent="1" class="text-start">
+                            <x-slot name="trigger">
+                                <span class="inline-flex rounded-md">
+                                    <x-button class="!px-2" @click="open = ! open" flat light>
+                                        @svg('heroicon-s-bars-3', 'w-8 h-8')
+                                    </x-button>
+                                </span>
+                            </x-slot>
 
-                        @foreach ($links as $link)
-                        <x-dropdown.item :href="$link['url']">{{ $link['label'] }}</x-dropdown.item>
-                        @endforeach
-                    </x-dropdown>
+                            @foreach ($links as $link)
+                            <x-dropdown.item :href="$link['url']">{{ $link['label'] }}</x-dropdown.item>
+                            @endforeach
+                        </x-dropdown>
+                    </div>
 
                     <!-- Logo -->
                     <a wire:navigate href="{{ route('conf1402') }}">
