@@ -1,6 +1,10 @@
 <x-slot name="header">
     <h2 class="text-xl font-semibold leading-tight text-secondary-800 dark:text-secondary-200">
-        {{ __('Register In Festival') }}
+        @empty($festivalSite)
+            {{ __('Register In Festival') }}
+        @else
+            {{ __('Edit :resource', ['resource' => $festivalSite->name]) }}
+        @endempty
     </h2>
 </x-slot>
 
@@ -13,7 +17,8 @@
                 <div class="flex justify-between">
                     <p>{{ __('Application ID') }}:</p>
                     <div class="flex gap-2">
-                        <p class="px-1 py-0.5 font-mono rounded-sm bg-gray-100 dark:bg-secondary-900">fcf1402-{{ $appId }}</p>
+                        <p class="px-1 py-0.5 font-mono rounded-sm bg-gray-100 dark:bg-secondary-900">fcf1402-{{ $appId
+                            }}</p>
                         <x-button.circle xs spinner="level" wire:click="$set('level', 1)" icon="pencil" class="ms-auto"
                             green type="button" />
                     </div>
@@ -39,6 +44,10 @@
                         <div wire:loading wire:target="photo">{{ __('Uploading') }}...</div>
                     </div>
 
+                    <div x-show="!photoPreview && {{ empty($logoUrl) ? 0 : 1 }}" style="display: none;">
+                        <x-avatar :src="$logoUrl" size="w-14 h-14" />
+                    </div>
+
                     <div x-show="photoPreview" style="display: none;">
                         <span class="block bg-center bg-no-repeat bg-cover rounded-sm w-14 h-14"
                             x-bind:style="'background-image: url(\'' + photoPreview + '\');'">
@@ -51,11 +60,11 @@
                     <x-input wire:model.blur="name" :placeholder="__('My Portfolio Site')" :label="__('Site Title')" />
                     <x-input wire:model.blur="url" placeholder="https://example.com" :label="__('Site Address')" />
 
-                    <x-alert icon="information-circle" :description="__('The site address you enter must be active and accessable')" />
+                    <x-alert icon="information-circle"
+                        :description="__('The site address you enter must be hosted on liara.run')" />
                 </div>
             </x-card>
-            <x-button spinner="submit" icon="check-circle" primary type="submit"
-                :label="__('Register Site')" />
+            <x-button spinner="submit" icon="check-circle" primary type="submit" :label="__('Register Site')" />
         </form>
         @else
         <form class="flex flex-col gap-4" wire:submit="validateApplication">

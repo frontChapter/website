@@ -4,7 +4,10 @@ namespace App\Providers;
 
 // use Illuminate\Support\Facades\Gate;
 
+use App\Models\FestivalSite;
 use App\Models\User;
+use App\Models\Votable;
+use App\Policies\FestivalSitePolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
@@ -16,7 +19,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array<class-string, class-string>
      */
     protected $policies = [
-        //
+        FestivalSite::class => FestivalSitePolicy::class,
     ];
 
     /**

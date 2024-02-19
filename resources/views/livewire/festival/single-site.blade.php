@@ -3,6 +3,13 @@
         {{ $site->name }}
     </h1>
 </x-slot>
+<x-slot:headerAction>
+    @can('update', $site)
+    <div class="flex items-center">
+        <x-button light outline icon="pencil-alt" :href="route('festival-site.edit', $site)" :label="__('Edit Site')" />
+    </div>
+    @endcan
+</x-slot:headerAction>
 <div class="container mx-auto my-8">
     <div class="flex flex-col gap-8">
         <x-card>
@@ -22,11 +29,14 @@
                         <a target="_blank" dir="ltr" href="{{ $site->url }}" class="overflow-hidden text-xl transition-colors text-nowrap text-ellipsis opacity-90 hover:text-primary-500">
                             {{ $site->url }}
                         </a>
+                        <td col></td>
                     </div>
                 </div>
                 <div class="flex flex-col items-stretch order-2 gap-2 md:order-3 ms-auto">
                     @auth
+                    @if ($isValidUrl)
                     <livewire:festival.voting :site="$site" />
+                    @endif
                     @else
                     <x-button green :href="route('login', ['redirect', route('festival-site.single', $site)])" icon="lock-closed" :label="__('Login to vote')" />
                     @endauth
@@ -35,6 +45,14 @@
                 </div>
             </div>
         </x-card>
+        @if (!$isValidUrl && auth()->id() === $site->user_id)
+        <x-alert type="error" icon="exclamation-triangle" :title="__('Site hosting not valid')"
+            :description="__('To participate in the contest, your site must be hosted on Liara')">
+            <x-slot:actions>
+                <x-button negative icon="pencil-alt" :href="route('festival-site.edit', $site)" :label="__('Edit Site')" />
+            </x-slot:actions>
+        </x-alert>
+        @endif
         <livewire:festival.votes :site="$site" />
         <livewire:festival.sites-poster-generator :site="$site" />
     </div>

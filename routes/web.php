@@ -39,8 +39,8 @@ Route::middleware('utm.store')->prefix('/festival')->group(function () {
         ->name('festival-site.register')
         ->middleware('auth');
     Route::get('/{festivalSite:uuid}', SingleSite::class)->name('festival-site.single');
+    Route::get('/{festivalSite:uuid}/edit', RegisterSite::class)->name('festival-site.edit');
 });
-// Route::get('/image-create/festival/{festivalSite:uuid}', SitesPosterGenerator::class)->name('festival-site.image');
 
 Route::get('/conf1402', ShowHome::class)->name('conf1402')
     ->middleware('utm.store');
