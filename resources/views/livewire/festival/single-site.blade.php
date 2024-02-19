@@ -19,7 +19,7 @@
                             {{ $site->user->name }}
                         </a>
                         <div class="w-1.5 h-1.5 bg-gray-500 rounded-full"></div>
-                        <a target="_blank" href="$site->url" class="text-xl transition-colors opacity-90 hover:text-primary-500">
+                        <a target="_blank" dir="ltr" href="{{ $site->url }}" class="text-xl transition-colors opacity-90 hover:text-primary-500">
                             {{ $site->url }}
                         </a>
                     </div>
