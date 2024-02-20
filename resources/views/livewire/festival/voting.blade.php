@@ -1,5 +1,5 @@
 <div>
-    @if (count($votes) > 0)
+    @if (count($votes) > 0 && !empty(auth()->user()->email_verified_at))
     <x-button class="w-full" green wire:click="$toggle('showModal')" :label="__('شرکت در رای گیری')" />
     <x-modal blur align="center" wire:model.defer="showModal">
         @foreach ($votes as $vote)

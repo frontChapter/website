@@ -23,6 +23,9 @@ class VoteToSite extends Component
 
     public function mount(FestivalSite $site, Vote $vote)
     {
+        if (empty(auth()->user()->email_verified_at)) {
+            return $this->redirect(\route('festival-site'));
+        }
         $this->site = $site;
         $this->vote = $vote;
     }
@@ -30,6 +33,9 @@ class VoteToSite extends Component
     public function updatedSelectedVote()
     {
         try {
+            if(empty(auth()->user()->email_verified_at)) {
+                return $this->redirect(\route('festival-site'));
+            }
             $this->rateLimit(10);
             $this->validateOnly('selectedVote');
 
