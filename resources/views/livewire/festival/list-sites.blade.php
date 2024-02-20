@@ -24,7 +24,7 @@
             class="col-span-12 @if(!in_array($loop->iteration, [1,2,3])) 2xl:col-span-3 @endif lg:col-span-4 md:col-span-6 ">
 
             <div
-                class="overflow-hidden rounded-lg bg-secondary-800 @if(in_array($loop->iteration, [1,2,3])) border-2 border-indigo-500 !bg-indigo-600 text-white @endif">
+                class="overflow-hidden rounded-lg bg-white dark:bg-secondary-800 @if(in_array($loop->iteration, [1,2,3])) border-2 border-indigo-500 !bg-indigo-600 text-white @endif">
 
                 <div
                     style="@if(in_array($loop->iteration, [1,2,3])) background: url('{{ asset('images/carrot-pattern.png') }}'); background-size:64px @endif">
