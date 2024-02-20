@@ -12,7 +12,7 @@
         @if (Route::has('register'))
         <p class="mt-2 text-sm leading-5 text-center text-secondary-600 dark:text-secondary-400 max-w">
             {{ __('Or') }}
-            <a wire:navigate href="{{ route('register') }}"
+            <a wire:navigate href="{{ empty($redirect) ? route('register') : route('register', ['redirect' => $redirect]) }}"
                 class="font-medium transition duration-150 ease-in-out text-primary-600 hover:text-primary-500 focus:outline-none focus:underline">
                 {{ __('create a new account') }}
             </a>

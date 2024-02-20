@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\Registered;
+use Livewire\Attributes\Url;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
@@ -37,6 +38,9 @@ class Register extends Component
     #[Validate('required|min:6|max:40|same:password')]
     public string $passwordConfirmation = '';
 
+    #[Url]
+    public $redirect;
+
     public function register()
     {
         $this->validate();
@@ -53,7 +57,7 @@ class Register extends Component
 
         Auth::login($user, true);
 
-        return redirect()->intended(route('home'));
+        return redirect()->intended($this->redirect ?? route('home'));
     }
 
     public function render()

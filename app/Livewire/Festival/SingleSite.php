@@ -17,7 +17,8 @@ class SingleSite extends Component
 
         views($festivalSite)->record();
 
-        $this->isValidUrl = in_array(dns_get_record($this->getDomain($festivalSite->url), DNS_NS)[0]['target'] ?? false, ['ns1.liara.zone', 'ns2.liara.zone']);
+        // $this->isValidUrl = in_array(dns_get_record($this->getDomain($festivalSite->url), DNS_NS)[0]['target'] ?? false, ['ns1.liara.zone', 'ns2.liara.zone']);
+        $this->isValidUrl = true;
     }
 
     public function getDomain($url)

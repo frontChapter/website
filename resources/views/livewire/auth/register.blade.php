@@ -12,7 +12,7 @@
 
         <p class="mt-2 text-sm leading-5 text-center text-secondary-600 dark:text-secondary-400 max-w">
             {{ __('Or') }}
-            <a href="{{ route('login') }}" wire:navigate class="font-medium transition duration-150 ease-in-out text-primary-600 hover:text-primary-500 focus:outline-none focus:underline">
+            <a href="{{ empty($redirect) ? route('login') : route('login', ['redirect' => $redirect]) }}" wire:navigate class="font-medium transition duration-150 ease-in-out text-primary-600 hover:text-primary-500 focus:outline-none focus:underline">
                 {{ __('sign in to your account') }}
             </a>
         </p>

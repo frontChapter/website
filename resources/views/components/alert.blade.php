@@ -47,7 +47,7 @@
                 @endif
 
                 @if ($slot)
-                    {!! $slot !!}
+                    {{ $slot }}
                 @endif
             </div>
         </div>

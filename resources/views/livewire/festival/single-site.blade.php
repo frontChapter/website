@@ -38,7 +38,7 @@
                     <livewire:festival.voting :site="$site" />
                     @endif
                     @else
-                    <x-button green :href="route('login', ['redirect', route('festival-site.single', $site)])" icon="lock-closed" :label="__('Login to vote')" />
+                    <x-button green :href="route('login', ['redirect' => route('festival-site.single', $site)])" icon="lock-closed" :label="__('Login to vote')" />
                     @endauth
                     <x-button target="_blank" primary outline icon="external-link" :href="$site->url"
                         :label="__('Visit Site')" />
