@@ -49,6 +49,11 @@ class Register extends Component
 
     public HoneypotData $extraFields;
 
+    public function mount()
+    {
+        $this->extraFields = new HoneypotData();
+    }
+
     public function register()
     {
         try {
