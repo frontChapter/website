@@ -9,9 +9,13 @@ use Illuminate\Support\Facades\Hash;
 use Livewire\Attributes\Url;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
+use Lukeraymonddowning\Honey\Traits\WithHoney;
+use Lukeraymonddowning\Honey\Traits\WithRecaptcha;
 
 class Login extends Component
 {
+    use WithRecaptcha;
+
     #[Validate('required|string|min:5')]
     public $usernameOrEmail = '';
 
@@ -28,13 +32,17 @@ class Login extends Component
     {
         $this->validate();
 
+        if(!$this->recaptchaPasses()) {
+            $this->addError('usernameOrEmail', trans('auth.recaptcha'));
+            return;
+        }
+
         $user = User::where('email', $this->usernameOrEmail)
             ->orWhere('username', $this->usernameOrEmail)
             ->first();
 
         if(is_null($user) || !Hash::check($this->password, $user->password)){
             $this->addError('usernameOrEmail', trans('auth.failed'));
-
             return;
         }
 

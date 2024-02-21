@@ -24,8 +24,10 @@
         <x-card>
             <form wire:submit.prevent="authenticate">
                 <div class="flex flex-col gap-4">
+                    @csrf
                     <x-input required :label="__('User name Or Email')" wire:model.blur='usernameOrEmail' name="usernameOrEmail" />
                     <x-input required :label="__('Password')" wire:model.blur='password' name="password" type="password" />
+                    <x-honey-recaptcha/>
                 </div>
                 <div class="flex items-center justify-between mt-6">
                     <x-checkbox :label="__('Remember me')" name="remember" wire:model.lazy="remember" id="remember"/>

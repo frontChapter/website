@@ -15,6 +15,7 @@ return [
 
     'failed' => 'These credentials do not match our records.',
     'password' => 'The provided password is incorrect.',
+    'recaptcha' => 'google says you are a robot!💔',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
 
 ];
