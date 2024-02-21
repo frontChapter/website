@@ -28,6 +28,7 @@
                     <x-input required :label="__('Email')" wire:model.blur='email' name="email" type="email" />
                     <x-input required :label="__('Password')" wire:model.blur='password' name="password" type="password" />
                     <x-input required :label="__('Password confirmation')" wire:model.blur='passwordConfirmation' name="passwordConfirmation" type="password" />
+                    <x-honeypot livewire-model="extraFields" />
                 </div>
 
                 <div class="mt-6">

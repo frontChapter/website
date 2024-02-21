@@ -3,18 +3,19 @@
 namespace App\Livewire\Auth;
 
 use App\Models\User;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Attributes\Url;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
-use Lukeraymonddowning\Honey\Traits\WithHoney;
-use Lukeraymonddowning\Honey\Traits\WithRecaptcha;
+use Spatie\Honeypot\Http\Livewire\Concerns\HoneypotData;
+use Spatie\Honeypot\Http\Livewire\Concerns\UsesSpamProtection;
+use WireUi\Traits\Actions;
 
 class Login extends Component
 {
-    use WithRecaptcha;
+    use UsesSpamProtection;
+    use Actions;
 
     #[Validate('required|string|min:5')]
     public $usernameOrEmail = '';
@@ -28,20 +29,31 @@ class Login extends Component
     #[Url]
     public $redirect;
 
+    public HoneypotData $extraFields;
+
+    public function mount()
+    {
+        $this->extraFields = new HoneypotData();
+    }
+
     public function authenticate()
     {
-        $this->validate();
-
-        if(!$this->recaptchaPasses()) {
-            $this->addError('usernameOrEmail', trans('auth.recaptcha'));
+        try {
+            $this->protectAgainstSpam();
+        } catch (\Throwable $th) {
+            $this->notification()->error(
+                $description = __('auth.spam')
+            );
             return;
         }
+
+        $this->validate();
 
         $user = User::where('email', $this->usernameOrEmail)
             ->orWhere('username', $this->usernameOrEmail)
             ->first();
 
-        if(is_null($user) || !Hash::check($this->password, $user->password)){
+        if (is_null($user) || !Hash::check($this->password, $user->password)) {
             $this->addError('usernameOrEmail', trans('auth.failed'));
             return;
         }
