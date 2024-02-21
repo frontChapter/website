@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Livewire\Attributes\Url;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
@@ -19,6 +20,9 @@ class Login extends Component
 
     /** @var bool */
     public $remember = false;
+
+    #[Url]
+    public $redirect;
 
     public function authenticate()
     {
@@ -36,7 +40,7 @@ class Login extends Component
 
         Auth::login($user, $this->remember);
 
-        return redirect()->intended(route('home'));
+        return redirect()->intended($this->redirect ?? route('home'));
     }
 
     public function render()
