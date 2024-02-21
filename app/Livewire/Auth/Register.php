@@ -10,9 +10,15 @@ use Illuminate\Auth\Events\Registered;
 use Livewire\Attributes\Url;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
+use Spatie\Honeypot\Http\Livewire\Concerns\HoneypotData;
+use Spatie\Honeypot\Http\Livewire\Concerns\UsesSpamProtection;
+use WireUi\Traits\Actions;
 
 class Register extends Component
 {
+    use UsesSpamProtection;
+    use Actions;
+
     #[Validate('required|min:3|max:69|string')]
     public string $firstName = '';
 
@@ -41,8 +47,19 @@ class Register extends Component
     #[Url]
     public $redirect;
 
+    public HoneypotData $extraFields;
+
     public function register()
     {
+        try {
+            $this->protectAgainstSpam();
+        } catch (\Throwable $th) {
+            $this->notification()->error(
+                $description = __('auth.spam')
+            );
+            return;
+        }
+
         $this->validate();
 
         $user = User::create([

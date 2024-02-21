@@ -25,8 +25,6 @@ use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Support\Facades\Session;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
-use Lukeraymonddowning\Honey\Http\Middleware\BlockSpammers;
-use Lukeraymonddowning\Honey\Http\Middleware\PreventSpam;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -46,8 +44,6 @@ class AdminPanelProvider extends PanelProvider
                 SubstituteBindings::class,
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
-                BlockSpammers::class,
-                PreventSpam::class,
                 // Localization::class
             ])
             ->login()
