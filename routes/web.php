@@ -33,7 +33,7 @@ Route::get('/', function () {
 
 Route::get('/profile/{user:username}', ShowProfile::class)->name('profile')->lazy();
 
-Route::middleware('utm.store')->prefix('/festival')
+Route::middleware(['utm.store'])->prefix('/festival')
 ->group(function () {
     Route::get('/', ListSites::class)->name('festival-site');
     Route::get('/register', RegisterSite::class)
@@ -57,7 +57,7 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::get('email/verify', Verify::class)
-        ->middleware('throttle:6,1')
+        ->middleware(['throttle:6,1'])
         ->name('verification.notice');
 
     Route::get('password/confirm', Confirm::class)
@@ -70,7 +70,7 @@ Route::get('password/reset', Email::class)
 Route::get('password/reset/{token}', Reset::class)
     ->name('password.reset');
 
-Route::middleware('guest')->group(function () {
+Route::middleware(['guest'])->group(function () {
     Route::get('login', Login::class)
         ->name('login');
 
