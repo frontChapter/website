@@ -1,3 +1,4 @@
+<x-app-layout>
 <x-profile-layout>
     <x-slot name="title">
         <h1 class="text-3xl font-semibold leading-tight text-secondary-800 dark:text-secondary-200">
@@ -41,3 +42,4 @@
         @endif
     </div>
 </x-profile-layout>
+</x-app-layout>
