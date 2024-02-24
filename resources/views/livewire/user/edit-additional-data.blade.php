@@ -1,15 +1,11 @@
 @use('App\Enums\AttributeTypeEnum')
+<x-profile-layout>
+    <x-slot name="title">
+        <h1 class="text-3xl font-semibold leading-tight text-secondary-800 dark:text-secondary-200">
+            {{ __('Edit Additional Data') }}
+        </h1>
+    </x-slot>
 
-<x-slot name="header">
-    <h2 class="text-xl font-semibold leading-tight text-secondary-800 dark:text-secondary-200">
-        {{ __('Manage Additional Data') }}
-    </h2>
-</x-slot>
-<x-slot name="headerAction">
-    <x-header.profile-links />
-</x-slot>
-
-<div class="container px-4 py-10 mx-auto sm:px-2 md:px-00">
     <x-form-section submit="save">
         <x-slot name="title">
             {{ __('Additional Data') }}
@@ -49,4 +45,4 @@
             </x-action-message>
         </x-slot>
     </x-form-section>
-</div>
+</x-profile-layout>

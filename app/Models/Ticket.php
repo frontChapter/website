@@ -32,6 +32,7 @@ class Ticket extends Model
         'discount_price',
         'order_price',
         'data',
+        'code',
     ];
 
     /**
@@ -87,5 +88,18 @@ class Ticket extends Model
             return Gravatar::for($this->email ?? '')->default('identicon')->get();
         }
         return $this->user->profile_photo_url;
+    }
+
+    public function getGiftCodeAttribute(): string|null
+    {
+        if($this->ticket_id === '275714'){
+            return 'FCN' . $this->code;
+        }
+
+        if($this->ticket_id === '275952'){
+            return 'FCV' . $this->code;
+        }
+
+        return null;
     }
 }
