@@ -4,7 +4,6 @@ namespace App\Livewire\User;
 
 use App\Enums\AttributeTypeEnum;
 use App\Models\UserAttribute;
-use Illuminate\Validation\Rule;
 use Livewire\Component;
 use WireUi\Traits\Actions;
 
