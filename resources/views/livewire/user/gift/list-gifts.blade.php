@@ -1,0 +1,25 @@
+<x-profile-layout>
+    <x-slot name="title">
+        <h1 class="text-3xl font-semibold leading-tight text-secondary-800 dark:text-secondary-200">
+            {{ __('Gifts List') }}
+        </h1>
+    </x-slot>
+
+    {{-- <x-slot name="titleAction">
+        <div class="flex gap-1">
+            <x-button primary :label="__('Ticket Gifts')" wire:click="$set('filter', 'tickets')" />
+        </div>
+    </x-slot> --}}
+
+    <div class="flex flex-col gap-4">
+        <h3 class="text-xl font-semibold leading-tight text-secondary-800 dark:text-secondary-200">
+            {{ __('Ticket Gifts') }}
+        </h3>
+        @foreach ($tickets as $ticket)
+            <x-gift-card :title="__('Pachim')" :description="__('New experience in server and site management')" code="P{{ $ticket->gift_code }}" bgColor="bg-sky-600" />
+            <x-gift-card :title="__('Roocket')" :description="__('Roocket, the story of the beginning of a programmer')" code="R{{ $ticket->gift_code }}" bgColor="bg-rose-600" />
+            <x-gift-card :title="__('Liara')" :description="__('In less than 5 minutes, run your program on the server')" code="L{{ $ticket->gift_code }}" bgColor="bg-teal-600" />
+        @endforeach
+    </div>
+
+</x-profile-layout>

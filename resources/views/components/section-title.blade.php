@@ -1,5 +1,5 @@
-<div class="md:col-span-1 flex justify-between">
-    <div class="px-4 sm:px-0">
+<div class="flex justify-between p-4 border-b border-b-secondary-300 dark:border-b-secondary-700">
+    <div>
         <h3 class="text-lg font-medium text-secondary-900 dark:text-secondary-100">{{ $title }}</h3>
 
         <p class="mt-1 text-sm text-secondary-600 dark:text-secondary-400">

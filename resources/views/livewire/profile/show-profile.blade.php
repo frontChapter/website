@@ -55,7 +55,8 @@
                     <div class="flex items-center gap-4">
                         <div class="flex gap-2 w-28 min-w-28">
                             <div class="min-w-max">
-                                @svg($additionalAttributes[AttributeTypeEnum::Company->value]['icon'], 'w-6 h-6')
+                                @svg($additionalAttributes[AttributeTypeEnum::Company->value]['icon'], 'w-6
+                                h-6')
                             </div>
                             <p class="text-lg">{{ AttributeTypeEnum::Company->getLabel() }}</p>
                         </div>
@@ -67,7 +68,8 @@
                             <x-heroicon-o-envelope class="w-6 h-6" />
                             <p class="text-lg">{{ __('Email') }}</p>
                         </div>
-                        <a href="mailto:{{ $user->email }}" class="text-lg underline overflow-hidden text-ellipsis">{{ $user->email }}</a>
+                        <a href="mailto:{{ $user->email }}" class="overflow-hidden text-lg underline text-ellipsis">{{
+                            $user->email }}</a>
                     </div>
                     <div class="flex gap-4">
                         <div class="flex gap-2 w-28 min-w-28">
@@ -89,7 +91,7 @@
         <div class="col-span-12 xl:col-span-8">
             <div class="flex flex-col gap-4 mt-8">
                 <x-sad-carrot-complate-profile :show="auth()->id() === $user->id && !auth()->user()->isCompleted()" />
-                    <x-card>
+                <x-card>
                     <x-slot name="title">
                         @svg('heroicon-o-identification', 'w-6 h-6 me-2 inline')
                         {{ __('Bio') }}
@@ -113,7 +115,8 @@
                         isset($additionalAttributes[AttributeTypeEnum::Linkedin->value]) ||
                         isset($additionalAttributes[AttributeTypeEnum::Resume->value]) )
                         @foreach ($additionalAttributes as $key => $attribute)
-                        @if($key !== AttributeTypeEnum::Bio->value && $key !== AttributeTypeEnum::Job->value && $key !==
+                        @if($key !== AttributeTypeEnum::Bio->value && $key !== AttributeTypeEnum::Job->value
+                        && $key !==
                         AttributeTypeEnum::Company->value)
                         <div class="flex items-center gap-4">
                             <div class="flex gap-2 w-28 min-w-28">

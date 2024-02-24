@@ -14,14 +14,6 @@
         'isActive' => request()->routeIs('festival-site'),
         'blinkBdge' => true,
     ];
-
-    if(auth()->check()){
-        $links[] = [
-            'label' => __('My tickets'),
-            'url' => route('ticket'),
-            'isActive' => request()->routeIs('ticket'),
-        ];
-    }
 @endphp
 <div>
     <x-navigation-menu :$links />

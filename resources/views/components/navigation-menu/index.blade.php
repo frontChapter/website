@@ -37,63 +37,6 @@
 
                 @auth()
                 <div class="flex sm:items-center">
-                    {{--
-                    <!-- Teams Dropdown -->
-                    @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
-                    <div class="relative">
-                        <x-dropdown align="right" width="60">
-                            <x-slot name="trigger">
-                                <span class="inline-flex rounded-md">
-                                    <button type="button"
-                                        class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 transition duration-150 ease-in-out bg-white border border-transparent rounded-md text-secondary-500 dark:text-secondary-400 dark:bg-secondary-800 hover:text-secondary-700 dark:hover:text-secondary-300 focus:outline-none focus:bg-secondary-50 dark:focus:bg-secondary-700 active:bg-secondary-50 dark:active:bg-secondary-700">
-                                        {{ Auth::user()->currentTeam->name }}
-
-                                        <svg class="ms-2 -me-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                            viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M8.25 15L12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9" />
-                                        </svg>
-                                    </button>
-                                </span>
-                            </x-slot>
-
-                            <x-slot name="content">
-                                <div class="w-60">
-                                    <!-- Team Management -->
-                                    <div class="block px-4 py-2 text-xs text-secondary-400">
-                                        {{ __('Manage Team') }}
-                                    </div>
-
-                                    <!-- Team Settings -->
-                                    <x-dropdown.item wire:navigate
-                                        :href="route('teams.show', Auth::user()->currentTeam->id)">
-                                        {{ __('Team Settings') }}
-                                    </x-dropdown.item>
-
-                                    @can('create', Laravel\Jetstream\Jetstream::newTeamModel())
-                                    <x-dropdown.item wire:navigate :href="route('teams.create')">
-                                        {{ __('Create New Team') }}
-                                    </x-dropdown.item>
-                                    @endcan
-
-                                    <!-- Team Switcher -->
-                                    @if (Auth::user()->allTeams()->count() > 1)
-                                    <div class="border-t border-secondary-200 dark:border-secondary-600"></div>
-
-                                    <div class="block px-4 py-2 text-xs text-secondary-400">
-                                        {{ __('Switch Teams') }}
-                                    </div>
-
-                                    @foreach (Auth::user()->allTeams() as $team)
-                                    <x-switchable-team :team="$team" />
-                                    @endforeach
-                                    @endif
-                                </div>
-                            </x-slot>
-                        </x-dropdown>
-                    </div>
-                    @endif --}}
-
                     <!-- Settings Dropdown -->
                     <div class="relative pt-1">
                         <x-dropdown :align="app()->getLocale() === 'fa' ? 'left' : 'right'" class="text-start">
@@ -124,9 +67,9 @@
                                     href="{{ route('profile', [auth()->user()]) }}">
                                     {{ __('Profile') }}
                                 </x-dropdown.item>
-                                <x-dropdown.item wire:navigate icon="pencil-alt"
+                                <x-dropdown.item wire:navigate icon="user-circle"
                                     href="{{ route('profile.show', [auth()->user()]) }}">
-                                    {{ __('Edit Profile') }}
+                                    {{ __('Manage Account') }}
                                 </x-dropdown.item>
                                 @hasanyrole(['Super Admin', 'admin', 'admin-panel'])
                                 <x-dropdown.item separator icon="collection" :href="route('filament.admin.home')">

@@ -54,6 +54,7 @@ class TicketsController extends Controller
             $order['user_id'] = $user->id;
         }
 
+        $order['code'] = $this->codeGenerator();
         $order['email'] = $data['email'];
         $order['mobile'] = $data['mobile'];
         $order['first_name'] = $data['first_name'];
@@ -104,5 +105,16 @@ class TicketsController extends Controller
     public function destroy(Ticket $ticket)
     {
         //
+    }
+
+    private function codeGenerator(): string
+    {
+        $code = str()->random('6');
+
+        if(Ticket::whereCode($code)->count() > 0) {
+            $code = $this->codeGenerator();
+        }
+
+        return $code;
     }
 }
