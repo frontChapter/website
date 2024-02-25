@@ -132,6 +132,8 @@ return [
     'jdatetime_before'       => ':attribute باید قبل از :date باشد.',
     'jdatetime_before_equal' => ':attribute باید قبل یا برابر از :date باشد.',
 
+    'indisposable' => ':attribute یک‌بار مصرف مورد قبول نیست.',
+
     'attributes' => [
         'start_date'      => 'تاریخ شروع',
         'expire_datetime' => 'تاریخ انقضا',

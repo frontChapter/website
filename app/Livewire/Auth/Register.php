@@ -35,7 +35,7 @@ class Register extends Component
     ])]
     public string $username = '';
 
-    #[Validate('required|email|unique:users')]
+    #[Validate('required|email|indisposable|unique:users')]
     public string $email = '';
 
     #[Validate('required|min:6|max:40|string')]

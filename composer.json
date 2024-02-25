@@ -33,6 +33,7 @@
         "livewire/livewire": "^3.0",
         "marcin-orlowski/laravel-api-response-builder": "^10.0",
         "predis/predis": "^2.2",
+        "propaganistas/laravel-disposable-email": "^2.2",
         "pusher/pusher-php-server": "^7.2",
         "remzikocak/laravel-gravatar": "^2.0",
         "simplesoftwareio/simple-qrcode": "^4.2",
