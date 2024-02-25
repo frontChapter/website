@@ -1,5 +1,5 @@
 <nav x-data="{ open: false }"
-    class="sticky top-0 bg-white border-b border-secondary-200 dark:bg-secondary-800 dark:border-secondary-700">
+    class="sticky top-0 z-50 bg-white border-b border-secondary-200 dark:bg-secondary-800 dark:border-secondary-700">
     <!-- Primary Navigation Menu -->
     <div class="container px-4 mx-auto sm:px-2 md:px-0">
         <div class="flex h-16 gap-2">
