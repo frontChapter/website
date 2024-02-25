@@ -13,7 +13,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
-        $schedule->job(new ProcessFestivalSitesScore)->everyTenMinutes();
+        $schedule->job(new ProcessFestivalSitesScore())->everyTenMinutes();
+        $schedule->command('disposable:update')->daily();
     }
 
     /**
