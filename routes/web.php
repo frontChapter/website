@@ -36,14 +36,14 @@ Route::get('/profile/{user:username}', ShowProfile::class)->name('profile')->laz
 
 Route::middleware(['utm.store'])->prefix('/festival')
     ->group(function () {
-    Route::get('/', ListSites::class)->name('festival-site');
-    Route::get('/register', RegisterSite::class)
-        ->name('festival-site.register')
-        ->middleware(['auth', 'verified']);
-    Route::get('/{festivalSite:uuid}', SingleSite::class)->name('festival-site.single');
-    Route::get('/{festivalSite:uuid}/edit', RegisterSite::class)
-        ->name('festival-site.edit')
-        ->middleware(['auth', 'verified']);
+        Route::get('/', ListSites::class)->name('festival-site');
+        Route::get('/register', RegisterSite::class)
+            ->name('festival-site.register')
+            ->middleware(['auth', 'verified']);
+        Route::get('/{festivalSite:uuid}', SingleSite::class)->name('festival-site.single');
+        Route::get('/{festivalSite:uuid}/edit', RegisterSite::class)
+            ->name('festival-site.edit')
+            ->middleware(['auth', 'verified']);
     });
 
 Route::get('/conf1402', ShowHome::class)->name('conf1402')
