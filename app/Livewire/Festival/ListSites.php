@@ -5,6 +5,7 @@ namespace App\Livewire\Festival;
 use App\Enums\FestivalSiteStatus;
 use App\Models\FestivalSite;
 use App\Models\Votable;
+use Livewire\Attributes\Url;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -16,7 +17,7 @@ class ListSites extends Component
     {
         return FestivalSite::whereStatus(FestivalSiteStatus::PUBLISHED)
             ->orderBy("score", "DESC")
-            ->paginate(24);
+            ->paginate(23);
     }
 
     public function render()
