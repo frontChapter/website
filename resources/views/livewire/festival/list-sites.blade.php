@@ -24,21 +24,21 @@
             class="col-span-12 @if(!in_array($loop->iteration, [1,2,3])) 2xl:col-span-3 @endif lg:col-span-4 md:col-span-6 ">
 
             <div
-                class="overflow-hidden rounded-lg bg-white dark:bg-secondary-800 @if(in_array($loop->iteration, [1,2,3])) border-2 border-indigo-500 !bg-indigo-600 text-white @endif">
+                class="overflow-hidden rounded-lg bg-white dark:bg-secondary-800 @if(in_array($loop->iteration, [1,2,3]) && $sites->currentPage() === 1) border-2 border-indigo-500 !bg-indigo-600 text-white @endif">
 
                 <div
-                    style="@if(in_array($loop->iteration, [1,2,3])) background: url('{{ asset('images/carrot-pattern.png') }}'); background-size:64px @endif">
+                    style="@if(in_array($loop->iteration, [1,2,3]) && $sites->currentPage() === 1) background: url('{{ asset('images/carrot-pattern.png') }}'); background-size:64px @endif">
                     <div
-                        class="@if(in_array($loop->iteration, [1,2,3])) bg-gradient-to-br from-indigo-500/40 via-indigo-500/85 via-15% to-30% to-indigo-500 @endif">
+                        class="@if(in_array($loop->iteration, [1,2,3]) && $sites->currentPage() === 1) bg-gradient-to-br from-indigo-500/40 via-indigo-500/85 via-15% to-30% to-indigo-500 @endif">
                         <div class="px-5 py-5">
                             <div class="flex items-center gap-4">
                                 <x-avatar squared size="h-14 w-14" :src="$site->logo_url" :alt="$site->name" />
                                 <div class="w-[calc(100%-4.5rem)]">
                                     <h2
-                                        class="@if(in_array($loop->iteration, [1,2,3])) text-white @endif mb-1 text-xl font-semibold">
+                                        class="@if(in_array($loop->iteration, [1,2,3])  && $sites->currentPage() === 1) text-white @endif mb-1 text-xl font-semibold">
                                         {{ $site->name }}
                                     </h2>
-                                    <p class="@if(in_array($loop->iteration, [1,2,3])) text-white @endif flex-1 overflow-hidden whitespace-nowrap max-w-fit opacity-90 text-ellipsis rtl:text-right"
+                                    <p class="@if(in_array($loop->iteration, [1,2,3])  && $sites->currentPage() === 1) text-white @endif flex-1 overflow-hidden whitespace-nowrap max-w-fit opacity-90 text-ellipsis rtl:text-right"
                                         dir="ltr">
                                         {{ $site->url }}
                                     </p>
