@@ -14,18 +14,12 @@ class TicketBuyers extends Component
 
     public function render()
     {
-        // dd(Ticket::select('tickets.email', 'tickets.first_name', 'tickets.last_name', 'tickets.user_id', 'users.username')
-        //         ->leftJoin('users', 'user_id', 'users.id')
-        //         ->groupBy('email', 'first_name', 'last_name', 'email', 'user_id', 'users.username')
-        //         ->inRandomOrder()
-        //         ->get());
         return view('livewire.home.ticket-buyers', [
             'buyers' => Ticket::select('tickets.email', 'tickets.first_name', 'tickets.last_name', 'tickets.user_id', 'users.username')
                 ->leftJoin('users', 'user_id', 'users.id')
                 ->groupBy('email', 'first_name', 'last_name', 'email', 'user_id', 'users.username')
                 ->inRandomOrder()
                 ->get(),
-            // 'users' => User::whereHas('tickets')->inRandomOrder()->get(),
         ]);
     }
 }
