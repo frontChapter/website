@@ -11,8 +11,12 @@
                 @endif >
                 <x-avatar xl class="mx-auto bg-primary-300" src="{{ $buyer->buyer_profile_photo_url }}" :title="$buyer->buyer_name"
                     :alt="$buyer->buyer_name" />
-                <p @class(["text-lg overflow-hidden truncate text-secondary-400", 'font-medium text-secondary-500 group-hover:text-primary-500 dark:group-hover:text-primary-500 transition-all' => !empty($buyer->username)])>{{ $buyer->buyer_name
-                    }}
+                <p @class([
+                    "text-lg overflow-hidden truncate",
+                    'font-medium text-secondary-300 group-hover:text-primary-500 dark:group-hover:text-primary-500 transition-all' => !empty($buyer->username),
+                    'text-secondary-400' => empty($buyer->username)
+                ])>
+                    {{ $buyer->buyer_name }}
                 </p>
             </a>
             @endforeach
