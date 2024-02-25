@@ -7,6 +7,8 @@
         <x-modal blur align="center" wire:model.defer="showModal">
             @foreach ($votes as $vote)
             <x-card cardClasses="{{ $level === $loop->iteration ? '' : 'hidden' }} relative">
+                <x-loading wire:loading.flex wire:target="nextLevel" />
+                <x-loading wire:loading.flex wire:target="previousLevel" />
                 <x-slot:title>
                     <span class="text-xl font-semibold text-right">{{ $vote->title }}</span>
                 </x-slot:title>
@@ -24,12 +26,12 @@
                 <x-slot:footer>
                     <div class="flex justify-between">
                         @if ($level !== 1)
-                        <x-button light outline :icon="app()->getLocale() === 'fa' ? 'arrow-right' : 'arrow-left'"
+                        <x-button wire:loading.disable wire:target="previousLevel" light outline :icon="app()->getLocale() === 'fa' ? 'arrow-right' : 'arrow-left'"
                             wire:click='previousLevel' :label="__('Previous')" />
                         @else
                         <span></span>
                         @endif
-                        <x-button light outline :rightIcon="app()->getLocale() === 'fa' ? 'arrow-left' : 'arrow-right'"
+                        <x-button wire:loading.disable wire:target="nextLevel" light outline :rightIcon="app()->getLocale() === 'fa' ? 'arrow-left' : 'arrow-right'"
                             wire:click='nextLevel' :label="__('Next')" />
                     </div>
                 </x-slot:footer>

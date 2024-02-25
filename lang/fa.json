@@ -1002,6 +1002,10 @@
     "In less than 5 minutes, run your program on the server": "در کمتر از 5 دقیقه برنامه خود را روی سرور اجرا کنید",
     "Roocket": "راکت",
     "Roocket, the story of the beginning of a programmer": "راکت، داستان شروع یک برنامه نویس",
+    "403 | Forbidden": "۴۰۳ | عدم دسترسی",
+    "404 | Not Found": "۴۰۴ | یافت نشد",
+    "500 | Server Error": "۵۰۰ | خطای سرور",
+    "Your access has been blocked for 5 minutes.": "دسترسی شما به مدت ۵ دقیقه بسته شده است.",
     "": "",
     "test": "test"
 }
