@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\AuthController;
 use App\Livewire\Auth\Login;
 use App\Livewire\Auth\Passwords\Confirm;
 use App\Livewire\Auth\Passwords\Email;
@@ -73,6 +74,9 @@ Route::middleware(['guest'])->group(function () {
     Route::get('login', Login::class)
         ->name('login');
 
-    Route::get('register', Register::class)
+    // Route::get('register', Register::class)
+    //     ->name('register');
+    Route::post('register', [AuthController::class, 'register'])
+        ->middleware(['honey', 'honey-recaptcha'])
         ->name('register');
 });

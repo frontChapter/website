@@ -2,7 +2,7 @@
     <div x-data="{ hover: $wire.get('selectedVote') }" class="flex flex-col gap-1" @click="$wire.set('selectedVote', hover)">
         <input type="hidden" wire:model="selectedVote" class="hidden" />
 
-        <x-loading wire:loading.flex wire:target="selectedVote"/>
+        {{-- <x-loading wire:loading.flex wire:target="selectedVote"/> --}}
 
         <div class="flex gap-1">
             <template x-for="item in [1,2,3,4,5]">

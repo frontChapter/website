@@ -7,6 +7,7 @@ use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
+use Lukeraymonddowning\Honey\Facades\Honey;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -36,5 +37,8 @@ class AppServiceProvider extends ServiceProvider
             fn(): string => Blade::render('@livewire(\'tools.language-select\')'),
         );
 
+        Honey::failUsing(function () {
+            return abort(403, 'Your access has been blocked for 5 minutes.');
+        });
     }
 }

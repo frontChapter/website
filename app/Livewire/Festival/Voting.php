@@ -38,7 +38,7 @@ class Voting extends Component
         $this->level = 1;
     }
 
-    #[On('voted')]
+    // #[On('voted')]
     public function nextLevel()
     {
         if($this->level <= count($this->votes)) {
