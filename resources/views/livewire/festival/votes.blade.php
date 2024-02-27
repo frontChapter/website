@@ -32,7 +32,5 @@
                 </div>
             </div>
         </x-card>
-        <div class="d-flex">
-        </div>
     </div>
 </div>

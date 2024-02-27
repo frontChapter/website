@@ -33,13 +33,14 @@
                     </div>
                 </div>
                 <div class="flex flex-col items-stretch order-2 gap-2 md:order-3 ms-auto">
-                    @auth
+                    {{-- @auth
                     @if ($isValidUrl)
                     <livewire:festival.voting :site="$site" />
                     @endif
                     @else
                     <x-button green :href="route('login', ['redirect' => route('festival-site.single', $site)])" icon="lock-closed" :label="__('Login to vote')" />
-                    @endauth
+                    @endauth --}}
+                    <x-alert icon="information-circle" :description="__('The voting deadline is over 😿')" />
                     <x-button target="_blank" primary outline icon="external-link" :href="$site->url"
                         :label="__('Visit Site')" />
                 </div>
