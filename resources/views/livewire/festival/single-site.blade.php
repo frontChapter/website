@@ -40,12 +40,12 @@
                     @else
                     <x-button green :href="route('login', ['redirect' => route('festival-site.single', $site)])" icon="lock-closed" :label="__('Login to vote')" />
                     @endauth --}}
-                    <x-alert icon="information-circle" :description="__('The voting deadline is over 😿')" />
                     <x-button target="_blank" primary outline icon="external-link" :href="$site->url"
                         :label="__('Visit Site')" />
                 </div>
             </div>
         </x-card>
+        <x-alert class="-mt-5" icon="information-circle" :description="__('The voting deadline is over 😿')" />
         @if (!$isValidUrl && auth()->id() === $site->user_id)
         <x-alert type="error" icon="exclamation-triangle" :title="__('Site hosting not valid')"
             :description="__('To participate in the contest, your site must be hosted on Liara')">
