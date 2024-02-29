@@ -32,12 +32,13 @@ class ProcessFestivalSitesScore implements ShouldQueue
         foreach($festivalSites as $festivalSite) {
             $vote = Votable::where('votable_type', FestivalSite::class)
                 ->where('votable_id', $festivalSite->id)
-                ->selectRaw('votable_id, (sum(vote) / count(vote)) as score')
+                ->selectRaw('votable_id, (sum(vote) / count(vote)) as score, sum(vote) as count')
                 ->groupBy('votable_id')
                 ->first();
 
                 if (!empty($vote)) {
                     $festivalSite->score = $vote->score;
+                    $festivalSite->count = $vote->count;
                     $festivalSite->save();
                 }
         }
