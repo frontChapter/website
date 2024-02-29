@@ -12,6 +12,7 @@ use App\Livewire\Festival\RegisterSite;
 use App\Livewire\Festival\SingleSite;
 use App\Livewire\Home\ShowHome;
 use App\Livewire\Profile\ShowProfile;
+use App\Livewire\Reserved;
 use App\Livewire\User\EditAdditionalData;
 use App\Livewire\User\Gift\ListGifts;
 use App\Livewire\User\Ticket\ListTickets;
@@ -47,6 +48,9 @@ Route::middleware(['utm.store'])->prefix('/festival')
     });
 
 Route::get('/conf1402', ShowHome::class)->name('conf1402')
+    ->middleware('utm.store');
+
+Route::get('/reserved', Reserved::class)->name('reserved')
     ->middleware('utm.store');
 
 Route::middleware('auth')->group(function () {

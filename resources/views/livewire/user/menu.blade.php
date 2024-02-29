@@ -10,8 +10,8 @@
             <x-profile-menu-link icon="heroicon-o-ticket" :title="__('Tickets')" :url="route('ticket')"
                 :isActive="request()->routeIs('ticket')" :badge="auth()->user()->tickets()->count()" />
 
-            {{-- <x-profile-menu-link icon="heroicon-o-gift" :title="__('Gifts')" :url="route('gift')"
-                :isActive="request()->routeIs('gift')" /> --}}
+            <x-profile-menu-link icon="heroicon-o-gift" :title="__('Gifts')" :url="route('gift')"
+                :isActive="request()->routeIs('gift')" />
         </div>
     </x-card>
 </div>
