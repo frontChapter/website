@@ -16,6 +16,7 @@ class ListSites extends Component
     public function getSites()
     {
         return FestivalSite::whereStatus(FestivalSiteStatus::PUBLISHED)
+            ->orderBy("count", "DESC")
             ->orderBy("score", "DESC")
             ->paginate(23);
     }

@@ -27,6 +27,7 @@ class FestivalSite extends Model implements Viewable
         'user_id',
         'app_id',
         'name',
+        'count',
         'url',
         'logo',
         'status',
