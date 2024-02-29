@@ -1,12 +1,12 @@
-<div class="flex items-center p-4 rounded {{ $bgColor }}">
-    <div>
-        <h3 class="text-xl font-semibold leading-tight text-secondary-800 dark:text-secondary-200">
+<div class="flex flex-col gap-3 lg:flex-row items-center p-4 rounded {{ $bgColor }}">
+    <div class="w-full">
+        <h3 class="mb-1 text-xl font-semibold leading-tight text-secondary-800 dark:text-secondary-200">
             {{ $title }}
         </h3>
         <p>{{ $description }}</p>
     </div>
 
-    <div class="flex items-center gap-1 ms-auto">
+    <div class="flex items-center justify-between w-full gap-2 lg:justify-end ms-auto">
         <p>
             {{ __('Discount code') }}:
         </p>

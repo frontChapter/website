@@ -10,7 +10,7 @@
 @endisset
 
 <div class="container px-4 py-10 mx-auto sm:px-2 md:px-00">
-    <div class="grid grid-cols-12 gap-x-8">
+    <div class="grid grid-cols-12 gap-8">
         <div class="col-span-12 md:col-span-4 lg:col-span-3">
             <livewire:user.menu />
         </div>
