@@ -10,6 +10,6 @@
         <p>
             {{ __('Discount code') }}:
         </p>
-        <x-badge white lg :label="$code"/>
+        <x-badge class="font-mono" white lg :label="$code"/>
     </div>
 </div>
