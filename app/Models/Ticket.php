@@ -102,4 +102,13 @@ class Ticket extends Model
 
         return null;
     }
+
+    public function getIsVipAttribute(): bool
+    {
+        if($this->ticket_id === '275952'){
+            return true;
+        }
+
+        return false;
+    }
 }

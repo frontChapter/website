@@ -2,6 +2,7 @@
 
 namespace App\Livewire\User\Gift;
 
+use App\Models\Ticket;
 use Livewire\Component;
 
 class ListGifts extends Component
@@ -13,6 +14,7 @@ class ListGifts extends Component
                 ->whereIn('ticket_id', ['275714', '275952'])
                 ->select(['ticket_id', 'code'])
                 ->get(),
+            'gifts' => auth()->user()->gifts,
         ]);
     }
 }
