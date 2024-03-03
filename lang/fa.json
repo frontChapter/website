@@ -281,7 +281,8 @@
     "Ethiopia": "اتیوپی",
     "ex VAT": "سابق VAT",
     "Excel (.xlsx)": "اکسل (.xlsx)",
-    "Expires :expiration": ":Expiration منقضی می شود",
+    "Expires :expiration": "در :Expiration منقضی می شود",
+    "Expires at: :expiration": "انقضا: :Expiration",
     "Extra Billing Information": "اطلاعات اضافی صورتحساب",
     "Extra confirmation is needed to process your payment. Please continue to the payment page by clicking on the button below.": "جهت تایید پرداخت شما به تاییدیه اضافی نیاز است. لطفا با کلیک روی دکمه زیر به صفحه پرداخت بروید.",
     "Failed Subscription Payment": "پرداخت اشتراک ناموفق",
@@ -718,6 +719,7 @@
     "The team's name and owner information.": "اطلاعات مالک و نام تیم.",
     "There are no available options for this resource.": "برای این منبع گزینه‌ای وجود ندارد.",
     "There are no fields to display.": "فیلدی حهت نمایش وجود ندارد.",
+    "There are no gifts.": "هدیه ای وجود ندارد.",
     "There are no new notifications.": "هیچ اعلان جدیدی وجود ندارد.",
     "There is no active subscription.": "هیچ اشتراک فعالی وجود ندارد.",
     "There was a problem executing the action.": "اشکالی در اجرای این عملیات رخ داده است.",
@@ -994,6 +996,7 @@
     "To vote, you must first validate your email.": "برای رای دادن باید ابتدا ایمیل خود را تایید کنید.",
     "Menu": "منو",
     ":name's account": "حساب کاربری :name",
+    "Gift": "هدیه",
     "Gifts": "هدایا",
     "Gifts List": "لیست هدایا",
     "Ticket Gifts": "هدایای بلیت",
@@ -1008,6 +1011,7 @@
     "500 | Server Error": "۵۰۰ | خطای سرور",
     "Your access has been blocked for 5 minutes.": "دسترسی شما به مدت ۵ دقیقه بسته شده است.",
     "The voting deadline is over 😿": "مهلت رای گیری تمام شد 😿",
+    "Discount amount": "میزان تخفیف",
     "": "",
     "test": "test"
 }
