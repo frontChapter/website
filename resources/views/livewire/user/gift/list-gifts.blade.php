@@ -15,13 +15,13 @@
             <x-gift-card expire="۱۱۴۰۲/۱۲/۱۹" href="https://console.liara.ir/rewards" :title="__('Liara')" :description="__('In less than 5 minutes, run your program on the server')" code="{{ $ticket->code }}" bgColor="bg-teal-600" />
         @endforeach
 
-        {{-- @if (count($gifts) === 0 && count($tickets) === 0) --}}
+        @if (count($gifts) === 0 && count($tickets) === 0)
         <x-empty-state :title="__('There are no gifts.')">
             <x-slot name="icon">
                 <x-heroicon-s-gift class="w-24 h-24 mx-auto" />
             </x-slot>
         </x-empty-state>
-        {{-- @endif --}}
+        @endif
     </div>
 
 </x-profile-layout>
