@@ -22,6 +22,7 @@ class Gift extends Model
         'value',
         'type',
         'link',
+        'expired_at',
         'user_id',
     ];
 

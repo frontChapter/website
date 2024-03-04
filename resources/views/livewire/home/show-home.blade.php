@@ -8,7 +8,7 @@
 
 <div class="container mx-auto my-8">
     <div class="flex flex-col gap-y-4">
-        @if(!empty(env('EVAND_SLUG')))
+        {{-- @if(!empty(env('EVAND_SLUG')))
         <div class="flex flex-col gap-4 py-4 text-center xl:py-8">
             <h2 class="text-4xl font-black leading-normal animate-text-recolor md:text-5xl xl:text-6xl xl:leading-relaxed">{{ __('Registration in the second Front Chapter conference') }}</h2>
             <p class="text-xl">{{ __('29 February 2024') }} - {{ __('Mazandaran, Amol') }}</p>
@@ -29,7 +29,7 @@
         </div>
         @endauth
         </div>
-        @endif
+        @endif --}}
 
         <livewire:home.ticket-buyers lazy/>
     </div>
