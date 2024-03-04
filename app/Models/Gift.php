@@ -27,6 +27,15 @@ class Gift extends Model
     ];
 
     /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'expired_at' => 'datetime',
+    ];
+
+    /**
      * Get the user that owns the site
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
