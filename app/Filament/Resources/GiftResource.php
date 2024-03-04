@@ -5,6 +5,8 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\GiftResource\Pages;
 use App\Models\Gift;
 use Ariaieboy\FilamentJalaliDatetime\JalaliDateTimeColumn;
+use Ariaieboy\FilamentJalaliDatetimepicker\Forms\Components\JalaliDatePicker;
+use Ariaieboy\FilamentJalaliDatetimepicker\Forms\Components\JalaliDateTimePicker;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -65,6 +67,10 @@ class GiftResource extends Resource
                     ->translateLabel()
                     ->required()
                     ->maxLength(255),
+                JalaliDateTimePicker::make('expired_at')
+                    ->required()
+                    ->translateLabel()
+                    ->required(),
                 Forms\Components\TextInput::make('link')
                     ->nullable()
                     ->translateLabel()
@@ -76,30 +82,40 @@ class GiftResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('user.id')
-                    ->sortable()
-                    ->label('Email')
+                Tables\Columns\TextColumn::make('user.name')
                     ->translateLabel()
                     ->sortable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('title')
                     ->translateLabel()
+                    ->sortable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('description')
                     ->translateLabel()
+                    ->sortable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('type')
                     ->translateLabel()
+                    ->sortable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('value')
                     ->translateLabel()
+                    ->sortable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('code')
                     ->translateLabel()
+                    ->sortable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('link')
                     ->translateLabel()
+                    ->sortable()
                     ->searchable(),
+                JalaliDateTimeColumn::make('expired_at')
+                    ->sortable()
+                    ->translateLabel()
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: false),
                 JalaliDateTimeColumn::make('created_at')
                     ->sortable()
                     ->translateLabel()

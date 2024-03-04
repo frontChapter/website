@@ -942,7 +942,7 @@
     "Admin Panel": "پنل مدیریت",
     "filament-spatie-roles-permissions::filament-spatie.section.users": "کاربران",
     "Participants in conference": "شرکت کنندگان در همایش",
-    ":number people have registered so far": "تا این لحظه :number نفر ثبت نام کرده‌اند",
+    ":number people have registered": ":number نفر ثبت نام کرده‌اند",
     "Changing language": "در حال تغییر زبان",
     "Front Chapter Festival": "جشنواره فرانت چپتر",
     "Register In Festival": "ثبت‌نام در جشنواره",
@@ -1012,6 +1012,8 @@
     "Your access has been blocked for 5 minutes.": "دسترسی شما به مدت ۵ دقیقه بسته شده است.",
     "The voting deadline is over 😿": "مهلت رای گیری تمام شد 😿",
     "Discount amount": "میزان تخفیف",
+    "Participants in Front Chapter conference 2024": "شرکت کنندگان در همایش فرانت‌چپتر ۱۴۰۲",
+    "Expired at": "تاریخ انقضا",
     "": "",
     "test": "test"
 }

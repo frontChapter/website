@@ -22,7 +22,17 @@ class Gift extends Model
         'value',
         'type',
         'link',
+        'expired_at',
         'user_id',
+    ];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'expired_at' => 'datetime',
     ];
 
     /**

@@ -1,7 +1,7 @@
 <div class="mx-auto text-center">
     @if(!empty($buyers))
-    <h3 class="mt-12 text-4xl font-extrabold leading-loose text-green-500">{{ __('Participants in conference') }}</h3>
-    <p class="mb-8 text-xl">{{ __(':number people have registered so far', ['number' => count($buyers)]) }}</p>
+    <h3 class="mt-12 text-4xl font-extrabold leading-loose text-green-500">{{ __('Participants in Front Chapter conference 2024') }}</h3>
+    <p class="mb-8 text-xl">{{ __(':number people have registered', ['number' => count($buyers)]) }}</p>
     <x-card cardClasses="border-green-500 border">
         <div class="flex flex-wrap justify-center grid-cols-12 gap-2 my-4 justify-items-center">
             @foreach ($buyers as $buyer)
