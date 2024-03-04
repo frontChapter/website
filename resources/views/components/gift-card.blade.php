@@ -1,5 +1,5 @@
 <div class="flex gap-3 shadow items-stretch text-secondary-200 rounded {{ $bgColor }}">
-    <div class="flex gap-2 w-full p-4 flex-col lg:flex-row">
+    <div class="flex flex-col w-full gap-2 p-4 lg:flex-row">
         <div class="w-full">
             <h3 class="mb-1 text-xl font-semibold leading-tight">
                 {{ $title }}
@@ -13,30 +13,30 @@
             @endisset
         </div>
 
-        <div class="flex lg:flex-col items-center lg:justify-center text-sm min-w-max gap-4 lg:gap-2">
-            @isset($value)
+        <div class="flex items-center gap-4 text-sm lg:flex-col lg:justify-center min-w-max lg:gap-2">
+            @if(!empty($value))
             <div class="lg:w-full">
                 <p class="opacity-85">
                     {{ __('Discount amount') }}
                 </p>
                 <p class="font-semibold">{{ $value }}</p>
             </div>
-            @isset($expire)
-            <div class="border-r-2 lg:border-r-0 lg:border-b-2 border-white/30 h-4 lg:h-0 lg:w-full"></div>
-            @endisset
-            @endisset
-            @isset($expire)
+            @if(!empty($expire))
+            <div class="h-4 border-r-2 lg:border-r-0 lg:border-b-2 border-white/30 lg:h-0 lg:w-full"></div>
+            @endif
+            @endif
+            @if(!empty($expire))
             <div class="lg:w-full">
                 <p class="opacity-85">
                     {{ __('Expired at') }}
                 </p>
                 <p class="font-semibold">{{ $expire }}</p>
             </div>
-            @endisset
+            @endif
         </div>
     </div>
 
-    <div class="flex flex-col min-w-36 justify-center items-center bg-white/15 p-4 gap-1">
+    <div class="flex flex-col items-center justify-center gap-1 p-4 min-w-36 bg-white/15">
         <p>
             {{ __('Discount code') }}
         </p>
