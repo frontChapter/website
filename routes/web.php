@@ -10,6 +10,7 @@ use App\Livewire\Auth\Verify;
 use App\Livewire\Festival\ListSites;
 use App\Livewire\Festival\RegisterSite;
 use App\Livewire\Festival\SingleSite;
+use App\Livewire\Gallery;
 use App\Livewire\Home\ShowHome;
 use App\Livewire\Profile\ShowProfile;
 use App\Livewire\Reserved;
@@ -50,7 +51,11 @@ Route::middleware(['utm.store'])->prefix('/festival')
 Route::get('/conf1402', ShowHome::class)->name('conf1402')
     ->middleware('utm.store');
 
-Route::get('/reserved', Reserved::class)->name('reserved')
+Route::get('/reserved', function () {
+    return redirect()->route('gallery');
+})->name('reserved');
+
+Route::get('/gallery', Gallery::class)->name('gallery')
     ->middleware('utm.store');
 
 Route::middleware('auth')->group(function () {

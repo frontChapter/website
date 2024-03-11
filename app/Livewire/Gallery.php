@@ -4,10 +4,10 @@ namespace App\Livewire;
 
 use Livewire\Component;
 
-class Reserved extends Component
+class Gallery extends Component
 {
     public function render()
     {
-        return view('livewire.reserved');
+        return view('livewire.gallery');
     }
 }
