@@ -100,7 +100,7 @@
                 @guest
                 <div class="flex items-center gap-2">
                     <x-button light wire:navigate :href="route('login')" :label="__('Login')" />
-                    <x-button icon="user-add" primary wire:navigate :href="route('register')" :label="__('Register')" />
+                    <x-button class="hidden md:flex" icon="user-add" primary wire:navigate :href="route('register')" :label="__('Register')" />
                 </div>
                 @endguest
             </div>
