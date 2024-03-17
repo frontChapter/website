@@ -11,7 +11,7 @@
                 <x-slot:header>
                     <img class="w-full mx-auto rounded-t-xl"  src="{{ asset('images/conference-night.jpg') }}">
                 </x-slot:header>
-                <div class="flex items-center justify-center w-full gap-2 px-2 text-center sm:justify-between">
+                <div class="flex items-center justify-center w-full gap-2 px-2 text-start sm:justify-between">
                     <h2 class="text-xl font-bold lg:text-2xl">
                         {{ __('Archive of the night before the conference') }}
                     </h2>
@@ -26,7 +26,7 @@
                 <x-slot:header>
                     <img class="w-full mx-auto rounded-t-xl"  src="{{ asset('images/conference.jpg') }}">
                 </x-slot:header>
-                <div class="flex items-center justify-center w-full gap-2 px-2 text-center sm:justify-between">
+                <div class="flex items-center justify-center w-full gap-2 px-2 text-start sm:justify-between">
                     <h2 class="text-xl font-bold lg:text-2xl">
                         {{ __('Archives of the day of the conference') }}
                     </h2>
