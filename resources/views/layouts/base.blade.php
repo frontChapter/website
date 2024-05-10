@@ -19,6 +19,7 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     @livewireStyles
     @livewireScripts
+    @stack('styles')
     @wireUiScripts
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -29,5 +30,7 @@
     @yield('body')
     <x-notifications z-index="z-50" position="bottom-left" />
 
+    @livewire('notifications')
+    @stack('scripts')
 </body>
 </html>

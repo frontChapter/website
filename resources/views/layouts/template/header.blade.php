@@ -13,6 +13,7 @@ $links[] = [
 'isActive' => request()->routeIs('festival-site'),
 ];
 @endphp
+
 <x-check-email-verified />
 <x-navigation-menu :$links />
 

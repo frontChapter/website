@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Storage;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use LaraZeus\Bolt\Models\Concerns\BelongToBolt;
 use RKocak\Gravatar\Facades\Gravatar;
 use RKocak\Gravatar\Traits\HasGravatar;
 use Spatie\Permission\Traits\HasPermissions;
@@ -35,6 +36,7 @@ class User extends Authenticatable implements MustVerifyEmail, FilamentUser, Has
     use SoftDeletes;
     use HasRoles;
     use HasPermissions;
+    use BelongToBolt;
 
     /**
      * The attributes that are mass assignable.
