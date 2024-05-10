@@ -13,7 +13,7 @@
                     </span>
                 </div>
             </x-slot>
-            <div class="flex items-center justify-between">
+            <div class="flex flex-wrap items-center justify-between">
                 <p>
                     {{ __('Login is required to access the form') }}
                     <span class="font-semibold">{{ $zeusForm->name ?? '' }}</span>.
