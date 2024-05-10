@@ -34,6 +34,7 @@
 
             <div class="flex items-center gap-4 ms-auto">
                 @livewire('tools.language-select')
+                <x-toggle-theme-button />
 
                 @auth()
                 <div class="flex sm:items-center">

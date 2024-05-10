@@ -15,6 +15,7 @@ use Filament\Navigation\NavigationGroup;
 use Filament\Pages;
 use Filament\Panel;
 use Filament\PanelProvider;
+use Filament\SpatieLaravelTranslatablePlugin;
 use Filament\Support\Colors\Color;
 use Filament\Widgets;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
@@ -25,6 +26,7 @@ use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Support\Facades\Session;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use LaraZeus\Bolt\BoltPlugin;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -72,6 +74,8 @@ class AdminPanelProvider extends PanelProvider
             )
             ->plugins([
                 FilamentSpatieRolesPermissionsPlugin::make(),
+                SpatieLaravelTranslatablePlugin::make()->defaultLocales([config('app.locale')]),
+                BoltPlugin::make(),
                 GravatarPlugin::make()
                     ->default('robohash')
                     ->size(200)

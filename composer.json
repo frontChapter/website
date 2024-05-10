@@ -24,6 +24,7 @@
         "hekmatinasser/verta": "^8.3",
         "hpez/url-shortener": "^0.1.8",
         "intervention/image": "^3.4",
+        "lara-zeus/bolt": "^3.0",
         "laravel-frontend-presets/tall": "^7.0",
         "laravel/framework": "^10.10",
         "laravel/jetstream": "^4.2",
