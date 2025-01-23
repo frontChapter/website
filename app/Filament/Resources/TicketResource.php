@@ -4,7 +4,6 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\TicketResource\Pages;
 use App\Models\Ticket;
-use Ariaieboy\FilamentJalaliDatetime\JalaliDateTimeColumn;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -114,17 +113,15 @@ class TicketResource extends Resource
                     ->translateLabel()
                     ->formatStateUsing(fn(string $state): string => number_format($state) . ' ' . __('Toman'))
                     ->searchable(),
-                JalaliDateTimeColumn::make('created_at')
+            Tables\Columns\TextColumn::make('created_at')
+                    ->jalaliDateTime()
                     ->sortable()
                     ->translateLabel()
-                    ->dateTime()
-                    ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
-                JalaliDateTimeColumn::make('updated_at')
+            Tables\Columns\TextColumn::make('updated_at')
+                    ->jalaliDateTime()
                     ->sortable()
                     ->translateLabel()
-                    ->dateTime()
-                    ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([

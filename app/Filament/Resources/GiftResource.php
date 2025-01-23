@@ -4,9 +4,6 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\GiftResource\Pages;
 use App\Models\Gift;
-use Ariaieboy\FilamentJalaliDatetime\JalaliDateTimeColumn;
-use Ariaieboy\FilamentJalaliDatetimepicker\Forms\Components\JalaliDatePicker;
-use Ariaieboy\FilamentJalaliDatetimepicker\Forms\Components\JalaliDateTimePicker;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -67,8 +64,10 @@ class GiftResource extends Resource
                     ->translateLabel()
                     ->required()
                     ->maxLength(255),
-                JalaliDateTimePicker::make('expired_at')
+                Forms\Components\DatePicker::make('expired_at')
+                    ->jalali()
                     ->required()
+                    ->columnSpanFull()
                     ->translateLabel()
                     ->required(),
                 Forms\Components\TextInput::make('link')
@@ -110,23 +109,21 @@ class GiftResource extends Resource
                     ->translateLabel()
                     ->sortable()
                     ->searchable(),
-                JalaliDateTimeColumn::make('expired_at')
+
+                Tables\Columns\TextColumn::make('expired_at')
+                    ->jalaliDateTime()
                     ->sortable()
                     ->translateLabel()
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: false),
-                JalaliDateTimeColumn::make('created_at')
-                    ->sortable()
-                    ->translateLabel()
-                    ->dateTime()
-                    ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
-                JalaliDateTimeColumn::make('updated_at')
+                Tables\Columns\TextColumn::make('created_at')
+                    ->jalaliDateTime()
                     ->sortable()
                     ->translateLabel()
-                    ->dateTime()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('updated_at')
+                    ->jalaliDateTime()
                     ->sortable()
+                    ->translateLabel()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([

@@ -4,7 +4,6 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\UtmVisitResource\Pages;
 use App\Models\UtmVisit;
-use Ariaieboy\FilamentJalaliDatetime\JalaliDateTimeColumn;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -105,15 +104,15 @@ class UtmVisitResource extends Resource
                     ->translateLabel()
                     ->sortable()
                     ->searchable(),
-                JalaliDateTimeColumn::make('created_at')
-                    ->translateLabel()
-                    ->dateTime()
+                Tables\Columns\TextColumn::make('created_at')
+                    ->jalaliDateTime()
                     ->sortable()
+                    ->translateLabel()
                     ->toggleable(isToggledHiddenByDefault: true),
-                JalaliDateTimeColumn::make('updated_at')
-                    ->translateLabel()
-                    ->dateTime()
+                Tables\Columns\TextColumn::make('updated_at')
+                    ->jalaliDateTime()
                     ->sortable()
+                    ->translateLabel()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([

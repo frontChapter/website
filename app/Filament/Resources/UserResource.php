@@ -6,8 +6,7 @@ use Althinect\FilamentSpatieRolesPermissions\Resources\PermissionResource\Relati
 use App\Enums\SexEnum;
 use App\Filament\Resources\UserResource\Pages;
 use App\Models\User;
-use Ariaieboy\FilamentJalaliDatetime\JalaliDateTimeColumn;
-use Ariaieboy\FilamentJalaliDatetimepicker\Forms\Components\JalaliDatePicker;
+use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
@@ -68,10 +67,12 @@ class UserResource extends Resource
                             ->columnSpan(2)
                             ->lazy()
                             ->translateLabel(),
-                        JalaliDatePicker::make('birth_date')
-                            ->columnSpan(2)
-                            ->lazy()
-                            ->translateLabel(),
+                        DatePicker::make('birth_date')
+                            ->jalali()
+                            ->required()
+                            ->columnSpanFull()
+                            ->translateLabel()
+                            ->required(),
                         Select::make('sex')
                             ->translateLabel()
                             ->options(SexEnum::class)
@@ -107,20 +108,20 @@ class UserResource extends Resource
                     ->translateLabel()
                     ->sortable()
                     ->searchable(),
-                JalaliDateTimeColumn::make('email_verified_at')->dateTime()
-                    ->translateLabel()
+                Tables\Columns\TextColumn::make('email_verified_at')
+                    ->jalaliDateTime()
                     ->sortable()
-                    ->searchable()
+                    ->translateLabel()
                     ->toggleable(isToggledHiddenByDefault: true),
-                JalaliDateTimeColumn::make('created_at')
-                    ->translateLabel()
-                    ->dateTime()
+                Tables\Columns\TextColumn::make('created_at')
+                    ->jalaliDateTime()
                     ->sortable()
+                    ->translateLabel()
                     ->toggleable(isToggledHiddenByDefault: true),
-                JalaliDateTimeColumn::make('updated_at')
-                    ->translateLabel()
-                    ->dateTime()
+                Tables\Columns\TextColumn::make('updated_at')
+                    ->jalaliDateTime()
                     ->sortable()
+                    ->translateLabel()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([

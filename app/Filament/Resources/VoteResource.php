@@ -4,7 +4,6 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\VoteResource\Pages;
 use App\Models\Vote;
-use Ariaieboy\FilamentJalaliDatetime\JalaliDateTimeColumn;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -62,16 +61,16 @@ class VoteResource extends Resource
                 Tables\Columns\TextColumn::make('creator.name')
                     ->translateLabel()
                     ->sortable(),
-                JalaliDateTimeColumn::make('created_at')
-                    ->translateLabel()
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                JalaliDateTimeColumn::make('updated_at')
-                    ->translateLabel()
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+            Tables\Columns\TextColumn::make('created_at')
+                ->jalaliDateTime()
+                ->sortable()
+                ->translateLabel()
+                ->toggleable(isToggledHiddenByDefault: true),
+            Tables\Columns\TextColumn::make('updated_at')
+                ->jalaliDateTime()
+                ->sortable()
+                ->translateLabel()
+                ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //
